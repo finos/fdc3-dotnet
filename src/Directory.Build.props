@@ -1,0 +1,12 @@
+﻿<Project>
+	<PropertyGroup>
+		<Company>Morgan Stanley</Company>
+		<Authors>Morgan Stanley</Authors>
+		<Copyright>Copyright 2022 Morgan Stanley</Copyright>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>8.0</LangVersion>
+	</PropertyGroup>
+</Project>
