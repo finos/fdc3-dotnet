@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/fdc3-dotnet.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build src/fdc3-dotnet.sln --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src/fdc3-dotnet.sln --no-build --verbosity normal
