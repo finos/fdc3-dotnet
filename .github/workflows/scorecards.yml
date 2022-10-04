@@ -38,13 +38,13 @@ jobs:
           # - you want to enable the Branch-Protection check on a *public* repository, or
           # - you are installing Scorecards on a *private* repository
           # To create the PAT, follow the steps in https://github.com/ossf/scorecard-action#authentication-with-pat.
-          # repo_token: ${{ secrets.SCORECARD_READ_TOKEN }}
+          repo_token: ${{ secrets.SCORECARD_READ_TOKEN }}
 
           # Publish the results for public repositories to enable scorecard badges. For more details, see
           # https://github.com/ossf/scorecard-action#publishing-results.
           # For private repositories, `publish_results` will automatically be set to `false`, regardless
           # of the value entered here.
-          publish_results: true
+          publish_results: false
 
       # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
       # format to the repository Actions tab.
