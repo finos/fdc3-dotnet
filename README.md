@@ -17,4 +17,4 @@ fdc3-dotnet
 
 ![Lifecycle Incubating](https://badgen.net/badge/Lifecycle/Incubating/yellow)
 
-.NET Standard 2.0 FDC3 declarations to implement concrete FDC3 compatible .NET desktop agents and usage of intents/context.
+.NET Standard 2.0 declarations to implement concrete [FDC3](https://fdc3.finos.org/) compatible .NET desktop agents and usage of intents/context.
