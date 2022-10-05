@@ -12,7 +12,6 @@
  * and limitations under the License.
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,14 +20,14 @@ namespace MorganStanley.Fdc3
     /// <summary>
     /// App definition as provided by the application directory.
     /// </summary>
-    
-    public class AppMetadata : IAppMetadata
+
+    public class AppMetadata : AppIdentifier, IAppMetadata
     {
-        public AppMetadata(string name, string? appId = null, string? version = null, string? title = null,
+        public AppMetadata(string appId, string? instanceId = null, string? name = null, string? version = null, string? title = null,
             string? tooltip = null, string? description = null, IEnumerable<string>? icons = null, IEnumerable<string>? images = null)
+            : base(appId, instanceId)
         {
-            this.Name = name ?? throw new ArgumentNullException(nameof(name));
-            this.AppId = appId;
+            this.Name = name;
             this.Version = version;
             this.Title = title;
             this.Tooltip = tooltip;
@@ -37,20 +36,10 @@ namespace MorganStanley.Fdc3
             this.Images = images ?? Enumerable.Empty<string>();
         }
 
-        public static IAppMetadata FromName(string name)
-        {
-            return new AppMetadata(name);
-        }
-
         /// <summary>
         /// The unique app name that can be used with the open and raiseIntent calls.
         /// </summary>
-        public string Name { get; }
-
-        /// <summary>
-        /// The unique application identifier located within a specific application directory instance. An example of an appId might be 'app@sub.root'.
-        /// </summary>
-        public string? AppId { get; }
+        public string? Name { get; }
 
         /// <summary>
         /// The Version of the application.

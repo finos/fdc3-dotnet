@@ -36,7 +36,7 @@ namespace MorganStanley.Fdc3
         /// If a Context object is passed in, this object will be provided to the opened application via a contextListener.
         /// The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
         /// </summary>
-        Task Open(IAppMetadata app, IContext? context = null);
+        Task Open(IAppIdentifier app, IContext? context = null);
 
         /// <summary>
         /// Publishes context to other apps on the desktop.
@@ -72,12 +72,12 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Raises an intent to the desktop agent to resolve.
         /// </summary>
-        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppMetadata? app = null);
+        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null);
 
         /// <summary>
         /// Raises a context to the desktop agent to resolve with one of the possible Intents for that context.
         /// </summary>
-        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppMetadata? app = null);
+        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null);
 
         /// <summary>
         /// Adds a listener for incoming Intents from the Agent.
@@ -125,36 +125,9 @@ namespace MorganStanley.Fdc3
 
     public static class DesktopAgentExtensions
     {
-        /// <summary>
-        /// Launches an app by target, which can be optionally a string like a name, or an AppMetadata object.
-        ///
-        /// If a Context object is passed in, this object will be provided to the opened application via a contextListener.
-        /// The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
-        /// </summary>
-        public static Task Open(this IDesktopAgent desktopAgent, string app, IContext? context = null)
-        {
-            return desktopAgent.Open(AppMetadata.FromName(app), context);
-        }
-
         public static IListener AddContextListener(this IDesktopAgent desktopAgent, string? contextType, ContextHandler<IContext> handler)
         {
             return desktopAgent.AddContextListener<IContext>(contextType, handler);
-        }
-
-        /// <summary>
-        /// Raises an intent to the desktop agent to resolve.
-        /// </summary>
-        public static Task<IIntentResolution> RaiseIntent(this IDesktopAgent desktopAgent, string intent, IContext context, string? app = null)
-        {
-            return desktopAgent.RaiseIntent(intent, context, app != null ? new AppMetadata(app) : null);
-        }
-
-        /// <summary>
-        /// Raises a context to the desktop agent to resolve with one of the possible Intents for that context.
-        /// </summary>
-        public static Task<IIntentResolution> RaiseIntentForContext(this IDesktopAgent desktopAgent, IContext context, string? app = null)
-        {
-            return desktopAgent.RaiseIntentForContext(context, app != null ? AppMetadata.FromName(app) : null);
         }
     }
 }
