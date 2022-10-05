@@ -55,5 +55,11 @@ namespace MorganStanley.Fdc3
         /// A list of image URLs for the application that can be used to render UI elements.
         /// </summary>
         IEnumerable<string> Images { get; }
+
+        /// <summary>
+        /// The type of output returned for any intent specified during resolution. May express a particular context type,
+        /// channel, or channel with specified type
+        /// </summary>
+        string? ResultType { get; }
     }
 }

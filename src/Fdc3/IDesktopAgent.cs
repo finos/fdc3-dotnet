@@ -58,7 +58,7 @@ namespace MorganStanley.Fdc3
         /// A Task resolving to the intent, its metadata and metadata about the apps that registered it is returned.
         /// This can be used to raise the intent against a specific app.
         /// </summary>
-        Task<IAppIntent> FindIntent(string intent, IContext? context = null);
+        Task<IAppIntent> FindIntent(string intent, IContext? context = null, string? resultType = null);
 
         /// <summary>
         /// Find all the available intents for a particular context.
@@ -67,7 +67,7 @@ namespace MorganStanley.Fdc3
         /// A Task resolving to all the intents, their metadata and metadata about the apps that registered it is returned,
         /// based on the context types the intents have registered.
         /// </summary>
-        Task<IEnumerable<IAppIntent>> FindIntentsByContext(IContext context);
+        Task<IEnumerable<IAppIntent>> FindIntentsByContext(IContext context, string? resultType = null);
 
         /// <summary>
         /// Raises an intent to the desktop agent to resolve.

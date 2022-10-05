@@ -24,7 +24,8 @@ namespace MorganStanley.Fdc3
     public class AppMetadata : AppIdentifier, IAppMetadata
     {
         public AppMetadata(string appId, string? instanceId = null, string? name = null, string? version = null, string? title = null,
-            string? tooltip = null, string? description = null, IEnumerable<string>? icons = null, IEnumerable<string>? images = null)
+            string? tooltip = null, string? description = null, IEnumerable<string>? icons = null, IEnumerable<string>? images = null,
+            string? resultType = null)
             : base(appId, instanceId)
         {
             this.Name = name;
@@ -34,6 +35,7 @@ namespace MorganStanley.Fdc3
             this.Description = description;
             this.Icons = icons ?? Enumerable.Empty<string>();
             this.Images = images ?? Enumerable.Empty<string>();
+            this.ResultType = resultType;
         }
 
         /// <summary>
@@ -70,5 +72,11 @@ namespace MorganStanley.Fdc3
         /// A list of image URLs for the application that can be used to render UI elements.
         /// </summary>
         public IEnumerable<string> Images { get; }
+
+        /// <summary>
+        /// The type of output returned for any intent specified during resolution. May express a particular context type,
+        /// channel, or channel with specified type
+        /// </summary>
+        public string? ResultType { get; }
     }
 }
