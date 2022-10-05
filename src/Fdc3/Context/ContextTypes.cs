@@ -24,6 +24,7 @@ namespace MorganStanley.Fdc3.Context
         public static readonly string Country = "fdc3.country";
         public static readonly string Instrument = "fdc3.instrument";
         public static readonly string InstrumentList = "fdc3.instrumentList";
+        public static readonly string Nothing = "fdc3.nothing";
         public static readonly string Organization = "fdc3.organization";
         public static readonly string Portfolio = "fdc3.portfolio";
         public static readonly string Position = "fdc3.position";
