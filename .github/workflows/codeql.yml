@@ -19,6 +19,9 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: '36 9 * * 2'
+    
+ permissions:
+  contents: read
 
 jobs:
   analyze:
