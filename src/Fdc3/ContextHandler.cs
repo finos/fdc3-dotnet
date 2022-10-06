@@ -16,5 +16,5 @@ using MorganStanley.Fdc3.Context;
 
 namespace MorganStanley.Fdc3
 {
-    public delegate void ContextHandler<T>(T context) where T : IContext;
+    public delegate void ContextHandler<T>(T context, IContextMetadata? metadata = null) where T : IContext;
 }

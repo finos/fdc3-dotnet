@@ -12,10 +12,18 @@
  * and limitations under the License.
  */
 
-using System.Threading.Tasks;
-using MorganStanley.Fdc3.Context;
-
 namespace MorganStanley.Fdc3
 {
-    public delegate Task<IIntentResult> IntentHandler<T>(T context, IContextMetadata? metadata = null) where T : IContext;
+    /// <summary>
+    ///  Metadata relating to a context or intent and context received through the `AddContextListener` and `AddIntentListener` functions.
+    ///  
+    /// Introduced in FDC3 2.0 and may be refined by further changes outside the normal FDC3 versioning policy.
+    /// </summary>
+    public interface IContextMetadata
+    {
+        /// <summary>
+        /// Identifier for the app instance that sent the context and/or intent.
+        /// </summary>
+        AppIdentifier? Source { get; }
+    }
 }
