@@ -21,7 +21,7 @@ namespace MorganStanley.Fdc3
     /// <summary>
     /// Object representing a context channel.
     /// </summary>
-    public interface IChannel
+    public interface IChannel: IIntentResult
     {
         /// <summary>
         /// Constant that uniquely identifies this channel.

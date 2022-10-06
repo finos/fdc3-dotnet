@@ -82,7 +82,7 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Adds a listener for incoming Intents from the Agent.
         /// </summary>
-        IListener AddIntentListener<T>(string intent, ContextHandler<T> handler) where T : IContext;
+        IListener AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext;
 
         /// <summary>
         /// Returns a channel with the given identity. Either stands up a new channel or returns an existing channel.

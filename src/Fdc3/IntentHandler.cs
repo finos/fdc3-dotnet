@@ -12,23 +12,10 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using System.Threading.Tasks;
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3
 {
-    public interface IDynamicContext
-    {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
-    }
+    public delegate Task<IIntentResult> IntentHandler<T>(T context) where T : IContext;
 }

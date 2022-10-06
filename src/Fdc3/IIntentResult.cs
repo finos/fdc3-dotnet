@@ -12,23 +12,14 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3
 {
-    public interface IDynamicContext
-    {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+    /// <summary>
+    /// Intents can return results that are either context data objects or a reference to a Channel.
+    /// </summary>
+    public interface IIntentResult {
+        // Marker interface
     }
 }
