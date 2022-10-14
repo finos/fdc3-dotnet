@@ -27,6 +27,16 @@ namespace MorganStanley.Fdc3
         public static readonly string NoAppsFound = "NoAppsFound";
         public static readonly string ResolverUnavailable = "ResolverUnavailable";
         public static readonly string ResolverTimeout = "ResolverTimeout";
+        public static readonly string UserCancelled = "UserCancelledResolution";
+        public static readonly string TargetAppUnavailable = "TargetAppUnavailable";
+        public static readonly string TargetInstanceUnavailable = "TargetInstanceUnavailable";
+        public static readonly string IntentDeliveryFailed = "IntentDeliveryFailed";
+    }
+
+    public static class ResultError
+    {
+        public static readonly string NoResultReturned = "NoResultReturned";
+        public static readonly string IntentHandlerRejected = "IntentHandlerRejected";
     }
 
     public static class ChannelError
