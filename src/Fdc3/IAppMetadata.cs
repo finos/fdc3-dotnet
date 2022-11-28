@@ -49,12 +49,12 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// A list of icon URLs for the application that can be used to render UI elements.
         /// </summary>
-        IEnumerable<string> Icons { get; }
+        IEnumerable<IIcon> Icons { get; }
 
         /// <summary>
         /// A list of image URLs for the application that can be used to render UI elements.
         /// </summary>
-        IEnumerable<string> Images { get; }
+        IEnumerable<IImage> Images { get; }
 
         /// <summary>
         /// The type of output returned for any intent specified during resolution. May express a particular context type,
