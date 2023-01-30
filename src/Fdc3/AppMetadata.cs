@@ -34,7 +34,7 @@ namespace MorganStanley.Fdc3
             this.Tooltip = tooltip;
             this.Description = description;
             this.Icons = icons ?? Enumerable.Empty<IIcon>();
-            this.Images = images ?? Enumerable.Empty<IImage>();
+            this.Screenshots = images ?? Enumerable.Empty<IImage>();
             this.ResultType = resultType;
         }
 
@@ -71,7 +71,7 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// A list of image URLs for the application that can be used to render UI elements.
         /// </summary>
-        public IEnumerable<IImage> Images { get; }
+        public IEnumerable<IImage> Screenshots { get; }
 
         /// <summary>
         /// The type of output returned for any intent specified during resolution. May express a particular context type,
