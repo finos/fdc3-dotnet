@@ -132,7 +132,7 @@ namespace MorganStanley.Fdc3
         /// Retrieves information about the FDC3 Desktop Agent implementation, such as the implemented
         /// version of the FDC3 specification and the name of the implementation provider.
         /// </summary>
-        Task<IImplementationMetaData> GetInfo();
+        Task<IImplementationMetadata> GetInfo();
 
         /// <summary>
         /// Retreives the 'AppMetadata' for an 'AppIdentifier', which provides additional metadata (such as icons, a

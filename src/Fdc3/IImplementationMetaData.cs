@@ -17,7 +17,7 @@ namespace MorganStanley.Fdc3
     /// <summary>
     /// Metadata relating to the FDC3 Desktop Agent implementation and its provider.
     /// </summary>
-    public interface IImplementationMetaData
+    public interface IImplementationMetadata
     {
         /// <summary>
         ///  The version number of the FDC3 specification that the implementation provides.

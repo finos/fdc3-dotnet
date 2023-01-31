@@ -19,9 +19,9 @@ namespace MorganStanley.Fdc3
     /// <summary>
     /// Metadata relating to the FDC3 Desktop Agent implementation and its provider.
     /// </summary>
-    public class ImplementationMetaData : IImplementationMetaData
+    public class ImplementationMetadata : IImplementationMetadata
     {
-        public ImplementationMetaData(string fdc3Version, string provider, string providerVersion, OptionalDesktopAgentFeatures optionalFeatures, IAppMetadata appMetadata)
+        public ImplementationMetadata(string fdc3Version, string provider, string providerVersion, OptionalDesktopAgentFeatures optionalFeatures, IAppMetadata appMetadata)
         {
             this.Fdc3Version = fdc3Version ?? throw new ArgumentNullException(nameof(fdc3Version));
             this.Provider = provider ?? throw new ArgumentNullException(nameof(provider));
