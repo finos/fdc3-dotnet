@@ -21,11 +21,13 @@ namespace MorganStanley.Fdc3
     /// </summary>
     public class ImplementationMetaData : IImplementationMetaData
     {
-        public ImplementationMetaData(string fdc3Version, string provider, string providerVersion)
+        public ImplementationMetaData(string fdc3Version, string provider, string providerVersion, OptionalDesktopAgentFeatures optionalFeatures, IAppMetadata appMetadata)
         {
             this.Fdc3Version = fdc3Version ?? throw new ArgumentNullException(nameof(fdc3Version));
             this.Provider = provider ?? throw new ArgumentNullException(nameof(provider));
             this.ProviderVersion = providerVersion ?? throw new ArgumentNullException(nameof(providerVersion));
+            this.OptionalFeatures = optionalFeatures ?? throw new ArgumentNullException(nameof(optionalFeatures));
+            this.AppMetadata = appMetadata ?? throw new ArgumentNullException(nameof(appMetadata));
         }
 
         /// <summary>
@@ -43,5 +45,9 @@ namespace MorganStanley.Fdc3
         /// The version of the provider of the FDC3 Desktop Agent Implementation (e.g. 5.3.0).
         /// </summary>
         public string ProviderVersion { get; }
+
+        public OptionalDesktopAgentFeatures OptionalFeatures { get; }
+
+        public IAppMetadata AppMetadata { get; }
     }
 }
