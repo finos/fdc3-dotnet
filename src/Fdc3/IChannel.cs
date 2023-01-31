@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System;
 using System.Threading.Tasks;
 
 using MorganStanley.Fdc3.Context;
@@ -77,9 +78,10 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Adds a listener for incoming contexts of the specified context type whenever a broadcast happens on this channel.
         /// </summary>
-        public static IListener AddContextListener(this IChannel channel, string? contextType, ContextHandler<IContext> handler)
+        [Obsolete("Use AddContextListener(null, handler)")]
+        public static IListener AddContextListener<T>(this IChannel channel, ContextHandler<T> handler) where T : IContext
         {
-            return channel.AddContextListener<IContext>(contextType, handler);
+            return channel.AddContextListener<T>(null, handler);
         }
     }
 }
