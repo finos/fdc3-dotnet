@@ -13,28 +13,37 @@
  */
 
 using System;
+using System.Threading.Tasks;
 
 namespace MorganStanley.Fdc3
 {
     /// <summary>
     /// Standard format for data returned upon resolving an intent.
     /// </summary>
-    public class IntentResolution : IIntentResolution
+    public abstract class IntentResolution : IIntentResolution
     {
-        public IntentResolution(IAppMetadata source, string version)
+        public IntentResolution(IAppMetadata source, string intent, string? version = null)
         {
             this.Source = source ?? throw new ArgumentNullException(nameof(source));
-            this.Version = version ?? throw new ArgumentNullException(nameof(version));
+            this.Intent = intent ?? throw new ArgumentNullException(nameof(version));
+            this.Version = version;
         }
 
         /// <summary>
         /// The application that resolved the intent.
         /// </summary>
-        public IAppMetadata Source { get; }
+        public IAppIdentifier Source { get; }
+
+        /// <summary>
+        /// The intent that was raised.
+        /// </summary>
+        public string Intent { get; }
 
         /// <summary>
         /// The version number of the Intents schema being used.
         /// </summary>
-        public string Version { get; }
+        public string? Version { get; }
+
+        public abstract Task<IIntentResult> GetResult();
     }
 }
