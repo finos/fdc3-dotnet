@@ -2,8 +2,8 @@
 	<PropertyGroup>
 		<Company>Morgan Stanley</Company>
 		<Authors>Morgan Stanley</Authors>
-		<Copyright>Copyright 2022 Morgan Stanley</Copyright>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Copyright>Copyright 2023 Morgan Stanley</Copyright>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<Nullable>enable</Nullable>
