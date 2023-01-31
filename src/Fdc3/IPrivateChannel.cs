@@ -29,7 +29,7 @@ namespace MorganStanley.Fdc3
     ///  - MUST prevent private channels from being retrieved via GetOrCreateChannel.
     ///  - MUST provide the `Id` value for the channel as required by the Channel interface.
     /// </summary>
-    public interface IPrivateChannel : IChannel
+    public interface IPrivateChannel : IChannel, IIntentResult
     {
         /// <summary>
         /// Adds an IListener that will be called each time that the remote app invokes

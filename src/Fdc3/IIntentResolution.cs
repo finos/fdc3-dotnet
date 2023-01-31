@@ -12,6 +12,8 @@
  * and limitations under the License.
  */
 
+using System.Threading.Tasks;
+
 namespace MorganStanley.Fdc3
 {
     /// <summary>
@@ -22,11 +24,18 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// The application that resolved the intent.
         /// </summary>
-        IAppMetadata Source { get; }
+        IAppIdentifier Source { get; }
+
+        /// <summary>
+        /// The intent that was raised.
+        /// </summary>
+        string Intent { get; }
 
         /// <summary>
         /// The version number of the Intents schema being used.
         /// </summary>
-        string Version { get; }
+        string? Version { get; }
+
+        Task<IIntentResult> GetResult();
     }
 }
