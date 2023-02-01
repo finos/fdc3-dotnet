@@ -29,7 +29,7 @@ namespace MorganStanley.Fdc3
         public string Src { get; }
 
         /// <summary>
-        /// The icon dimensions, formatted as '<height>x<width>'
+        /// The icon dimensions, formatted as '{height}x{width}'
         /// </summary>
         public string? Size { get; }
         
