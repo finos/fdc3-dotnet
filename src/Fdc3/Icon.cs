@@ -12,9 +12,30 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.Context;
-
 namespace MorganStanley.Fdc3
 {
-    public delegate void ContextHandler<T>(T context, IContextMetadata? metadata = null) where T : IContext;
+    public class Icon : IIcon
+    {
+        public Icon(string src, string? size = null, string? type = null)
+        {
+            this.Src = src;
+            this.Size = size;
+            this.Type = type;
+        }
+
+        /// <summary>
+        /// The icon url
+        /// </summary>
+        public string Src { get; }
+
+        /// <summary>
+        /// The icon dimensions, formatted as '<height>x<width>'
+        /// </summary>
+        public string? Size { get; }
+        
+        /// <summary>
+        /// Icon media type. If not present, the Desktop Agent may use the src file extension.
+        /// </summary>
+        public string? Type { get; }
+    }
 }

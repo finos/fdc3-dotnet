@@ -14,21 +14,22 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class Chart : Context, IContext
     {
-        dynamic? Native { get; set; }
-    }
+        public Chart(Instrument[] instruments, TimeRange? range = null, object? otherConfig = null, string? style = null, object? id = null, string? name = null)
+            : base(ContextTypes.Chart, id, name)
+        {
+            this.Instruments = instruments;
+            this.Range = range;
+            this.OtherConfig = otherConfig;
+            this.Style = style;
+        }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
+        public Instrument[] Instruments { get; set; }
+        public TimeRange? Range { get; set; }
+        public object? OtherConfig { get; set; }
+        string? Style { get; set; }
 
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        object? IContext<object>.ID => base.ID;
     }
 }

@@ -14,21 +14,18 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class Currency : Context<CurrencyID>, IContext
     {
-        dynamic? Native { get; set; }
+        public Currency(CurrencyID? id = null, string? name = null)
+            : base(ContextTypes.Currency, id, name)
+        {
+        }
+
+        object? IContext<object>.ID => base.ID;
     }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
+    public class CurrencyID
     {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        public string? CURRENCY_ISOCODE { get; set; }
     }
 }

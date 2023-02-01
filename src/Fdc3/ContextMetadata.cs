@@ -12,30 +12,27 @@
  * and limitations under the License.
  */
 
-using System.Threading.Tasks;
-
 namespace MorganStanley.Fdc3
 {
     /// <summary>
-    /// Standard format for data returned upon resolving an intent.
+    ///  Metadata relating to a context or intent and context received through the `AddContextListener` and `AddIntentListener` functions.
+    ///  
+    /// Introduced in FDC3 2.0 and may be refined by further changes outside the normal FDC3 versioning policy.
     /// </summary>
-    public interface IIntentResolution
+    public class ContextMetadata : IContextMetadata
     {
-        /// <summary>
-        /// The application that resolved the intent.
-        /// </summary>
-        IAppIdentifier Source { get; }
+        public ContextMetadata()
+        {
+        }
+
+        public ContextMetadata(AppIdentifier? source = null) : this()
+        {
+            this.Source = source;
+        }
 
         /// <summary>
-        /// The intent that was raised.
+        /// Identifier for the app instance that sent the context and/or intent.
         /// </summary>
-        string Intent { get; }
-
-        /// <summary>
-        /// The version number of the Intents schema being used.
-        /// </summary>
-        string? Version { get; }
-
-        Task<IIntentResult> GetResult();
+        public AppIdentifier? Source { get; }
     }
 }

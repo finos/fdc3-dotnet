@@ -14,21 +14,18 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class ChatInitSettings : Context, IContext
     {
-        dynamic? Native { get; set; }
-    }
+        public ChatInitSettings(RecipientsObject recipients, string? subject = null, string? textBody = null, object? id = null, string? name = null)
+            : base(ContextTypes.ChatInitSettings, id, name)
+        {
+        }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
+        public string? ChatName { get; set; }
+        public string? InitMessage { get; set; }
+        public ContactList? Members { get; set; }
+        public object? Options { get; set; }
 
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        object? IContext<object>.ID => base.ID;
     }
 }

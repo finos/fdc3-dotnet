@@ -14,21 +14,16 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class TimeRange : Context, IContext
     {
-        dynamic? Native { get; set; }
-    }
+        public TimeRange(string startTime, string endTime, object? id = null, string? name = null)
+            : base(ContextTypes.TimeRange, id, name)
+        {
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+        }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
     }
 }

@@ -12,23 +12,18 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+namespace MorganStanley.Fdc3
 {
-    public interface IDynamicContext
+    /// <summary>
+    ///  Metadata relating to a context or intent and context received through the `AddContextListener` and `AddIntentListener` functions.
+    ///  
+    /// Introduced in FDC3 2.0 and may be refined by further changes outside the normal FDC3 versioning policy.
+    /// </summary>
+    public interface IContextMetadata
     {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        /// <summary>
+        /// Identifier for the app instance that sent the context and/or intent.
+        /// </summary>
+        AppIdentifier? Source { get; }
     }
 }

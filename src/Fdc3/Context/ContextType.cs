@@ -14,21 +14,8 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public static class ContextType
     {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        public readonly static Nothing Nothing = new Nothing();
     }
 }

@@ -14,21 +14,17 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public static class ChartStyle
     {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        public static readonly string Bar = "bar";
+        public static readonly string Candle = "candle";
+        public static readonly string Custom = "custom";
+        public static readonly string Heatmap = "heatmap";
+        public static readonly string Histogram = "histogram";
+        public static readonly string Line = "line";
+        public static readonly string Mountain = "mountain";
+        public static readonly string Pie = "pie";
+        public static readonly string Scatter = "scatter";
+        public static readonly string StackedBar = "stacked-bar";
     }
 }

@@ -12,23 +12,23 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+namespace MorganStanley.Fdc3
 {
-    public interface IDynamicContext
+    public interface IIcon
     {
-        dynamic? Native { get; set; }
-    }
-
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        /// <summary>
+        /// The icon url
+        /// </summary>
+        string Src { get; }
+        
+        /// <summary>
+        /// The icon dimensions, formatted as '<height>x<width>'
+        /// </summary>
+        string? Size { get; }
+        
+        /// <summary>
+        /// Icon media type. If not present, the Desktop Agent may use the src file extension.
+        /// </summary>
+        string? Type { get; }
     }
 }

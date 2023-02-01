@@ -12,30 +12,36 @@
  * and limitations under the License.
  */
 
-using System.Threading.Tasks;
-
 namespace MorganStanley.Fdc3
 {
-    /// <summary>
-    /// Standard format for data returned upon resolving an intent.
-    /// </summary>
-    public interface IIntentResolution
+    public class Image : IImage
     {
-        /// <summary>
-        /// The application that resolved the intent.
-        /// </summary>
-        IAppIdentifier Source { get; }
+        public Image(string src, string? size = null, string? type = null, string? label = null)
+        {
+            this.Src = src;
+            this.Size = size;
+            this.Type = type;
+            this.Label = label;
+        }
 
         /// <summary>
-        /// The intent that was raised.
+        /// The icon url
         /// </summary>
-        string Intent { get; }
+        public string Src { get; }
 
         /// <summary>
-        /// The version number of the Intents schema being used.
+        /// The icon dimensions, formatted as '<height>x<width>'
         /// </summary>
-        string? Version { get; }
+        public string? Size { get; }
 
-        Task<IIntentResult> GetResult();
+        /// <summary>
+        /// Icon media type.  If not present, the Desktop Agent may use the src file extension.
+        /// </summary>
+        public string? Type { get; }
+
+        /// <summary>
+        /// Caption for the image
+        /// </summary>
+        public string? Label { get; }
     }
 }

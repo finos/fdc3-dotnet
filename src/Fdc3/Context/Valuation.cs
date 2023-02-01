@@ -14,21 +14,20 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class Valuation : Context, IContext
     {
-        dynamic? Native { get; set; }
-    }
+        public Valuation(string currencyCode, float? price = null, float? value = null, string? expiryTime = null, string? valuationTime = null, object? id = null, string? name = null)
+            : base(ContextTypes.Valuation, id, name)
+        {
+            this.CURRENCY_ISOCODE = currencyCode;
+            this.Price = Price;
+            this.Value = Value;
+        }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
-
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        public string CURRENCY_ISOCODE { get; set; }
+        public string? ExpiryTime { get; set; }
+        public float? Price { get; set; }
+        public string? ValuationTime { get; set; }
+        public float? Value { get; set; }
     }
 }

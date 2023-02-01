@@ -14,21 +14,20 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public interface IDynamicContext
+    public class Email : Context, IContext
     {
-        dynamic? Native { get; set; }
-    }
+        public Email(RecipientsObject recipients, string? subject = null, string? textBody = null, object? id = null, string? name = null)
+            : base(ContextTypes.Email, id, name)
+        {
+            this.Recipients = recipients;
+            this.Subject = subject;
+            this.TextBody = textBody;
+        }
 
-    public interface IContext<out T>: IIntentResult, IDynamicContext where T : class
-    {
-        T? ID { get; }
+        public RecipientsObject Recipients { get; set; }
+        public string? Subject { get; set; }
+        public string? TextBody { get; set; }
 
-        string? Name { get; }
-
-        string Type { get; }
-    }
-
-    public interface IContext : IContext<object>
-    {
+        object? IContext<object>.ID => base.ID;
     }
 }

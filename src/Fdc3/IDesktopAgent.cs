@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -36,20 +37,7 @@ namespace MorganStanley.Fdc3
         /// If a Context object is passed in, this object will be provided to the opened application via a contextListener.
         /// The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
         /// </summary>
-        Task Open(IAppMetadata app, IContext? context = null);
-
-        /// <summary>
-        /// Publishes context to other apps on the desktop.
-        ///
-        /// DesktopAgent implementations should ensure that context messages broadcast to a channel
-        /// by an application joined to it should not be delivered back to that same application.
-        /// </summary>
-        void Broadcast(IContext context);
-
-        /// <summary>
-        /// Adds a listener for the broadcast of a specific type of context object.
-        /// </summary>
-        IListener AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
+        Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null);
 
         /// <summary>
         /// Find out more information about a particular intent by passing its name, and optionally its context.
@@ -58,8 +46,8 @@ namespace MorganStanley.Fdc3
         /// A Task resolving to the intent, its metadata and metadata about the apps that registered it is returned.
         /// This can be used to raise the intent against a specific app.
         /// </summary>
-        Task<IAppIntent> FindIntent(string intent, IContext? context = null);
-
+        Task<IAppIntent> FindIntent(string intent, IContext? context = null, string? resultType = null);
+        
         /// <summary>
         /// Find all the available intents for a particular context.
         ///
@@ -67,22 +55,52 @@ namespace MorganStanley.Fdc3
         /// A Task resolving to all the intents, their metadata and metadata about the apps that registered it is returned,
         /// based on the context types the intents have registered.
         /// </summary>
-        Task<IEnumerable<IAppIntent>> FindIntentsByContext(IContext context);
+        Task<IEnumerable<IAppIntent>> FindIntentsByContext(IContext context, string? resultType = null);
+
+        /// <summary>
+        /// Find all available instances for a particular application.
+        /// </summary>
+        Task<IEnumerable<IAppIdentifier>> FindInstances(IAppIdentifier app);
+
+        /// <summary>
+        /// Publishes context to other apps on the desktop.
+        ///
+        /// DesktopAgent implementations should ensure that context messages broadcast to a channel
+        /// by an application joined to it should not be delivered back to that same application.
+        /// </summary>
+        Task Broadcast(IContext context);
 
         /// <summary>
         /// Raises an intent to the desktop agent to resolve.
         /// </summary>
-        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppMetadata? app = null);
+        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null);
 
         /// <summary>
         /// Raises a context to the desktop agent to resolve with one of the possible Intents for that context.
         /// </summary>
-        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppMetadata? app = null);
+        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null);
 
         /// <summary>
         /// Adds a listener for incoming Intents from the Agent.
         /// </summary>
-        IListener AddIntentListener<T>(string intent, ContextHandler<T> handler) where T : IContext;
+        Task<IListener> AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext;
+
+        /// <summary>
+        /// Adds a listener for the broadcast of a specific type of context object.
+        /// </summary>
+        Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
+
+        /// <summary>
+        /// Retreives a list of the User channels available for the app to join.
+        /// </summary>
+        Task<IEnumerable<IChannel>> GetUserChannels();
+
+        /// <summary>
+        /// Optional function that joins the app to the specified User channel.  In most cases, applications SHOULD
+        /// be joined to channels via UX provided to the application by the desktop agent, rather than calling this
+        /// function directly
+        /// </summary>
+        Task JoinUserChannel(string channelId);
 
         /// <summary>
         /// Returns a channel with the given identity. Either stands up a new channel or returns an existing channel.
@@ -93,15 +111,9 @@ namespace MorganStanley.Fdc3
         Task<IChannel> GetOrCreateChannel(string channelId);
 
         /// <summary>
-        /// Retrieves a list of the System channels available for the app to join.
+        /// Returns a 'Channel' with an auto-generated identity that is intended for private communication between applications.
         /// </summary>
-        Task<IEnumerable<IChannel>> GetSystemChannels();
-        
-        /// <summary>
-        /// Joins the app to the specified channel. An app can only be joined to one channel at a time.
-        /// Throws an exception if the channel is unavailable or the join request is denied.
-        /// </summary>
-        Task JoinChannel(string channelId);
+        Task<IPrivateChannel> CreatePrivateChannel();
 
         /// <summary>
         /// Returns the `Channel` object for the current channel membership.
@@ -120,41 +132,17 @@ namespace MorganStanley.Fdc3
         /// Retrieves information about the FDC3 Desktop Agent implementation, such as the implemented
         /// version of the FDC3 specification and the name of the implementation provider.
         /// </summary>
-        IImplementationMetaData GetInfo();
+        Task<IImplementationMetadata> GetInfo();
+
+        /// <summary>
+        /// Retreives the 'AppMetadata' for an 'AppIdentifier', which provides additional metadata (such as icons, a
+        /// title and description) from the App Directory record for the application, that may be used for 
+        /// display purposes.
+        /// </summary>
+        Task<IAppMetadata> GetAppMetadata(IAppIdentifier app);
     }
 
     public static class DesktopAgentExtensions
     {
-        /// <summary>
-        /// Launches an app by target, which can be optionally a string like a name, or an AppMetadata object.
-        ///
-        /// If a Context object is passed in, this object will be provided to the opened application via a contextListener.
-        /// The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
-        /// </summary>
-        public static Task Open(this IDesktopAgent desktopAgent, string app, IContext? context = null)
-        {
-            return desktopAgent.Open(AppMetadata.FromName(app), context);
-        }
-
-        public static IListener AddContextListener(this IDesktopAgent desktopAgent, string? contextType, ContextHandler<IContext> handler)
-        {
-            return desktopAgent.AddContextListener<IContext>(contextType, handler);
-        }
-
-        /// <summary>
-        /// Raises an intent to the desktop agent to resolve.
-        /// </summary>
-        public static Task<IIntentResolution> RaiseIntent(this IDesktopAgent desktopAgent, string intent, IContext context, string? app = null)
-        {
-            return desktopAgent.RaiseIntent(intent, context, app != null ? new AppMetadata(app) : null);
-        }
-
-        /// <summary>
-        /// Raises a context to the desktop agent to resolve with one of the possible Intents for that context.
-        /// </summary>
-        public static Task<IIntentResolution> RaiseIntentForContext(this IDesktopAgent desktopAgent, IContext context, string? app = null)
-        {
-            return desktopAgent.RaiseIntentForContext(context, app != null ? AppMetadata.FromName(app) : null);
-        }
     }
 }
