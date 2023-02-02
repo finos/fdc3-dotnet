@@ -5,8 +5,5 @@
 		<Copyright>Copyright 2023 Morgan Stanley</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 </Project>
