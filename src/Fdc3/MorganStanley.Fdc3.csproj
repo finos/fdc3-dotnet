@@ -11,7 +11,10 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>keypair.snk</AssemblyOriginatorKeyFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-	</PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>

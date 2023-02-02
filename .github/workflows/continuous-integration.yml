@@ -25,4 +25,6 @@ jobs:
     - name: Build
       run: dotnet build src/fdc3-dotnet.sln --no-restore
     - name: Test
-      run: dotnet test src/fdc3-dotnet.sln --no-build --verbosity normal
+      run: dotnet test src/fdc3-dotnet.sln --no-build --verbosity normal --collect:"XPlat Code Coverage"
+    - name: Codecov
+      uses: codecov/codecov-action@v3.1.1
