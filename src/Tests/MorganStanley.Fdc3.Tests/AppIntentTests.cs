@@ -14,27 +14,28 @@
 
 namespace MorganStanley.Fdc3.Tests;
 
-public class AppIdentifierTests
+public class AppIntentTests
 {
     [Fact]
-    public void AppIdentifier_AppId_PropertyMatchesParam()
+    public void AppIntent_NullIntent_ThrowsArgumentNullException()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Null(appIdentifier.InstanceId);
+        Assert.Throws<ArgumentNullException>(() => new AppIntent(null, new[] { new AppMetadata("appid") }));
     }
 
     [Fact]
-    public void AppIdentifier_InstanceId_PropertyMatchesParam()
+    public void AppIntent_NullApps_ThrowsArgumentNullException()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier", "instanceid");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Equal("instanceid", appIdentifier.InstanceId);
+        Assert.Throws<ArgumentNullException>(() => new AppIntent(new IntentMetadata("name", "displayName"), null));
     }
 
     [Fact]
-    public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
+    public void AppIntent_NonNullParams_PropertyMatchesParam()
     {
-        Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+        IIntentMetadata metadata = new IntentMetadata("name", "displayName");
+        IAppMetadata[] apps = { new AppMetadata("appid") };
+
+        IAppIntent appIntent = new AppIntent(metadata, apps);
+        Assert.Same(metadata, appIntent.Intent);
+        Assert.Same(apps, appIntent.Apps);
     }
 }

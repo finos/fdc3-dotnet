@@ -14,27 +14,25 @@
 
 namespace MorganStanley.Fdc3.Tests;
 
-public class AppIdentifierTests
+public class IntentMetadataTests
 {
     [Fact]
-    public void AppIdentifier_AppId_PropertyMatchesParam()
+    public void IntentMetadata_NullName_ArgumentNullException()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Null(appIdentifier.InstanceId);
+        Assert.Throws<ArgumentNullException>(() => new IntentMetadata(null, "displayname"));
     }
 
     [Fact]
-    public void AppIdentifier_InstanceId_PropertyMatchesParam()
+    public void IntentMetadata_NullDisplayName_ArgumentNullException()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier", "instanceid");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Equal("instanceid", appIdentifier.InstanceId);
+        Assert.Throws<ArgumentNullException>(() => new IntentMetadata("name", null));
     }
 
     [Fact]
-    public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
+    public void IntentMetadata_PropertiesMatchParams()
     {
-        Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+        IIntentMetadata metadata = new IntentMetadata("name", "displayname");
+        Assert.Same("name", metadata.Name);
+        Assert.Same("displayname", metadata.DisplayName);
     }
 }

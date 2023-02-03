@@ -14,27 +14,19 @@
 
 namespace MorganStanley.Fdc3.Tests;
 
-public class AppIdentifierTests
+public class ContextMetadataTests
 {
     [Fact]
-    public void AppIdentifier_AppId_PropertyMatchesParam()
+    public void ContextMetadata_NoParams_NullSource()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Null(appIdentifier.InstanceId);
+        Assert.Null(new ContextMetadata().Source);
     }
 
     [Fact]
-    public void AppIdentifier_InstanceId_PropertyMatchesParam()
+    public void ContextMetadata_PropartiesMatchParams()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier", "instanceid");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Equal("instanceid", appIdentifier.InstanceId);
-    }
-
-    [Fact]
-    public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
-    {
-        Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+        IAppIdentifier identifier = new AppIdentifier("appid");
+        IContextMetadata metadata = new ContextMetadata(identifier);
+        Assert.Same(identifier, metadata.Source);
     }
 }

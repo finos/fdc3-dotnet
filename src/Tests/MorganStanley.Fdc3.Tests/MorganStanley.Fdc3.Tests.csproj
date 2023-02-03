@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\Fdc3\MorganStanley.Fdc3.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Context\" />
+  </ItemGroup>
+
 </Project>
