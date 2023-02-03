@@ -25,7 +25,7 @@ namespace MorganStanley.Fdc3
         {
         }
 
-        public ContextMetadata(AppIdentifier? source = null) : this()
+        public ContextMetadata(IAppIdentifier? source = null) : this()
         {
             this.Source = source;
         }
@@ -33,6 +33,6 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Identifier for the app instance that sent the context and/or intent.
         /// </summary>
-        public AppIdentifier? Source { get; }
+        public IAppIdentifier? Source { get; }
     }
 }

@@ -12,13 +12,15 @@
  * and limitations under the License.
  */
 
+using System;
+
 namespace MorganStanley.Fdc3
 {
     public class Image : IImage
     {
         public Image(string src, string? size = null, string? type = null, string? label = null)
         {
-            this.Src = src;
+            this.Src = src ?? throw new ArgumentNullException(nameof(src)); ;
             this.Size = size;
             this.Type = type;
             this.Label = label;
