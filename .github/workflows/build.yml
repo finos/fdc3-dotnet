@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore src/fdc3-dotnet.sln --configuration Release
+
+    - name: Build
+      run: dotnet build src/fdc3-dotnet.sln --no-restore --configuration Release
+
+    - name: Test
+      run: dotnet test src/fdc3-dotnet.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --configuration Release
+
+    - name: Pack
+      run: dotnet pack src/fdc3-dotnet.sln --no-build --configuration Release --output packages
+
+    - name: Codecov
+      uses: codecov/codecov-action@v3.1.1
