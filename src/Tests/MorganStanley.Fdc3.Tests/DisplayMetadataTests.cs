@@ -14,27 +14,23 @@
 
 namespace MorganStanley.Fdc3.Tests;
 
-public class AppIdentifierTests
+public class DisplayMetadataTests
 {
     [Fact]
-    public void AppIdentifier_AppId_PropertyMatchesParam()
+    public void DisplayMetadata_NoParams_NullProperties()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Null(appIdentifier.InstanceId);
+        IDisplayMetadata metadata = new DisplayMetadata();
+        Assert.Null(metadata.Name);
+        Assert.Null(metadata.Color);
+        Assert.Null(metadata.Glyph);
     }
 
     [Fact]
-    public void AppIdentifier_InstanceId_PropertyMatchesParam()
+    public void DisplayMetadata_PropartiesMatchParams()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier", "instanceid");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Equal("instanceid", appIdentifier.InstanceId);
-    }
-
-    [Fact]
-    public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
-    {
-        Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+        IDisplayMetadata metadata = new DisplayMetadata("name", "color", "glyph");
+        Assert.Same("name", metadata.Name);
+        Assert.Same("color", metadata.Color);
+        Assert.Same("glyph", metadata.Glyph);
     }
 }

@@ -14,27 +14,30 @@
 
 namespace MorganStanley.Fdc3.Tests;
 
-public class AppIdentifierTests
+public class ImageTests
 {
     [Fact]
-    public void AppIdentifier_AppId_PropertyMatchesParam()
+    public void Image_NullSrc_ThrowsArgumentNullException()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Null(appIdentifier.InstanceId);
+        Assert.Throws<ArgumentNullException>(() => new Image(null));
     }
 
     [Fact]
-    public void AppIdentifier_InstanceId_PropertyMatchesParam()
+    public void Image_DefaultParams_AllNull()
     {
-        IAppIdentifier appIdentifier = new AppIdentifier("appidentifier", "instanceid");
-        Assert.Equal("appidentifier", appIdentifier.AppId);
-        Assert.Equal("instanceid", appIdentifier.InstanceId);
+        IImage image = new Image("src");
+        Assert.Null(image.Size);
+        Assert.Null(image.Type);
+        Assert.Null(image.Label);
     }
 
     [Fact]
-    public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
+    public void Image_PropertiesMatchParams()
     {
-        Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+        IImage image = new Image("src", "size", "type", "label");
+        Assert.Same("src", image.Src);
+        Assert.Same("size", image.Size);
+        Assert.Same("type", image.Type);
+        Assert.Same("label", image.Label);
     }
 }
