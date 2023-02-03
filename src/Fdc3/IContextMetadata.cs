@@ -24,6 +24,6 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Identifier for the app instance that sent the context and/or intent.
         /// </summary>
-        AppIdentifier? Source { get; }
+        IAppIdentifier? Source { get; }
     }
 }
