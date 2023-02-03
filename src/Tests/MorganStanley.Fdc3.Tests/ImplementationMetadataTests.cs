@@ -21,31 +21,41 @@ public class ImplementationMetadataTests
     [Fact]
     public void ImplementationMetadata_NullFdc3Version_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new ImplementationMetadata(null, "provider", "providerversion", new OptionalDesktopAgentFeatures(), new AppMetadata("appid")));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void ImplementationMetadata_NullProvider_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new ImplementationMetadata("fdc3version", null, "providerversion", new OptionalDesktopAgentFeatures(), new AppMetadata("appid")));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void ImplementationMetadata_NullProviderVersion_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new ImplementationMetadata("fdc3version", "provider", null, new OptionalDesktopAgentFeatures(), new AppMetadata("appid")));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void ImplementationMetadata_NullOptionalFeatures_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new ImplementationMetadata("fdc3version", "provider", "providerversion", null, new AppMetadata("appid")));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void ImplementationMetadata_NullAppMetadata_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new ImplementationMetadata("fdc3version", "provider", "providerversion", new OptionalDesktopAgentFeatures(), null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]

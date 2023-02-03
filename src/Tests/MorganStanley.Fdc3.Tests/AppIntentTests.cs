@@ -19,13 +19,17 @@ public class AppIntentTests
     [Fact]
     public void AppIntent_NullIntent_ThrowsArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new AppIntent(null, new[] { new AppMetadata("appid") }));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void AppIntent_NullApps_ThrowsArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new AppIntent(new IntentMetadata("name", "displayName"), null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
