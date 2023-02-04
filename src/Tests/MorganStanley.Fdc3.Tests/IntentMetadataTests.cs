@@ -19,13 +19,17 @@ public class IntentMetadataTests
     [Fact]
     public void IntentMetadata_NullName_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new IntentMetadata(null, "displayname"));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void IntentMetadata_NullDisplayName_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new IntentMetadata("name", null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
