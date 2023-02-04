@@ -3,17 +3,17 @@
 	<PropertyGroup>
 		<RootNamespace>MorganStanley.Fdc3</RootNamespace>
 		<AssemblyName>MorganStanley.Fdc3</AssemblyName>
-		<AssemblyVersion>1.2.0.0</AssemblyVersion>
-		<FileVersion>1.2.0.0</FileVersion>
-		<Version>1.2.0</Version>
+		<VersionPrefix>2.0.0</VersionPrefix>
+        <VersionSuffix>alpha1</VersionSuffix>
 		<Product>fdc3-dotnet</Product>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>keypair.snk</AssemblyOriginatorKeyFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
         <TargetFramework>netstandard2.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>8.0</LangVersion>
+        <RepositoryUrl>https://github.com/morganstanley/fdc3-dotnet</RepositoryUrl>
+        <Tags>FDC3</Tags>
     </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

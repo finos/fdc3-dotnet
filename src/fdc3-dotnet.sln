@@ -27,8 +27,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B797
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{7FC94973-137E-4EE4-82AF-5D9B3DF64312}"
 	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\codeql.yml = ..\.github\workflows\codeql.yml
 		..\.github\workflows\continuous-integration.yml = ..\.github\workflows\continuous-integration.yml
+		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
 		..\.github\workflows\scorecards.yml = ..\.github\workflows\scorecards.yml
 	EndProjectSection
 EndProject
