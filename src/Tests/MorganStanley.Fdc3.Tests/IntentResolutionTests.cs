@@ -19,13 +19,17 @@ public class IntentResolutionTests
     [Fact]
     public void IntentResolution_NullSource_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new MockIntentResolution(null, "intent", "version"));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
     public void IntentResolution_NullIntent_ArgumentNullException()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new MockIntentResolution(new AppMetadata("appid"), null, "version"));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 
     [Fact]
