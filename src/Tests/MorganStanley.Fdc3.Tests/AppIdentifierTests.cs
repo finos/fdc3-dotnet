@@ -35,6 +35,8 @@ public class AppIdentifierTests
     [Fact]
     public void AppIdentifier_NullAppId_ThrowArgumentNullExecption()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         Assert.Throws<ArgumentNullException>(() => new AppIdentifier(null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
 }

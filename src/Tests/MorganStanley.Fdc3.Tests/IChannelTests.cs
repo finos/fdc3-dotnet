@@ -22,7 +22,11 @@ public class IChannelTests
     public void AddContextListener_InvokesAddContextListenerWithNullContextType()
     {
         MockChannel channel = new MockChannel();
+#pragma warning disable CS0618 // Type or member is obsolete
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         channel.AddContextListener<IContext>(null);
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+#pragma warning restore CS0618 // Type or member is obsolete
         Assert.True(channel.AddContextListenerInvoked);
     }
 
@@ -39,7 +43,9 @@ public class IChannelTests
         public IListener AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
         {
             this.AddContextListenerInvoked = true;
+#pragma warning disable CS8603 // Possible null reference return.
             return null;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         public Task Broadcast(IContext context)
