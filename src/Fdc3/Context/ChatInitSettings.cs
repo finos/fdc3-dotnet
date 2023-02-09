@@ -16,9 +16,13 @@ namespace MorganStanley.Fdc3.Context
 {
     public class ChatInitSettings : Context, IContext
     {
-        public ChatInitSettings(RecipientsObject recipients, string? subject = null, string? textBody = null, object? id = null, string? name = null)
+        public ChatInitSettings(ContactList? members = null, string? initMessage = null, string? chatName = null, object? options = null, object? id = null, string? name = null)
             : base(ContextTypes.ChatInitSettings, id, name)
         {
+            this.Members = members;
+            this.InitMessage = initMessage;
+            this.ChatName = ChatName;
+            this.Options = options;
         }
 
         public string? ChatName { get; set; }

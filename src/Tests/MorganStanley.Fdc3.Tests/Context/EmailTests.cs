@@ -12,22 +12,21 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3.Tests;
+
+public class EmailTests : ContextSchemaTest
 {
-    public class Email : Context, IContext
+    public EmailTests()
+        : base("https://fdc3.finos.org/schemas/2.0/email.schema.json")
     {
-        public Email(IRecipient recipient, string? subject = null, string? textBody = null, object? id = null, string? name = null)
-            : base(ContextTypes.Email, id, name)
-        {
-            this.Recipients = recipient;
-            this.Subject = subject;
-            this.TextBody = textBody;
-        }
+    }
 
-        public IRecipient Recipients { get; set; }
-        public string? Subject { get; set; }
-        public string? TextBody { get; set; }
-
-        object? IContext<object>.ID => base.ID;
+    [Fact]
+    public async void Email_SerializedJsonMatchesSchema()
+    {
+        Email email = new Email(new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }), "subject", "body", null, "email");
+        await this.ValidateSchema(email);
     }
 }

@@ -14,20 +14,10 @@
 
 namespace MorganStanley.Fdc3.Context
 {
-    public class Email : Context, IContext
+#pragma warning disable CA1040
+    public interface IRecipient
     {
-        public Email(IRecipient recipient, string? subject = null, string? textBody = null, object? id = null, string? name = null)
-            : base(ContextTypes.Email, id, name)
-        {
-            this.Recipients = recipient;
-            this.Subject = subject;
-            this.TextBody = textBody;
-        }
-
-        public IRecipient Recipients { get; set; }
-        public string? Subject { get; set; }
-        public string? TextBody { get; set; }
-
-        object? IContext<object>.ID => base.ID;
+        // Marker interface
     }
+#pragma warning restore CA1040
 }

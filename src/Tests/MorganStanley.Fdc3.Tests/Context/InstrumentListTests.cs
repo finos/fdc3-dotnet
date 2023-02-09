@@ -12,22 +12,29 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
-{
-    public class Contact : Context<ContactID>, IContext, IRecipient
-    {
-        public Contact(ContactID? id = null, string? name = null)
-            : base(ContextTypes.Contact, id, name)
-        {
-        }
+using MorganStanley.Fdc3.Context;
 
-        object? IContext<object>.ID => base.ID;
+namespace MorganStanley.Fdc3.Tests;
+
+public class InstrumentListTests : ContextSchemaTest
+{
+    public InstrumentListTests()
+        : base("https://fdc3.finos.org/schemas/2.0/instrumentList.schema.json")
+    {
     }
 
-    public class ContactID
+    [Fact]
+    public async void InstrumentList_SerializedJsonMatchesSchema()
     {
-        public string? Email { get; set; }
+        InstrumentList instrumentList = new InstrumentList(new Instrument[]
+            {
+            new Instrument(
+                new InstrumentID
+                {
+                    Ticker = "TICKER"
+                }, "Instrument")
+               }, "InstrumentList");
 
-        public string? FdsId { get; set; }
+        await this.ValidateSchema(instrumentList);
     }
 }

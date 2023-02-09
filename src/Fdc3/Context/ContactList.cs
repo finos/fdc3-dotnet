@@ -17,7 +17,7 @@ using System.Linq;
 
 namespace MorganStanley.Fdc3.Context
 {
-    public class ContactList : Context
+    public class ContactList : Context, IRecipient
     {
         public ContactList(IEnumerable<Contact>? contacts = null, string? name = null, object? id = null)
             : base(ContextTypes.ContactList, id, name)
