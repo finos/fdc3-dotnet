@@ -12,22 +12,22 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3.Tests;
+
+public class PositionTests : ContextSchemaTest
 {
-    public class Email : Context, IContext
+    public PositionTests()
+        : base("https://fdc3.finos.org/schemas/2.0/position.schema.json")
     {
-        public Email(IRecipient recipient, string? subject = null, string? textBody = null, object? id = null, string? name = null)
-            : base(ContextTypes.Email, id, name)
-        {
-            this.Recipients = recipient;
-            this.Subject = subject;
-            this.TextBody = textBody;
-        }
+    }
 
-        public IRecipient Recipients { get; set; }
-        public string? Subject { get; set; }
-        public string? TextBody { get; set; }
+    [Fact]
+    public async void Position_SerializedJsonMatchesSchema()
+    {
+        Position position = new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" }), null, "position");
 
-        object? IContext<object>.ID => base.ID;
+        await this.ValidateSchema(position);
     }
 }

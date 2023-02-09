@@ -20,8 +20,10 @@ namespace MorganStanley.Fdc3.Context
             : base(ContextTypes.Valuation, id, name)
         {
             this.CURRENCY_ISOCODE = currencyCode;
-            this.Price = Price;
-            this.Value = Value;
+            this.Price = price;
+            this.Value = value;
+            this.ExpiryTime = expiryTime;
+            this.ValuationTime = valuationTime;
         }
 
         public string CURRENCY_ISOCODE { get; set; }

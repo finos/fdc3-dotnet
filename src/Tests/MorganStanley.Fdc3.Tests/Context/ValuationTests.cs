@@ -12,22 +12,22 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3.Tests.Context;
+
+public class ValuationTests : ContextSchemaTest
 {
-    public class Email : Context, IContext
+    public ValuationTests()
+        : base("https://fdc3.finos.org/schemas/2.0/valuation.schema.json")
     {
-        public Email(IRecipient recipient, string? subject = null, string? textBody = null, object? id = null, string? name = null)
-            : base(ContextTypes.Email, id, name)
-        {
-            this.Recipients = recipient;
-            this.Subject = subject;
-            this.TextBody = textBody;
-        }
+    }
 
-        public IRecipient Recipients { get; set; }
-        public string? Subject { get; set; }
-        public string? TextBody { get; set; }
+    [Fact]
+    public async void Valuation_SerializedJsonMatchesSchema()
+    {
+        var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
 
-        object? IContext<object>.ID => base.ID;
+        await ValidateSchema(valuation);
     }
 }

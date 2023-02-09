@@ -12,25 +12,22 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3.Tests;
+
+public class CurrencyTests : ContextSchemaTest
 {
-    public class RecipientsObject : Context<RecipientsID>, IContext
+    public CurrencyTests()
+        : base("https://fdc3.finos.org/schemas/2.0/currency.schema.json")
     {
-        public RecipientsObject(RecipientsID? id = null, Contact[]? contacts = null, string? name = null)
-            : base("RecipientsObject", id, name)
-        {
-            this.Contacts = contacts;
-        }
-
-        public Contact[]? Contacts { get; set; }
-
-        object? IContext<object>.ID => base.ID;
     }
 
-    public class RecipientsID
+    [Fact]
+    public async void Currency_SerializedJsonMatchesSchema()
     {
-        public string? Email { get; set; }
+        Currency currency = new Currency(new CurrencyID() { CURRENCY_ISOCODE = "AAA" }, "currency");
 
-        public string? FdsId { get; set; }
+        await this.ValidateSchema(currency);
     }
 }

@@ -12,22 +12,26 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+using MorganStanley.Fdc3.Context;
+
+namespace MorganStanley.Fdc3.Tests;
+
+public class TimeRangeTests : ContextSchemaTest
 {
-    public class Email : Context, IContext
+    public TimeRangeTests()
+        : base("https://fdc3.finos.org/schemas/2.0/timerange.schema.json")
     {
-        public Email(IRecipient recipient, string? subject = null, string? textBody = null, object? id = null, string? name = null)
-            : base(ContextTypes.Email, id, name)
-        {
-            this.Recipients = recipient;
-            this.Subject = subject;
-            this.TextBody = textBody;
-        }
+    }
 
-        public IRecipient Recipients { get; set; }
-        public string? Subject { get; set; }
-        public string? TextBody { get; set; }
+    [Fact]
+    public async void TimeRange_SerializedJsonMatchesSchema()
+    {
+        TimeRange timeRange = new TimeRange(
+            DateTime.Now.ToString("o"),
+            DateTime.Now.ToString("o"),
+            null,
+            "timerange");
 
-        object? IContext<object>.ID => base.ID;
+        await this.ValidateSchema(timeRange);
     }
 }
