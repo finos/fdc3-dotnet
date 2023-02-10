@@ -24,9 +24,16 @@ public class EmailTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Email_SerializedJsonMatchesSchema()
+    public async void Email_Contact_SerializedJsonMatchesSchema()
     {
         Email email = new Email(new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }), "subject", "body", null, "email");
+        await this.ValidateSchema(email);
+    }
+
+    [Fact]
+    public async void Email_ContactList_SerializedJsonMatchesSchema()
+    {
+        Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }) }), "subject", "body", null, "email");
         await this.ValidateSchema(email);
     }
 }

@@ -13,15 +13,14 @@
  */
 
 using MorganStanley.Fdc3.Context;
+using MorganStanley.Fdc3.Json.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
-using Newtonsoft.Json.Serialization;
 
 namespace MorganStanley.Fdc3.Tests;
 
-public abstract class ContextSchemaTest
+public abstract partial class ContextSchemaTest
 {
     protected JSchema? Schema { get; private set; }
     protected string SchemaUrl { get; private set; }
@@ -29,19 +28,7 @@ public abstract class ContextSchemaTest
 
     public ContextSchemaTest(string schemaUrl)
     {
-        this.SerializerSettings = new JsonSerializerSettings()
-        {
-            TypeNameHandling = TypeNameHandling.None,
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            DefaultValueHandling = DefaultValueHandling.Populate,
-            NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new DefaultContractResolver()
-            {
-                NamingStrategy = new Fdc3CamelCaseNamingStrategy()
-            },
-            Converters = { new StringEnumConverter() }
-        };
-
+        this.SerializerSettings = new Fdc3JsonSerializerSettings();
         this.SchemaUrl = schemaUrl;
     }
 
@@ -55,33 +42,5 @@ public abstract class ContextSchemaTest
         bool isValid = json.IsValid(this.Schema, out errorMessages);
         Assert.True(isValid, String.Join(",", errorMessages.ToArray<string>()));
         return serializedContext;
-    }
-
-    public class Fdc3CamelCaseNamingStrategy : CamelCaseNamingStrategy
-    {
-        public override string GetPropertyName(string name, bool hasSpecifiedName)
-        {
-            switch (name)
-            {
-                case "CURRENCY_ISOCODE":
-                case "ISOALPHA2":
-                case "ISOALPHA3":
-                case "COUNTRY_ISOALPHA2":
-                case "COUNTRY_ISOALPHA3":
-                case "FDS_ID":
-                case "BBG":
-                case "CUSIP":
-                case "FIGI":
-                case "ISIN":
-                case "PERMID":
-                case "RIC":
-                case "SEDOL":
-                case "LEI":
-                    return name;
-
-                default:
-                    return base.GetPropertyName(name, hasSpecifiedName);
-            }
-        }
     }
 }
