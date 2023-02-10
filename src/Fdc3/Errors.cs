@@ -27,7 +27,7 @@ namespace MorganStanley.Fdc3
         public static readonly string NoAppsFound = nameof(NoAppsFound);
         public static readonly string ResolverUnavailable = nameof(ResolverUnavailable);
         public static readonly string ResolverTimeout = nameof(ResolverTimeout);
-        public static readonly string UserCancelled = "UserCancelledResolution";
+        public static readonly string UserCancelledResolution = nameof(UserCancelledResolution);
         public static readonly string TargetAppUnavailable = nameof(TargetAppUnavailable);
         public static readonly string TargetInstanceUnavailable = nameof(TargetInstanceUnavailable);
         public static readonly string IntentDeliveryFailed = nameof(IntentDeliveryFailed);
