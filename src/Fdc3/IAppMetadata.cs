@@ -58,7 +58,7 @@ namespace MorganStanley.Fdc3
 
         /// <summary>
         /// The type of output returned for any intent specified during resolution. May express a particular context type,
-        /// channel, or channel with specified type
+        /// channel, or channel with specified type.
         /// </summary>
         string? ResultType { get; }
     }
