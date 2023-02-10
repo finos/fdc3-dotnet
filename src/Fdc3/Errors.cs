@@ -16,33 +16,33 @@ namespace MorganStanley.Fdc3
 {
     public static class OpenError
     {
-        public static readonly string AppNotFound = "AppNotFound";
-        public static readonly string ErrorOnLaunch = "ErrorOnLaunch";
-        public static readonly string AppTimeout = "AppTimeout";
-        public static readonly string ResolverUnavailable = "ResolverUnavailable";
+        public static readonly string AppNotFound = nameof(AppNotFound);
+        public static readonly string ErrorOnLaunch = nameof(ErrorOnLaunch);
+        public static readonly string AppTimeout = nameof(AppTimeout);
+        public static readonly string ResolverUnavailable = nameof(ResolverUnavailable);
     }
 
     public static class ResolveError
     {
-        public static readonly string NoAppsFound = "NoAppsFound";
-        public static readonly string ResolverUnavailable = "ResolverUnavailable";
-        public static readonly string ResolverTimeout = "ResolverTimeout";
+        public static readonly string NoAppsFound = nameof(NoAppsFound);
+        public static readonly string ResolverUnavailable = nameof(ResolverUnavailable);
+        public static readonly string ResolverTimeout = nameof(ResolverTimeout);
         public static readonly string UserCancelled = "UserCancelledResolution";
-        public static readonly string TargetAppUnavailable = "TargetAppUnavailable";
-        public static readonly string TargetInstanceUnavailable = "TargetInstanceUnavailable";
-        public static readonly string IntentDeliveryFailed = "IntentDeliveryFailed";
+        public static readonly string TargetAppUnavailable = nameof(TargetAppUnavailable);
+        public static readonly string TargetInstanceUnavailable = nameof(TargetInstanceUnavailable);
+        public static readonly string IntentDeliveryFailed = nameof(IntentDeliveryFailed);
     }
 
     public static class ResultError
     {
-        public static readonly string NoResultReturned = "NoResultReturned";
-        public static readonly string IntentHandlerRejected = "IntentHandlerRejected";
+        public static readonly string NoResultReturned = nameof(NoResultReturned);
+        public static readonly string IntentHandlerRejected = nameof(IntentHandlerRejected);
     }
 
     public static class ChannelError
     {
-        public static readonly string NoChannelFound = "NoChannelFound";
-        public static readonly string AccessDenied = "AccessDenied";
-        public static readonly string CreationFailed = "CreationFailed";
+        public static readonly string NoChannelFound = nameof(NoChannelFound);
+        public static readonly string AccessDenied = nameof(AccessDenied);
+        public static readonly string CreationFailed = nameof(CreationFailed);
     }
 }
