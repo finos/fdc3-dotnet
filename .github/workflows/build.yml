@@ -33,5 +33,12 @@ jobs:
     - name: Pack
       run: dotnet pack src/fdc3-dotnet.sln --no-build --configuration Release --output packages
 
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: package
+        path: packages/*.nupkg
+        if-no-files-found: error
+
     - name: Codecov
       uses: codecov/codecov-action@v3.1.1
