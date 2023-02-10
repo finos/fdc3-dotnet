@@ -36,7 +36,7 @@ namespace MorganStanley.Fdc3
 
         /// <summary>
         /// Channels may be visualized and selectable by users. DisplayMetadata may be used to provide hints on how to see them.
-        /// For app channels, displayMetadata would typically not be present
+        /// For app channels, displayMetadata would typically not be present.
         /// </summary>
         IDisplayMetadata? DisplayMetadata { get; }
 
