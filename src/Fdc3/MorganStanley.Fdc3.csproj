@@ -13,6 +13,7 @@
         <Nullable>enable</Nullable>
         <LangVersion>8.0</LangVersion>
         <RepositoryUrl>https://github.com/morganstanley/fdc3-dotnet</RepositoryUrl>
+        <Description>.NET Standard 2.0 declarations to implement concrete FDC3 compatible .NET desktop agents and usage of intents/contexts.</Description>
         <Tags>FDC3</Tags>
     </PropertyGroup>
 
