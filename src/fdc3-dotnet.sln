@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Tests", "Tests\MorganStanley.Fdc3.Tests\MorganStanley.Fdc3.Tests.csproj", "{D932070B-937D-440F-9D79-B51C8F850E9E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Json", "Fdc3.Json\MorganStanley.Fdc3.Json.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{D932070B-937D-440F-9D79-B51C8F850E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D932070B-937D-440F-9D79-B51C8F850E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D932070B-937D-440F-9D79-B51C8F850E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
