@@ -21,7 +21,7 @@ namespace MorganStanley.Fdc3.Context
         {
             this.Members = members;
             this.InitMessage = initMessage;
-            this.ChatName = ChatName;
+            this.ChatName = chatName;
             this.Options = options;
         }
 

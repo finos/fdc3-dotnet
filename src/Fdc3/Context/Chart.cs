@@ -28,7 +28,7 @@ namespace MorganStanley.Fdc3.Context
         public Instrument[] Instruments { get; set; }
         public TimeRange? Range { get; set; }
         public object? OtherConfig { get; set; }
-        string? Style { get; set; }
+        public string? Style { get; set; }
 
         object? IContext<object>.ID => base.ID;
     }
