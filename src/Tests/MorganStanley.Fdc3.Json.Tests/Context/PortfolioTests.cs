@@ -14,19 +14,23 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class ContactTests : ContextSchemaTest
+public class PortfolioTests : ContextSchemaTest
 {
-    public ContactTests()
-        : base("https://fdc3.finos.org/schemas/2.0/contact.schema.json")
+    public PortfolioTests()
+        : base("https://fdc3.finos.org/schemas/2.0/portfolio.schema.json")
     {
     }
 
     [Fact]
-    public async void Contact_SerializedJsonMatchesSchema()
+    public async void Portfolio_SerializedJsonMatchesSchema()
     {
-        Contact contact = new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact");
-        await this.ValidateSchema(contact);
+        Portfolio portfolio = new Portfolio(
+            new Position[] { new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" })) },
+            null,
+            "portfolio");
+
+        await this.ValidateSchema(portfolio);
     }
 }

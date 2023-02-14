@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
 public abstract partial class ContextSchemaTest
 {

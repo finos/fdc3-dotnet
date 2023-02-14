@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Json", "Fdc3.Json\MorganStanley.Fdc3.Json.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Json.Tests", "Tests\MorganStanley.Fdc3.Json.Tests\MorganStanley.Fdc3.Json.Tests.csproj", "{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7FC94973-137E-4EE4-82AF-5D9B3DF64312} = {B7974F13-7AEA-4C9B-B098-7D78A51308C2}
 		{D932070B-937D-440F-9D79-B51C8F850E9E} = {97CAC97B-DB3A-4A45-9209-3BAD231B4837}
+		{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E} = {97CAC97B-DB3A-4A45-9209-3BAD231B4837}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {356A9BB9-BD56-40C0-B1ED-06F7AF0C4BCA}

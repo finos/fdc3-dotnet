@@ -14,32 +14,24 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class InstrumentTests : ContextSchemaTest
+public class TimeRangeTests : ContextSchemaTest
 {
-    public InstrumentTests()
-        : base("https://fdc3.finos.org/schemas/2.0/instrument.schema.json")
+    public TimeRangeTests()
+        : base("https://fdc3.finos.org/schemas/2.0/timerange.schema.json")
     {
     }
 
     [Fact]
-    public async void Instrument_SerializedJsonMatchesSchema()
+    public async void TimeRange_SerializedJsonMatchesSchema()
     {
-        Instrument instrument = new Instrument(
-            new InstrumentID
-            {
-                BBG = "BBG",
-                CUSIP = "CUSIP",
-                FDS_ID = "FDS_ID",
-                FIGI = "FIGI",
-                ISIN = "ISIN",
-                PERMID = "PERMID",
-                RIC = "RIC",
-                SEDOL = "SEDOL",
-                Ticker = "TICKER"
-            }, "Instrument");
+        TimeRange timeRange = new TimeRange(
+            DateTime.Now.ToString("o"),
+            DateTime.Now.ToString("o"),
+            null,
+            "timerange");
 
-        await this.ValidateSchema(instrument);
+        await this.ValidateSchema(timeRange);
     }
 }

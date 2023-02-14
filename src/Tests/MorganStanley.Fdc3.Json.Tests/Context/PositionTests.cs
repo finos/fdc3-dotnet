@@ -14,20 +14,20 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class CountryTests : ContextSchemaTest
+public class PositionTests : ContextSchemaTest
 {
-    public CountryTests()
-        : base("https://fdc3.finos.org/schemas/2.0/country.schema.json")
+    public PositionTests()
+        : base("https://fdc3.finos.org/schemas/2.0/position.schema.json")
     {
     }
 
     [Fact]
-    public async void Country_SerializedJsonMatchesSchema()
+    public async void Position_SerializedJsonMatchesSchema()
     {
-        Country country = new Country(new CountryID() { ISOALPHA2 = "isoalpha2", ISOALPHA3 = "isoalpha3" }, "country");
+        Position position = new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" }), null, "position");
 
-        await this.ValidateSchema(country);
+        await this.ValidateSchema(position);
     }
 }

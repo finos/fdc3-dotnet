@@ -14,27 +14,32 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class InstrumentListTests : ContextSchemaTest
+public class InstrumentTests : ContextSchemaTest
 {
-    public InstrumentListTests()
-        : base("https://fdc3.finos.org/schemas/2.0/instrumentList.schema.json")
+    public InstrumentTests()
+        : base("https://fdc3.finos.org/schemas/2.0/instrument.schema.json")
     {
     }
 
     [Fact]
-    public async void InstrumentList_SerializedJsonMatchesSchema()
+    public async void Instrument_SerializedJsonMatchesSchema()
     {
-        InstrumentList instrumentList = new InstrumentList(new Instrument[]
+        Instrument instrument = new Instrument(
+            new InstrumentID
             {
-            new Instrument(
-                new InstrumentID
-                {
-                    Ticker = "TICKER"
-                }, "Instrument")
-               }, "InstrumentList");
+                BBG = "BBG",
+                CUSIP = "CUSIP",
+                FDS_ID = "FDS_ID",
+                FIGI = "FIGI",
+                ISIN = "ISIN",
+                PERMID = "PERMID",
+                RIC = "RIC",
+                SEDOL = "SEDOL",
+                Ticker = "TICKER"
+            }, "Instrument");
 
-        await this.ValidateSchema(instrumentList);
+        await this.ValidateSchema(instrument);
     }
 }
