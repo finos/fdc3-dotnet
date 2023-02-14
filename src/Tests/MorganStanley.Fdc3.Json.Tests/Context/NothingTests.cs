@@ -14,20 +14,20 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests.Context;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class ValuationTests : ContextSchemaTest
+public class NothingTests : ContextSchemaTest
 {
-    public ValuationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/valuation.schema.json")
+    public NothingTests()
+        : base("https://fdc3.finos.org/schemas/2.0/nothing.schema.json")
     {
     }
 
     [Fact]
-    public async void Valuation_SerializedJsonMatchesSchema()
+    public async void Nothing_SerializedJsonMatchesSchema()
     {
-        var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
+        Nothing nothing = new Nothing();
 
-        await ValidateSchema(valuation);
+        await this.ValidateSchema(nothing);
     }
 }

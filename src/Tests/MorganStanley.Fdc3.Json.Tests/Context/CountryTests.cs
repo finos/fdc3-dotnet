@@ -14,24 +14,20 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class TimeRangeTests : ContextSchemaTest
+public class CountryTests : ContextSchemaTest
 {
-    public TimeRangeTests()
-        : base("https://fdc3.finos.org/schemas/2.0/timerange.schema.json")
+    public CountryTests()
+        : base("https://fdc3.finos.org/schemas/2.0/country.schema.json")
     {
     }
 
     [Fact]
-    public async void TimeRange_SerializedJsonMatchesSchema()
+    public async void Country_SerializedJsonMatchesSchema()
     {
-        TimeRange timeRange = new TimeRange(
-            DateTime.Now.ToString("o"),
-            DateTime.Now.ToString("o"),
-            null,
-            "timerange");
+        Country country = new Country(new CountryID() { ISOALPHA2 = "isoalpha2", ISOALPHA3 = "isoalpha3" }, "country");
 
-        await this.ValidateSchema(timeRange);
+        await this.ValidateSchema(country);
     }
 }

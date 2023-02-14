@@ -12,25 +12,4 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.Context;
-
-namespace MorganStanley.Fdc3.Tests;
-
-public class PortfolioTests : ContextSchemaTest
-{
-    public PortfolioTests()
-        : base("https://fdc3.finos.org/schemas/2.0/portfolio.schema.json")
-    {
-    }
-
-    [Fact]
-    public async void Portfolio_SerializedJsonMatchesSchema()
-    {
-        Portfolio portfolio = new Portfolio(
-            new Position[] { new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" })) },
-            null,
-            "portfolio");
-
-        await this.ValidateSchema(portfolio);
-    }
-}
+global using Xunit;

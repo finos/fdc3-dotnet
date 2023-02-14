@@ -14,22 +14,27 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
+namespace MorganStanley.Fdc3.Json.Tests.Context;
 
-public class ChartTests : ContextSchemaTest
+public class InstrumentListTests : ContextSchemaTest
 {
-    public ChartTests()
-        : base("https://fdc3.finos.org/schemas/2.0/chart.schema.json")
+    public InstrumentListTests()
+        : base("https://fdc3.finos.org/schemas/2.0/instrumentList.schema.json")
     {
     }
 
     [Fact]
-    public async void Chart_SerializedJsonMatchesSchema()
+    public async void InstrumentList_SerializedJsonMatchesSchema()
     {
-        Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
-        TimeRange timeRange = new TimeRange(DateTime.Now.ToString("o"), DateTime.Now.ToString("o"));
-        var otherConfig = new { A = "Foo", B = "Bar" };
-        Chart chart = new Chart(new Instrument[] { instrument }, timeRange, otherConfig, ChartStyle.Line, null, "chart");
-        await this.ValidateSchema(chart);
+        InstrumentList instrumentList = new InstrumentList(new Instrument[]
+            {
+            new Instrument(
+                new InstrumentID
+                {
+                    Ticker = "TICKER"
+                }, "Instrument")
+               }, "InstrumentList");
+
+        await this.ValidateSchema(instrumentList);
     }
 }

@@ -14,20 +14,18 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Tests;
-
-public class PositionTests : ContextSchemaTest
+namespace MorganStanley.Fdc3.Json.Tests.Context;
+public class ContactTests : ContextSchemaTest
 {
-    public PositionTests()
-        : base("https://fdc3.finos.org/schemas/2.0/position.schema.json")
+    public ContactTests()
+        : base("https://fdc3.finos.org/schemas/2.0/contact.schema.json")
     {
     }
 
     [Fact]
-    public async void Position_SerializedJsonMatchesSchema()
+    public async void Contact_SerializedJsonMatchesSchema()
     {
-        Position position = new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" }), null, "position");
-
-        await this.ValidateSchema(position);
+        Contact contact = new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact");
+        await this.ValidateSchema(contact);
     }
 }
