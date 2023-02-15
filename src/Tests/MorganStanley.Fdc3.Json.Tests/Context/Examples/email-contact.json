@@ -1,0 +1,13 @@
+﻿{
+    "recipients": {
+        "id": {
+            "email": "email",
+            "fdsId": "fdsid"
+        },
+        "type": "fdc3.contact"
+    },
+    "subject": "subject",
+    "textBody": "body",
+    "name": "email",
+    "type": "fdc3.email"
+}

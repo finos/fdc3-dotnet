@@ -13,6 +13,7 @@
  */
 
 using MorganStanley.Fdc3.Context;
+using System.Reflection;
 
 namespace MorganStanley.Fdc3.Json.Tests.Context;
 
@@ -27,7 +28,20 @@ public class EmailTests : ContextSchemaTest
     public async void Email_Contact_SerializedJsonMatchesSchema()
     {
         Email email = new Email(new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }), "subject", "body", null, "email");
-        await this.ValidateSchema(email);
+        string test = await this.ValidateSchema(email);
+    }
+
+    [Fact]
+    public void Email_Contact_DeserializedJsonMatchesProperties()
+    {
+        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.Json.Tests.Context.Examples.email-contact.json");
+        Assert.NotNull(email);
+        Contact? contact = email?.Recipients as Contact;
+        Assert.Equal("email", contact?.ID?.Email);
+        Assert.Equal("fdsid", contact?.ID?.FdsId);
+        Assert.Equal("subject", email?.Subject);
+        Assert.Equal("body", email?.TextBody);
+        Assert.Equal("email", email?.Name);
     }
 
     [Fact]
@@ -35,5 +49,19 @@ public class EmailTests : ContextSchemaTest
     {
         Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }) }), "subject", "body", null, "email");
         await this.ValidateSchema(email);
+    }
+
+    [Fact]
+    public void Email_ContactList_DeserializedJsonMatchesProperties()
+    {
+        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.Json.Tests.Context.Examples.email-contactList.json");
+        Assert.NotNull(email);
+        ContactList? contactList = email?.Recipients as ContactList;
+        Contact? contact = contactList?.Contacts?.First<Contact>();
+        Assert.Equal("email", contact?.ID?.Email);
+        Assert.Equal("fdsid", contact?.ID?.FdsId);
+        Assert.Equal("subject", email?.Subject);
+        Assert.Equal("body", email?.TextBody);
+        Assert.Equal("email", email?.Name);
     }
 }

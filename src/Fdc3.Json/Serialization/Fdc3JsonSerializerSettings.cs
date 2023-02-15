@@ -30,8 +30,7 @@ namespace MorganStanley.Fdc3.Json.Serialization
             {
                 NamingStrategy = new Fdc3CamelCaseNamingStrategy()
             };
-            this.Converters = new JsonConverter[] { new StringEnumConverter() };
-
+            this.Converters = new JsonConverter[] { new StringEnumConverter(), new RecipientJsonConverter() };
         }
     }
 }
