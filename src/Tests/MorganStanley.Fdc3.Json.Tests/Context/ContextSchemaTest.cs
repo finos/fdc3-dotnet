@@ -17,6 +17,7 @@ using MorganStanley.Fdc3.Json.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
+using System.Reflection;
 
 namespace MorganStanley.Fdc3.Json.Tests.Context;
 
@@ -42,5 +43,22 @@ public abstract partial class ContextSchemaTest
         bool isValid = json.IsValid(this.Schema, out errorMessages);
         Assert.True(isValid, String.Join(",", errorMessages.ToArray<string>()));
         return serializedContext;
+    }
+
+    protected T? Deserialize<T>(string resourcePath) where T : class, IContext
+    {
+        var assembly = Assembly.GetExecutingAssembly();
+        using (Stream? stream = assembly.GetManifestResourceStream(resourcePath))
+        {
+            if (stream != null)
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<T>(reader.ReadToEnd(), this.SerializerSettings);
+                }
+            }
+        }
+
+        return null;
     }
 }
