@@ -34,7 +34,7 @@ jobs:
       run: dotnet pack src/fdc3-dotnet.sln --no-build --configuration Release --output packages
 
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: package
         path: packages/*.nupkg
