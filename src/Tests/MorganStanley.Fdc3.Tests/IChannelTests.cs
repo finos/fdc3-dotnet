@@ -40,7 +40,7 @@ public class IChannelTests
 
         public IDisplayMetadata? DisplayMetadata => throw new NotImplementedException();
 
-        public IListener AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
+        public Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
         {
             this.AddContextListenerInvoked = true;
 #pragma warning disable CS8603 // Possible null reference return.

@@ -70,7 +70,7 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Adds a listener for incoming contexts of the specified context type whenever a broadcast happens on this channel.
         /// </summary>
-        IListener AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
+        Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
     }
 
     public static class ChannelExtensions
@@ -79,7 +79,7 @@ namespace MorganStanley.Fdc3
         /// Adds a listener for incoming contexts of the specified context type whenever a broadcast happens on this channel.
         /// </summary>
         [Obsolete("Use AddContextListener(null, handler)")]
-        public static IListener AddContextListener<T>(this IChannel channel, ContextHandler<T> handler) where T : IContext
+        public static Task<IListener> AddContextListener<T>(this IChannel channel, ContextHandler<T> handler) where T : IContext
         {
             return channel.AddContextListener<T>(null, handler);
         }
