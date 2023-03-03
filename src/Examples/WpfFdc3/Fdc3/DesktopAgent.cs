@@ -16,15 +16,24 @@ using MorganStanley.Fdc3;
 using MorganStanley.Fdc3.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace WpfFdc3.Fdc3
 {
     internal class DesktopAgent : IDesktopAgent
     {
+        private readonly List<IChannel> _channels = new List<IChannel>();
+        private IChannel? _currentChannel;
+
+        public DesktopAgent()
+        {
+            _channels.Add(new Channel("global", "app"));
+        }
+
         public Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
         {
-            throw new NotImplementedException();
+            return _currentChannel?.AddContextListener<T>(contextType, handler);
         }
 
         public Task<IListener> AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext
@@ -34,7 +43,12 @@ namespace WpfFdc3.Fdc3
 
         public Task Broadcast(IContext context)
         {
-            throw new NotImplementedException();
+            if (_currentChannel != null)
+            {
+                return Task.Run(() => _currentChannel.Broadcast(context));
+            }
+
+            throw new Exception("Not joined to a channel");
         }
 
         public Task<IPrivateChannel> CreatePrivateChannel()
@@ -64,7 +78,7 @@ namespace WpfFdc3.Fdc3
 
         public Task<IChannel?> GetCurrentChannel()
         {
-            throw new NotImplementedException();
+            return Task.Run<IChannel?>(() => _currentChannel);
         }
 
 
@@ -80,22 +94,43 @@ namespace WpfFdc3.Fdc3
 
         public Task<IChannel> GetOrCreateChannel(string channelId)
         {
-            throw new NotImplementedException();
+            return Task.Run<IChannel>(() =>
+            {
+                IChannel channel = _channels.First<IChannel>(channel => channel.Id == channelId);
+                if (channel == null)
+                {
+                    channel = new Channel(channelId, "app");
+                    _channels.Add(channel);
+                }
+
+                return channel;
+            });
         }
 
         public Task<IEnumerable<IChannel>> GetUserChannels()
         {
-            throw new NotImplementedException();
+            return Task.Run<IEnumerable<IChannel>>(() => _channels );
         }
 
         public Task JoinUserChannel(string channelId)
         {
-            throw new NotImplementedException();
+            return Task.Run(() =>
+            {
+                IChannel channel = _channels.First<IChannel>(channel => channel.Id == channelId);
+                if (channel != null)
+                {
+                    _currentChannel = channel;
+                }
+                else
+                {
+                    throw new Exception(ChannelError.NoChannelFound);
+                }
+            });
         }
 
         public Task LeaveCurrentChannel()
         {
-            throw new NotImplementedException();
+            return Task.Run(() => _currentChannel = null);
         }
 
         public Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null)

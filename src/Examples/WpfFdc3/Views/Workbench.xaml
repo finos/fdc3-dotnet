@@ -68,11 +68,54 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" BorderBrush="silver" BorderThickness="1" CornerRadius="5" Margin="0 0 5 0" Background="White">
-                    <StackPanel Margin="20" >
+                    <StackPanel Margin="10" >
+                        <TabControl>
+                            <TabItem Header="Contexts" IsEnabled="False"></TabItem>
+                            <TabItem Header="Intents" IsEnabled="False"></TabItem>
+                            <TabItem Header="Channels" IsSelected="True">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Margin="10" FontWeight="Bold">Join Channel</TextBlock>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ComboBox Grid.Column="0" ItemsSource="{Binding AvailableChannels}" DisplayMemberPath="Id" SelectedValue="{Binding SelectedChannel}" />
+                                        <Button Grid.Column="1" Padding="10 0 10 0" HorizontalAlignment="Right" Command="{Binding JoinChannelCommand}">Join</Button>
+                                    </Grid>
+                                    <Separator />
+                                    <TextBlock Margin="10" FontWeight="Bold">Broadcast Context</TextBlock>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ComboBox Grid.Column="0" ItemsSource="{Binding AvailableContexts}" DisplayMemberPath="Type" SelectedValue="{Binding SelectedContext}" />
+                                        <Button Grid.Column="1" Padding="10 0 10 0" HorizontalAlignment="Right" Command="{Binding BroadcastContextCommand}">Broadcast</Button>
+                                    </Grid>
+                                    <Separator />
+                                    <TextBlock Margin="10" FontWeight="Bold">Add Context Listener</TextBlock>
+                                    <Grid Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ComboBox Grid.Column="0" ItemsSource="{Binding AvailableContexts}" DisplayMemberPath="Type" SelectedValue="{Binding SelectedContextListener}" />
+                                        <Button Grid.Column="1" Padding="10 0 10 0" HorizontalAlignment="Right" Command="{Binding AddContextListenerCommand}">Add Listener</Button>
+                                    </Grid>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
                     </StackPanel>
                 </Border>
                 <Border Grid.Column="1" BorderBrush="silver " BorderThickness="1" CornerRadius="5" Margin="5 0 0 0" Background="White">
-                    <StackPanel Margin="20" >
+                    <StackPanel Margin="10" >
+                        <TabControl>
+                            <TabItem Header="Listeners" IsSelected="True">
+                                <TextBlock Text="{Binding LastContextMessage}"/>
+                            </TabItem>
+                            <TabItem Header="System Log" IsEnabled="False"></TabItem>
+                        </TabControl>
                     </StackPanel>
                 </Border>
             </Grid>
