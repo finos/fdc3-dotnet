@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="8.1.97" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Fdc3.Json\MorganStanley.Fdc3.Json.csproj" />
     <ProjectReference Include="..\..\Fdc3\MorganStanley.Fdc3.csproj" />
   </ItemGroup>

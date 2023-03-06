@@ -30,8 +30,13 @@ jobs:
     - name: Test
       run: dotnet test src/fdc3-dotnet.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --configuration Release
 
-    - name: Pack
-      run: dotnet pack src/fdc3-dotnet.sln --no-build --configuration Release --output packages
+    - name: Pack Fdc3
+      run:
+        dotnet pack src/Fdc3/MorganStanley.Fdc3.csproj --no-build --configuration Release --output packages
+
+    - name: Pack Fdc3.Json
+      run:
+        dotnet pack src/Fdc3.Json/MorganStanley.Fdc3.Json.csproj --no-build --configuration Release --output packages
 
     - name: Upload
       uses: actions/upload-artifact@v3
