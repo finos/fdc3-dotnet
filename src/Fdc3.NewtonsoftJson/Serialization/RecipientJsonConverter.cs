@@ -17,9 +17,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace MorganStanley.Fdc3.Json.Serialization
+namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
 {
-    public  class RecipientJsonConverter : JsonConverter
+    public class RecipientJsonConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

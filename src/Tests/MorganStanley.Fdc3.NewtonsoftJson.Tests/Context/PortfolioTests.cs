@@ -14,27 +14,23 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class InstrumentListTests : ContextSchemaTest
+public class PortfolioTests : ContextSchemaTest
 {
-    public InstrumentListTests()
-        : base("https://fdc3.finos.org/schemas/2.0/instrumentList.schema.json")
+    public PortfolioTests()
+        : base("https://fdc3.finos.org/schemas/2.0/portfolio.schema.json")
     {
     }
 
     [Fact]
-    public async void InstrumentList_SerializedJsonMatchesSchema()
+    public async void Portfolio_SerializedJsonMatchesSchema()
     {
-        InstrumentList instrumentList = new InstrumentList(new Instrument[]
-            {
-            new Instrument(
-                new InstrumentID
-                {
-                    Ticker = "TICKER"
-                }, "Instrument")
-               }, "InstrumentList");
+        Portfolio portfolio = new Portfolio(
+            new Position[] { new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" })) },
+            null,
+            "portfolio");
 
-        await this.ValidateSchema(instrumentList);
+        await this.ValidateSchema(portfolio);
     }
 }

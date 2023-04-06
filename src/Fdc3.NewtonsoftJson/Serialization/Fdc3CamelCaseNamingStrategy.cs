@@ -14,7 +14,7 @@
 
 using Newtonsoft.Json.Serialization;
 
-namespace MorganStanley.Fdc3.Json.Serialization
+namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
 {
     public class Fdc3CamelCaseNamingStrategy : CamelCaseNamingStrategy
     {
