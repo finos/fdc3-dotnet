@@ -15,7 +15,7 @@
 using MorganStanley.Fdc3.Context;
 using System.Reflection;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
 public class EmailTests : ContextSchemaTest
 {
@@ -34,7 +34,7 @@ public class EmailTests : ContextSchemaTest
     [Fact]
     public void Email_Contact_DeserializedJsonMatchesProperties()
     {
-        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.Json.Tests.Context.Examples.email-contact.json");
+        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.NewtonsoftJson.Tests.Context.Examples.email-contact.json");
         Assert.NotNull(email);
         Contact? contact = email?.Recipients as Contact;
         Assert.Equal("email", contact?.ID?.Email);
@@ -54,7 +54,7 @@ public class EmailTests : ContextSchemaTest
     [Fact]
     public void Email_ContactList_DeserializedJsonMatchesProperties()
     {
-        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.Json.Tests.Context.Examples.email-contactList.json");
+        Email? email = this.Deserialize<Email>("MorganStanley.Fdc3.NewtonsoftJson.Tests.Context.Examples.email-contactList.json");
         Assert.NotNull(email);
         ContactList? contactList = email?.Recipients as ContactList;
         Contact? contact = contactList?.Contacts?.First<Contact>();

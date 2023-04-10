@@ -15,7 +15,7 @@
 
 using MorganStanley.Fdc3;
 using MorganStanley.Fdc3.Context;
-using MorganStanley.Fdc3.Json.Serialization;
+using MorganStanley.Fdc3.NewtonsoftJson.Serialization;
 using Newtonsoft.Json;
 using Prism.Commands;
 using System.Collections.Generic;

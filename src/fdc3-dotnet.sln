@@ -36,11 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Tests", "Tests\MorganStanley.Fdc3.Tests\MorganStanley.Fdc3.Tests.csproj", "{D932070B-937D-440F-9D79-B51C8F850E9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Json", "Fdc3.Json\MorganStanley.Fdc3.Json.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.NewtonsoftJson", "Fdc3.NewtonsoftJson\MorganStanley.Fdc3.NewtonsoftJson.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Json.Tests", "Tests\MorganStanley.Fdc3.Json.Tests\MorganStanley.Fdc3.Json.Tests.csproj", "{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.NewtonsoftJson.Tests", "Tests\MorganStanley.Fdc3.NewtonsoftJson.Tests\MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj", "{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFdc3", "Examples\WpfFdc3\WpfFdc3.csproj", "{06AD2640-C708-4C01-BF02-82D824CB09C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfFdc3", "Examples\WpfFdc3\WpfFdc3.csproj", "{06AD2640-C708-4C01-BF02-82D824CB09C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

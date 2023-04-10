@@ -36,7 +36,7 @@ jobs:
 
     - name: Pack Fdc3.Json
       run:
-        dotnet pack src/Fdc3.Json/MorganStanley.Fdc3.Json.csproj --no-build --configuration Release --output packages
+        dotnet pack src/Fdc3.NewtonsoftJson/MorganStanley.Fdc3.NewtonsoftJson.csproj --no-build --configuration Release --output packages
 
     - name: Upload
       uses: actions/upload-artifact@v3

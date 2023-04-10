@@ -14,20 +14,27 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class ValuationTests : ContextSchemaTest
+public class InstrumentListTests : ContextSchemaTest
 {
-    public ValuationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/valuation.schema.json")
+    public InstrumentListTests()
+        : base("https://fdc3.finos.org/schemas/2.0/instrumentList.schema.json")
     {
     }
 
     [Fact]
-    public async void Valuation_SerializedJsonMatchesSchema()
+    public async void InstrumentList_SerializedJsonMatchesSchema()
     {
-        var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
+        InstrumentList instrumentList = new InstrumentList(new Instrument[]
+            {
+            new Instrument(
+                new InstrumentID
+                {
+                    Ticker = "TICKER"
+                }, "Instrument")
+               }, "InstrumentList");
 
-        await ValidateSchema(valuation);
+        await this.ValidateSchema(instrumentList);
     }
 }

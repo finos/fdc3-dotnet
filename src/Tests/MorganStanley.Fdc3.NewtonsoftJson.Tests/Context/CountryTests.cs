@@ -14,20 +14,20 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class CurrencyTests : ContextSchemaTest
+public class CountryTests : ContextSchemaTest
 {
-    public CurrencyTests()
-        : base("https://fdc3.finos.org/schemas/2.0/currency.schema.json")
+    public CountryTests()
+        : base("https://fdc3.finos.org/schemas/2.0/country.schema.json")
     {
     }
 
     [Fact]
-    public async void Currency_SerializedJsonMatchesSchema()
+    public async void Country_SerializedJsonMatchesSchema()
     {
-        Currency currency = new Currency(new CurrencyID() { CURRENCY_ISOCODE = "AAA" }, "currency");
+        Country country = new Country(new CountryID() { ISOALPHA2 = "isoalpha2", ISOALPHA3 = "isoalpha3" }, "country");
 
-        await this.ValidateSchema(currency);
+        await this.ValidateSchema(country);
     }
 }

@@ -13,13 +13,13 @@
  */
 
 using MorganStanley.Fdc3.Context;
-using MorganStanley.Fdc3.Json.Serialization;
+using MorganStanley.Fdc3.NewtonsoftJson.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using System.Reflection;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
 public abstract partial class ContextSchemaTest
 {

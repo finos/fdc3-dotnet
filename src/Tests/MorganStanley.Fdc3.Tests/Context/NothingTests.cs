@@ -14,7 +14,7 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.Tests.Context;
 
 public class NothingTests
 {

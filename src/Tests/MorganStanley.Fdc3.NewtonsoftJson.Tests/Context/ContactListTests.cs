@@ -14,20 +14,19 @@
 
 using MorganStanley.Fdc3.Context;
 
-namespace MorganStanley.Fdc3.Json.Tests.Context;
+namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class OrganizationTests : ContextSchemaTest
+public class ContactListTests : ContextSchemaTest
 {
-    public OrganizationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/organization.schema.json")
+    public ContactListTests()
+        : base("https://fdc3.finos.org/schemas/2.0/contactList.schema.json")
     {
     }
 
     [Fact]
-    public async void Organization_SerializedJsonMatchesSchema()
+    public async void ContactList_SerializedJsonMatchesSchema()
     {
-        Organization organization = new Organization(new OrganizationID() { FDS_ID = "fdc_id", LEI = "lei", PERMID = "permid" }, "organization");
-
-        await this.ValidateSchema(organization);
+        ContactList contactList = new ContactList(new Contact[] { new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact") }, "contactList");
+        await this.ValidateSchema(contactList);
     }
 }
