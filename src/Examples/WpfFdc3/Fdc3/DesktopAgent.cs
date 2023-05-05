@@ -28,7 +28,7 @@ namespace WpfFdc3.Fdc3
 
         public DesktopAgent()
         {
-            _channels.Add(new Channel("global", "app"));
+            _channels.Add(new Channel("global", ChannelType.App));
         }
 
         public Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
@@ -99,7 +99,7 @@ namespace WpfFdc3.Fdc3
                 IChannel channel = _channels.First<IChannel>(channel => channel.Id == channelId);
                 if (channel == null)
                 {
-                    channel = new Channel(channelId, "app");
+                    channel = new Channel(channelId, ChannelType.App);
                     _channels.Add(channel);
                 }
 

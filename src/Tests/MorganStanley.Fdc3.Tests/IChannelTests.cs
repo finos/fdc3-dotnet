@@ -36,7 +36,7 @@ public class IChannelTests
 
         public string Id => throw new NotImplementedException();
 
-        public string Type => throw new NotImplementedException();
+        public ChannelType Type => throw new NotImplementedException();
 
         public IDisplayMetadata? DisplayMetadata => throw new NotImplementedException();
 
