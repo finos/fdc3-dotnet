@@ -26,7 +26,7 @@ namespace WpfFdc3.Fdc3
         private readonly Dictionary<string, IContext> _lastContexts = new Dictionary<string, IContext>();
         private IContext? _lastContext;
 
-        public Channel(string id, string type)
+        public Channel(string id, ChannelType type)
         {
             this.Id = id;
             this.Type = type;
@@ -35,7 +35,7 @@ namespace WpfFdc3.Fdc3
 
         public string Id { get; }
 
-        public string Type { get; }
+        public ChannelType Type { get; }
 
         public IDisplayMetadata? DisplayMetadata => throw new System.NotImplementedException();
 

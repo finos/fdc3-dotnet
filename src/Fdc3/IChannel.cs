@@ -32,7 +32,7 @@ namespace MorganStanley.Fdc3
         /// <summary>
         /// Uniquely defines each channel type.
         /// </summary>
-        string Type { get; }
+        ChannelType Type { get; }
 
         /// <summary>
         /// Channels may be visualized and selectable by users. DisplayMetadata may be used to provide hints on how to see them.
