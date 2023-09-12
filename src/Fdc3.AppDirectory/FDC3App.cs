@@ -60,7 +60,7 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// </list>
         /// FDC3 Desktop Agents MUST support at least the web application type and MAY support any or all of the other types.
         /// </summary>
-        public string? Type { get; set; }
+        public AppType? Type { get; set; }
 
         /// <summary>
         /// <see cref="IAppDetails"/>

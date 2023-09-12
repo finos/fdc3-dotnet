@@ -17,9 +17,22 @@ using System.Threading.Tasks;
 
 namespace MorganStanley.Fdc3.AppDirectory
 {
+    /// <summary>
+    /// Interface definition for the AppDirectory.
+    /// </summary>
     public interface IAppDirectory
     {
+        /// <summary>
+        /// Returns a list of all applications from the AppDirectory.
+        /// </summary>
+        /// <returns>List of applications.</returns>
         Task<IEnumerable<Fdc3App>> GetApps();
+
+        /// <summary>
+        /// Returns an application by appId from the AppDirectory.
+        /// </summary>
+        /// <param name="appId">Application identifier</param>
+        /// <returns>The application</returns>
         Task<Fdc3App> GetApp(string appId);
     }
 }

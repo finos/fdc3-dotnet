@@ -40,11 +40,22 @@ namespace MorganStanley.Fdc3.AppDirectory.Tests
             Assert.Equal("fdc3-maintainers@finos.org", app.SupportEmail);
             Assert.Equal("http://example.domain.com/", app.MoreInfo);
             Assert.Equal("Example App, Inc.", app.Publisher);
-            Assert.Equal("web", app.Type);
+            Assert.Equal(AppType.Web, app.Type);
             Assert.Equal(3, app.Categories!.Count()!);
+            Assert.Contains("market data", app.Categories!);
+            Assert.Contains("research", app.Categories!);
+            Assert.Contains("news", app.Categories!);
             Assert.Single(app.Icons!);
+            Assert.Equal("http://example.domain.com/assets/my-app-icon.png", app.Icons!.First().Src);
+            Assert.Equal("256x256", app.Icons!.First().Size);
+            Assert.Equal("image/png", app.Icons!.First().Type);
             Assert.Equal(2, app.Screenshots!.Count());
+            Assert.Equal("http://example.domain.com/assets/my-app-screenshot-1.png", app.Screenshots!.First().Src);
+            Assert.Equal("The first screenshot of my example app", app.Screenshots!.First().Label);
+            Assert.Equal("image/png", app.Screenshots!.First().Type);
+            Assert.Equal("800x600", app.Screenshots!.First().Size);
             Assert.IsType<WebAppDetails>(app.Details);
+            Assert.Equal("http://example.domain.com/app.html", ((WebAppDetails)app.Details).Url);
             Assert.Contains("Finsemble", app.HostManifests!.Keys);
             Assert.Contains("Glue42", app.HostManifests.Keys);
             Assert.Contains("Web App Manifest", app.HostManifests.Keys);
@@ -54,7 +65,12 @@ namespace MorganStanley.Fdc3.AppDirectory.Tests
             Assert.Contains("StartEmail", app.Interop.Intents.Raises.Keys);
             Assert.Equal(2, app.Interop.UserChannels!.Broadcasts!.Count()!);
             Assert.Equal(2, app.Interop.UserChannels!.ListensFor!.Count()!);
+            Assert.Contains("fdc3.instrument", app.Interop!.UserChannels!.Broadcasts!);
+            Assert.Contains("fdc3.organization", app.Interop!.UserChannels!.ListensFor!);
             Assert.Single(app.Interop.AppChannels!);
+            Assert.Equal("myApp.quotes,", app.Interop!.AppChannels!.First().Name);
+            Assert.Contains("myApp.quote", app.Interop.AppChannels!.First().Broadcasts!);
+            Assert.Contains("fdc3.instrument", app.Interop.AppChannels!.First().ListensFor!);
             Assert.Contains("fr-FR", app.LocalizedVersions!.Keys);
 
         }

@@ -15,7 +15,8 @@
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// <inheritdoc />
+    /// Implementatin of <see cref="IAppDetails"/>
+    /// Web application launched via a URL.
     /// </summary>
     public class WebAppDetails : IAppDetails
     {

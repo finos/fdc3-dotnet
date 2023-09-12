@@ -15,12 +15,14 @@
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// Implementatin of <see cref="IAppDetails"/>
-    /// App virtualized via Citrix.
+    /// FDC3 application types
     /// </summary>
-    public class CitrixAppDetails : IAppDetails
+    public enum AppType
     {
-        public string? Alias { get; set; }
-        public string? Arguments { get; set; }
+        Web,
+        Native,
+        Citrix,
+        OnlineNative,
+        Other
     }
 }

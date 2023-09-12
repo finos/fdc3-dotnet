@@ -15,7 +15,8 @@
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// <inheritdoc />
+    /// Implementatin of <see cref="IAppDetails"/>
+    /// Native app that have an online launcher, e.g. online ClickOnce app deployments.
     /// </summary>
     public class OnlineNativeAppDetails : IAppDetails
     {
