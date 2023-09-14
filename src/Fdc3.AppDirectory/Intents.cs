@@ -26,7 +26,7 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// Used to support intent resolution by desktop agents.Replaces the intents element used in appD records 
         /// prior to FDC3 2.0.
         /// </summary>
-        public Dictionary<string, object>? ListensFor { get; set; }
+        public Dictionary<string, IntentMetadata>? ListensFor { get; set; }
 
         /// <summary>
         /// A mapping of Intent names that an app raises (via fdc3.raiseIntent)
@@ -38,6 +38,6 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// help find apps that will interoperate with this app and to document API
         /// interactions for use by other app developers.
         /// </summary>
-        public Dictionary<string, object>? Raises { get; set; }
+        public Dictionary<string, IEnumerable<string>>? Raises { get; set; }
     }
 }

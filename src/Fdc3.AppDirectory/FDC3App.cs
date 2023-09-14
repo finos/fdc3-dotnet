@@ -63,9 +63,10 @@ namespace MorganStanley.Fdc3.AppDirectory
         public AppType? Type { get; set; }
 
         /// <summary>
-        /// <see cref="IAppDetails"/>
+        /// The type specific launch details of the application. These details are intended to be vendor-agnostic
+        /// and MAY be duplicated or overridden by details provided in the hostManifests object for a specific host.
         /// </summary>
-        public IAppDetails? Details { get; set; }
+        public object? Details { get; set; }
 
         /// <summary>
         /// Version of the application. This allows multiple app versions to be defined using the same app name.
@@ -156,5 +157,18 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// The keys to this object should be language tags as defined by IETF RFC 5646, e.g. en, en-GB or fr-FR.
         /// </summary>
         public Dictionary<string, LocalizedVersion>? LocalizedVersions { get; set; }
+    }
+
+    /// <summary>
+    /// Generic implementation of <see cref="Fdc3App"/>
+    /// </summary>
+    /// <typeparam name="TDetails"></typeparam>
+    public class Fdc3App<TDetails> : Fdc3App where TDetails : class
+    {
+        public new TDetails? Details
+        {
+            get => base.Details as TDetails;
+            set => base.Details = value;
+        }
     }
 }

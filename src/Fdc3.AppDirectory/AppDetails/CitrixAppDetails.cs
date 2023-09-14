@@ -15,10 +15,9 @@
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// Implementatin of <see cref="IAppDetails"/>
     /// App virtualized via Citrix.
     /// </summary>
-    public class CitrixAppDetails : IAppDetails
+    public class CitrixAppDetails
     {
         public string? Alias { get; set; }
         public string? Arguments { get; set; }

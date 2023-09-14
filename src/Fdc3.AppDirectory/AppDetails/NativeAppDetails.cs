@@ -15,10 +15,9 @@
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// Implementatin of <see cref="IAppDetails"/>
     /// Native application pre-installed on a device and launch via a filesystem path.
     /// </summary>
-    public class NativeAppDetails : IAppDetails
+    public class NativeAppDetails
     {
         /// <summary>
         /// The path on disk from which the application is launched.

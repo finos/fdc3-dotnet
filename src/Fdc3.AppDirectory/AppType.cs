@@ -19,10 +19,10 @@ namespace MorganStanley.Fdc3.AppDirectory
     /// </summary>
     public enum AppType
     {
+        Other,
         Web,
         Native,
         Citrix,
-        OnlineNative,
-        Other
+        OnlineNative
     }
 }

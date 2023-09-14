@@ -61,7 +61,11 @@ namespace MorganStanley.Fdc3.AppDirectory.Tests
             Assert.Contains("Web App Manifest", app.HostManifests.Keys);
             Assert.Contains("ViewChart", app.Interop!.Intents!.ListensFor!.Keys);
             Assert.Contains("myApp.GetPrice", app.Interop.Intents.ListensFor.Keys);
+            Assert.Contains("fdc3.instrument", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Contexts!);
+            Assert.Equal("Get Price", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].DisplayName);
+            Assert.Equal("myApp.quote", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].ResultType);
             Assert.Contains("ViewOrders", app.Interop.Intents.Raises!.Keys);
+            Assert.Contains("fdc3.instrument", app.Interop.Intents.Raises!["ViewOrders"]);
             Assert.Contains("StartEmail", app.Interop.Intents.Raises.Keys);
             Assert.Equal(2, app.Interop.UserChannels!.Broadcasts!.Count()!);
             Assert.Equal(2, app.Interop.UserChannels!.ListensFor!.Count()!);
