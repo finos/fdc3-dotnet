@@ -20,54 +20,43 @@ using System;
 
 namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
 {
-    public class Fdc3AppConverter : JsonConverter<Fdc3App>
+    public class Fdc3AppConverter : JsonConverter
     {
-        public override Fdc3App? ReadJson(JsonReader reader, Type objectType, Fdc3App? existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             var jsonObject = JObject.Load(reader);
 
-            var appType = ParseAppType(jsonObject["type"]?.ToString());
-
+            if (Enum.TryParse(jsonObject["type"]?.ToString(), true, out AppType appType))
+            {
                 switch (appType)
                 {
                     case AppType.Web:
-                        return JsonConvert.DeserializeObject<Fdc3App<WebAppDetails>>(jsonObject.ToString());
+                        return serializer.Deserialize<Fdc3App<WebAppDetails>>(jsonObject.CreateReader());
                     case AppType.Citrix:
-                        return JsonConvert.DeserializeObject<Fdc3App<CitrixAppDetails>>(jsonObject.ToString());
-                     case AppType.Native:
-                        return JsonConvert.DeserializeObject<Fdc3App<NativeAppDetails>>(jsonObject.ToString());
+                        return serializer.Deserialize<Fdc3App<CitrixAppDetails>>(jsonObject.CreateReader());
+                    case AppType.Native:
+                        return serializer.Deserialize<Fdc3App<NativeAppDetails>>(jsonObject.CreateReader());
                     case AppType.OnlineNative:
-                        return JsonConvert.DeserializeObject<Fdc3App<OnlineNativeAppDetails>>(jsonObject.ToString());
-                    default:
-                        var app = new Fdc3App();
-                        app.Type = appType;
-                        serializer.Populate(jsonObject.CreateReader(), app);
-                        return app;
+                        return serializer.Deserialize<Fdc3App<OnlineNativeAppDetails>>(jsonObject.CreateReader());
+                    case AppType.Other:
+                        return serializer.Deserialize<Fdc3App<object>>(jsonObject.CreateReader());
+                }
             }
+
+            throw new InvalidOperationException("Unknown AppType. Possible values are: web, native, citrix, onlineNative, other");
         }
 
-        public override void WriteJson(JsonWriter writer, Fdc3App? value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(Fdc3App);
+        }
+
         public override bool CanRead => true;
         public override bool CanWrite => false;
-
-        private AppType ParseAppType(string? type)
-        {
-            if (type != null)
-            {
-                foreach (AppType appType in Enum.GetValues(typeof(AppType))) 
-                {
-                    if (string.Equals(type, appType.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        return appType;
-                    }
-                }
-            }
-
-            return AppType.Other;
-        }
     }
 }

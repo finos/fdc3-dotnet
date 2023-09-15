@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 
 namespace MorganStanley.Fdc3.AppDirectory
@@ -25,9 +26,18 @@ namespace MorganStanley.Fdc3.AppDirectory
     public class AppChannel
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AppChannel"/> class.
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <exception cref="ArgumentNullException">Exception if name is null</exception>
+        public AppChannel(string name)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+        }
+        /// <summary>
         /// The name of the App Channel.
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// A description of how the channel is used.

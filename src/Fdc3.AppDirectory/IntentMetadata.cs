@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 
 namespace MorganStanley.Fdc3.AppDirectory
@@ -21,10 +22,18 @@ namespace MorganStanley.Fdc3.AppDirectory
     /// </summary>
     public class IntentMetadata : IIntentMetadata
     {
-        public IntentMetadata(string name, string displayName) 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntentMetadata"/> class.
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="displayName">The displayName</param>
+        /// <param name="contexts">The contexts</param>
+        /// <exception cref="ArgumentNullException">Exception contexts is null</exception>
+        public IntentMetadata(string name, string displayName, IEnumerable<string> contexts) 
         {
             Name = name;
             DisplayName = displayName;
+            Contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
         }
 
         /// <summary>
@@ -42,7 +51,7 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// can process, where the first part of the context type is the namespace e.g."fdc3.contact,
         /// org.symphony.contact"
         /// </summary>
-        public IEnumerable<string>? Contexts { get; set; }
+        public IEnumerable<string> Contexts { get; set; }
 
         /// <summary>
         /// An optional type for output returned by the application, if any, when resolving this intent.

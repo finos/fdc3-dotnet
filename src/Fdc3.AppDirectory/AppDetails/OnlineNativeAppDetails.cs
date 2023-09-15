@@ -12,6 +12,8 @@
  * and limitations under the License.
  */
 
+using System;
+
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
@@ -20,8 +22,17 @@ namespace MorganStanley.Fdc3.AppDirectory
     public class OnlineNativeAppDetails
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="OnlineNativeAppDetails"/> class.
+        /// </summary>
+        /// <param name="url">The url</param>
+        /// <exception cref="ArgumentNullException">Exception if the url is null</exception>
+        public OnlineNativeAppDetails(string url)
+        {
+            Url = url ?? throw new ArgumentNullException(nameof(url));
+        }
+        /// <summary>
         /// Application URL.
         /// </summary>
-        public string? Url { get; set; }
+        public string Url { get; set; }
     }
 }

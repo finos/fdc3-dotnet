@@ -33,6 +33,6 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// </summary>
         /// <param name="appId">Application identifier</param>
         /// <returns>The application</returns>
-        Task<Fdc3App> GetApp(string appId);
+        Task<Fdc3App?> GetApp(string appId);
     }
 }

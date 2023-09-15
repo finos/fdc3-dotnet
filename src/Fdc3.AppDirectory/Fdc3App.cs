@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System;
 using System.Collections.Generic;
 
 namespace MorganStanley.Fdc3.AppDirectory
@@ -24,10 +25,17 @@ namespace MorganStanley.Fdc3.AppDirectory
     /// </summary>
     public class Fdc3App
     {
+        public Fdc3App(string appId, string name, AppType type, object details)
+        {
+            AppId = appId ?? throw new ArgumentNullException(nameof(appId));
+            Name = name ?? throw new ArgumentNullException( nameof(name));
+            Type = type;
+            Details = details ?? throw new ArgumentNullException(nameof(details));
+        }
         /// <summary>
         /// The unique application identifier located within a specific application directory instance.
         /// </summary>
-        public string? AppId { get; set; }
+        public string AppId { get; set; }
 
         /// <summary>
         /// The name of the application. The name should be unique within an FDC3 App Directory instance.
@@ -35,7 +43,7 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// for multiple versions of the same app. The same appName could occur in other directories.
         /// We are not currently specifying app name conventions in the document.
         /// </summary>
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// The technology type that is used to launch and run the application.
@@ -60,13 +68,13 @@ namespace MorganStanley.Fdc3.AppDirectory
         /// </list>
         /// FDC3 Desktop Agents MUST support at least the web application type and MAY support any or all of the other types.
         /// </summary>
-        public AppType? Type { get; set; }
+        public AppType Type { get; set; }
 
         /// <summary>
         /// The type specific launch details of the application. These details are intended to be vendor-agnostic
         /// and MAY be duplicated or overridden by details provided in the hostManifests object for a specific host.
         /// </summary>
-        public object? Details { get; set; }
+        public object Details { get; set; }
 
         /// <summary>
         /// Version of the application. This allows multiple app versions to be defined using the same app name.
@@ -160,14 +168,26 @@ namespace MorganStanley.Fdc3.AppDirectory
     }
 
     /// <summary>
-    /// Generic implementation of <see cref="Fdc3App"/>
+    /// Represents an FDC3 application with specific details of type <typeparamref name="TDetails"/>.
     /// </summary>
-    /// <typeparam name="TDetails"></typeparam>
+    /// <typeparam name="TDetails">The type of application details.</typeparam>
     public class Fdc3App<TDetails> : Fdc3App where TDetails : class
     {
-        public new TDetails? Details
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Fdc3App{TDetails}"/> class.
+        /// </summary>
+        /// <param name="appId">The application ID.</param>
+        /// <param name="name">The application name.</param>
+        /// <param name="type">The application type.</param>
+        /// <param name="details">The application details of type <typeparamref name="TDetails"/>.</param>
+        public Fdc3App(string appId, string name, AppType type, TDetails details) : base(appId, name, type, details)
         {
-            get => base.Details as TDetails;
+        }
+
+        /// <inheritdoc cref="Fdc3App.Details"/>
+        public new TDetails Details
+        {
+            get => base.Details as TDetails ?? throw new InvalidCastException($"Cannot cast base.Details to {typeof(TDetails)}");
             set => base.Details = value;
         }
     }

@@ -12,6 +12,8 @@
  * and limitations under the License.
  */
 
+using System;
+
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
@@ -20,8 +22,19 @@ namespace MorganStanley.Fdc3.AppDirectory
     public class WebAppDetails
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="WebAppDetails"/> class.
+        /// </summary>
+        /// <param name="url">The url</param>
+        /// <exception cref="ArgumentNullException">Exception if the url is null</exception>
+        public WebAppDetails(string url) 
+        {
+            Url = url ?? throw new ArgumentNullException(nameof(url));
+        }
+
+        /// <summary>
+        /// <summary>
         /// Application start URL.
         /// </summary>
-        public string? Url { get; set; }
+        public string Url { get; set; }
     }
 }
