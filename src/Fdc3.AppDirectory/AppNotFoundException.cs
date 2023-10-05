@@ -12,28 +12,20 @@
  * and limitations under the License.
  */
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace MorganStanley.Fdc3.AppDirectory
 {
     /// <summary>
-    /// Interface definition for the AppDirectory.
+    /// The exception that is thrown by <see cref="IAppDirectory.GetApp"/> when the app is not found.
     /// </summary>
-    public interface IAppDirectory
+    public class AppNotFoundException : AppDirectoryException
     {
-        /// <summary>
-        /// Returns a list of all applications from the AppDirectory.
-        /// </summary>
-        /// <returns>List of applications.</returns>
-        Task<IEnumerable<Fdc3App>> GetApps();
+        public AppNotFoundException(string appId) : base($"The app with id '{appId}' was not found in the App Directory")
+        {
+        }
 
-        /// <summary>
-        /// Returns an application by appId from the AppDirectory.
-        /// </summary>
-        /// <param name="appId">Application identifier</param>
-        /// <returns>The application</returns>
-        /// <exception cref="AppNotFoundException">The app was not found</exception>
-        Task<Fdc3App> GetApp(string appId);
+        public AppNotFoundException() : base("The app was not found in the App Directory") { }
+        protected AppNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
