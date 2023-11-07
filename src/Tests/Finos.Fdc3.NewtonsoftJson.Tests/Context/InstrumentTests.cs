@@ -38,7 +38,16 @@ public class InstrumentTests : ContextSchemaTest
                 RIC = "RIC",
                 SEDOL = "SEDOL",
                 Ticker = "TICKER"
-            }, "Instrument");
+            }, "Instrument")
+        {
+            Market = new MarketSource
+            {
+                BBG = "BBG",
+                COUNTRY_ISOALPHA2 = "COUNTRY_ISOALPHA2",
+                MIC = "MIC",
+                Name = "Name"
+            }
+        };
 
         await this.ValidateSchema(instrument);
     }
