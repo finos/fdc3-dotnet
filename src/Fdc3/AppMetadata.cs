@@ -24,7 +24,7 @@ namespace MorganStanley.Fdc3
     public class AppMetadata : AppIdentifier, IAppMetadata
     {
         public AppMetadata(string appId, string? instanceId = null, string? name = null, string? version = null, string? title = null,
-            string? tooltip = null, string? description = null, IEnumerable<IIcon>? icons = null, IEnumerable<IImage>? images = null,
+            string? tooltip = null, string? description = null, IEnumerable<IIcon>? icons = null, IEnumerable<IImage>? screenshots = null,
             string? resultType = null)
             : base(appId, instanceId)
         {
@@ -34,7 +34,7 @@ namespace MorganStanley.Fdc3
             this.Tooltip = tooltip;
             this.Description = description;
             this.Icons = icons ?? Enumerable.Empty<IIcon>();
-            this.Screenshots = images ?? Enumerable.Empty<IImage>();
+            this.Screenshots = screenshots ?? Enumerable.Empty<IImage>();
             this.ResultType = resultType;
         }
 
