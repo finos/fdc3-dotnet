@@ -14,4 +14,25 @@
    <sha1>ec9ad28356158b425a7f32919bb5bad854ec0497</sha1>
    <cve>CVE-2022-25921</cve>
 </suppress>
+<suppress>
+   <notes><![CDATA[
+   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   ]]></notes>
+   <sha1>ab20542dabf29dcb95f00a3e121a0ba6520fa587</sha1>
+   <cpe>cpe:/a:json_project:json</cpe>
+</suppress>
+<suppress>
+   <notes><![CDATA[
+   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   ]]></notes>
+   <sha1>ab20542dabf29dcb95f00a3e121a0ba6520fa587</sha1>
+   <cpe>cpe:/a:morgan-json_project:morgan-json</cpe>
+</suppress>
+<suppress>
+   <notes><![CDATA[
+   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   ]]></notes>
+   <sha1>ab20542dabf29dcb95f00a3e121a0ba6520fa587</sha1>
+   <cpe>cpe:/a:morgan_project:morgan</cpe>
+</suppress>
 </suppressions>
