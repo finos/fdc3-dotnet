@@ -1,0 +1,24 @@
+name: License Scanning
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  dotnet-modules-scan:
+    name: dotnet-scan
+    runs-on: ubuntu-latest
+    continue-on-error: false
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build project with dotnet
+        run: dotnet build --configuration Release
+        working-directory: 'src'
+      - name: Install dotnet-project-license
+        run: dotnet tool install --global dotnet-project-licenses --version 2.7.1
+        working-directory: 'src'
+      - name: run dotnet-project-licenses
+        run: dotnet-project-licenses -i . --allowed-license-types ../.license/allowed-licenses.json
+        working-directory: 'src'
