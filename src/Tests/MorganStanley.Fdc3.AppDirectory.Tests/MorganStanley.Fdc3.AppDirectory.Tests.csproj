@@ -35,6 +35,7 @@
     <ProjectReference Include="..\..\Fdc3.NewtonsoftJson\MorganStanley.Fdc3.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Fdc3.AppDirectory\MorganStanley.Fdc3.AppDirectory.csproj" />
     <ProjectReference Include="..\..\Fdc3.NewtonsoftJson\MorganStanley.Fdc3.NewtonsoftJson.csproj" />
+    <ProjectReference Include="..\..\MorganStanley.Fdc3.Json\MorganStanley.Fdc3.Json.csproj" />
   </ItemGroup>
 
 </Project>

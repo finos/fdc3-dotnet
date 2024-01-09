@@ -21,7 +21,7 @@ using System.Reflection;
 
 namespace MorganStanley.Fdc3.NewtonsoftJson.Tests.Context;
 
-public abstract partial class ContextSchemaTest
+public abstract class ContextSchemaTest
 {
     protected JSchema? Schema { get; private set; }
     protected string SchemaUrl { get; private set; }

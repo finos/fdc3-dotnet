@@ -5,7 +5,7 @@
     "description": "An example application that uses FDC3 and fully describes itself in an AppD record.",
     "categories": [ "market data", "research", "news" ],
     "version": "1.0.0",
-    "tooltip": "My example application definition",
+    "toolTip": "My example application definition",
     "lang": "en-US",
     "icons": [
         {
@@ -32,7 +32,7 @@
     "supportEmail": "fdc3-maintainers@finos.org",
     "moreInfo": "http://example.domain.com/",
     "publisher": "Example App, Inc.",
-    "type": "web",
+    "type": "Web",
     "details": { "url": "http://example.domain.com/app.html" },
     "hostManifests": {
         "Finsemble": {
