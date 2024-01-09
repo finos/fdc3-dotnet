@@ -32,7 +32,7 @@
     "supportEmail": "fdc3-maintainers@finos.org",
     "moreInfo": "http://example.domain.com/",
     "publisher": "Example App, Inc.",
-    "type": "Web",
+    "type": "web",
     "details": { "url": "http://example.domain.com/app.html" },
     "hostManifests": {
         "Finsemble": {
