@@ -53,7 +53,7 @@ namespace MorganStanley.Fdc3.Json.Serialization
                 return null;
             }
 
-            return JsonSerializer.Deserialize(ref reader, targetType, Fdc3JsonSerializerOptions.CreateWithoutCustomConverters()) as IRecipient;
+            return JsonSerializer.Deserialize(ref reader, targetType, options) as IRecipient;
         }
 
         public override void Write(Utf8JsonWriter writer, IRecipient value, JsonSerializerOptions options)

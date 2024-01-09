@@ -21,22 +21,15 @@ namespace MorganStanley.Fdc3.Json.Serialization
     {
         public static JsonSerializerOptions Create()
         {
-            var options = CreateWithoutCustomConverters();
-            options.Converters.Add(new Fdc3AppConverter());
-            options.Converters.Add(new RecipientJsonConverter());
-
-            return options;
-        }
-
-        internal static JsonSerializerOptions CreateWithoutCustomConverters()
-        {
             return new JsonSerializerOptions
             {
                 ReferenceHandler = ReferenceHandler.IgnoreCycles,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 Converters =
                 {
-                   new JsonStringEnumConverter(new Fdc3CamelCaseNamingPolicy())
+                   new JsonStringEnumConverter(new Fdc3CamelCaseNamingPolicy()),
+                   new Fdc3AppConverter(),
+                   new RecipientJsonConverter()
                 },
                 PropertyNamingPolicy = new Fdc3CamelCaseNamingPolicy()
             };
