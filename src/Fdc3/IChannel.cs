@@ -15,9 +15,9 @@
 using System;
 using System.Threading.Tasks;
 
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Object representing a context channel.

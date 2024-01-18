@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Identifies an application, or instance of an application, and is used to target FDC3 API calls,

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// Describes the application's use of context types on User Channels.

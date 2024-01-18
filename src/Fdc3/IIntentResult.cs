@@ -12,9 +12,9 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
 #pragma warning disable CA1040
     /// <summary>

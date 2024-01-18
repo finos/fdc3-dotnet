@@ -2,31 +2,31 @@
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
 <suppress>
    <notes><![CDATA[
-   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   file name: Finos.Fdc3.NewtonsoftJson.Tests.csproj
    ]]></notes>
    <cve>CVE-2022-25921</cve>
 </suppress>
 <suppress>
    <notes><![CDATA[
-   file name: MorganStanley.Fdc3.NewtonsoftJson.csproj
+   file name: Finos.Fdc3.NewtonsoftJson.csproj
    ]]></notes>
    <cve>CVE-2022-25921</cve>
 </suppress>
 <suppress>
    <notes><![CDATA[
-   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   file name: Finos.Fdc3.NewtonsoftJson.Tests.csproj
    ]]></notes>
    <cpe>cpe:/a:json_project:json</cpe>
 </suppress>
 <suppress>
    <notes><![CDATA[
-   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   file name: Finos.Fdc3.NewtonsoftJson.Tests.csproj
    ]]></notes>
    <cpe>cpe:/a:morgan-json_project:morgan-json</cpe>
 </suppress>
 <suppress>
    <notes><![CDATA[
-   file name: MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj
+   file name: Finos.Fdc3.NewtonsoftJson.Tests.csproj
    ]]></notes>
    <cpe>cpe:/a:morgan_project:morgan</cpe>
 </suppress>

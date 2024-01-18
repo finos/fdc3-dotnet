@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Metadata relating to the FDC3 Desktop Agent implementation and its provider.

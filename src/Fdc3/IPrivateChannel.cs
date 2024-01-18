@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Object representing a private context channel, which is intended to support

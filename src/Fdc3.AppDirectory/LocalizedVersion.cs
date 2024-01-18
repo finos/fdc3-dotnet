@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     public class LocalizedVersion
     {

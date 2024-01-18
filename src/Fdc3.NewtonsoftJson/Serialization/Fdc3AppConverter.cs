@@ -12,13 +12,13 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.AppDirectory;
+using Finos.Fdc3.AppDirectory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 
 
-namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
+namespace Finos.Fdc3.NewtonsoftJson.Serialization
 {
     public class Fdc3AppConverter : JsonConverter
     {

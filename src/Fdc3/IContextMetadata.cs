@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     ///  Metadata relating to a context or intent and context received through the `AddContextListener` and `AddIntentListener` functions.

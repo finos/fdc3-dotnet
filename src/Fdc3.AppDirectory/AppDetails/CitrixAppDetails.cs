@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// App virtualized via Citrix.

@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+namespace Finos.Fdc3.Context
 {
 #pragma warning disable CA1040
     public interface IRecipient

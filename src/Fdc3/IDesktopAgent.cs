@@ -16,9 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// A Desktop Agent is a desktop component (or aggregate of components) that serves as a
