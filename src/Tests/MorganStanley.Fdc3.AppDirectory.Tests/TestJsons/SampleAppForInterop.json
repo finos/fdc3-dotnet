@@ -5,7 +5,7 @@
     "description": "An example application that uses FDC3 and fully describes itself in an AppD record.",
     "categories": [ "market data", "research", "news" ],
     "version": "1.0.0",
-    "tooltip": "My example application definition",
+    "toolTip": "My example application definition",
     "lang": "en-US",
     "icons": [
         {
