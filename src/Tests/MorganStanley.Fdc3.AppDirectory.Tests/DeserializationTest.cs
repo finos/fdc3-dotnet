@@ -13,22 +13,12 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.NewtonsoftJson.Serialization;
-using Newtonsoft.Json;
-
 namespace MorganStanley.Fdc3.AppDirectory.Tests
 {
-    public class DeserializationTest
+    public partial class DeserializationTest
     {
-        [Fact]
-        public void AppDAppDeserializationTest()
+        protected void ValidateApp(Fdc3App app)
         {
-            string jsonString = File.ReadAllText("TestJsons\\SampleAppForInterop.json");
-
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-            Fdc3App app = JsonConvert.DeserializeObject<Fdc3App>(jsonString, new Fdc3JsonSerializerSettings());
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-
             Assert.Equal("my-application", app!.AppId);
             Assert.Equal("my-application", app.Name);
             Assert.Equal("My Application", app.Title);
@@ -76,7 +66,6 @@ namespace MorganStanley.Fdc3.AppDirectory.Tests
             Assert.Contains("myApp.quote", app.Interop.AppChannels!.First().Broadcasts!);
             Assert.Contains("fdc3.instrument", app.Interop.AppChannels!.First().ListensFor!);
             Assert.Contains("fr-FR", app.LocalizedVersions!.Keys);
-
         }
     }
 }
