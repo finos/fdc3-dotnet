@@ -16,7 +16,6 @@ fdc3-dotnet
 ===========
 
 [![FINOS - Incubating](https://cdn.jsdelivr.net/gh/finos/contrib-toolbox@master/images/badge-incubating.svg)](https://community.finos.org/docs/governance/Software-Projects/stages/incubating)
-![Lifecycle Incubating](https://badgen.net/badge/Lifecycle/Incubating/yellow)
 [![CI](https://github.com/morganstanley/fdc3-dotnet/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/morganstanley/fdc3-dotnet/actions/workflows/continuous-integration.yml)
 
 .NET Standard 2.0 declarations to implement concrete [FDC3](https://fdc3.finos.org/) compatible .NET desktop agents and usage of intents/context.
