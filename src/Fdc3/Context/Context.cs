@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3.Context
+namespace Finos.Fdc3.Context
 {
     public class Context<T> : IContext<T> where T : class
     {

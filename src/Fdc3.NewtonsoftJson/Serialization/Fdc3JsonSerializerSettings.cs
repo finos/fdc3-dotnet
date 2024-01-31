@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
+namespace Finos.Fdc3.NewtonsoftJson.Serialization
 {
     public class Fdc3JsonSerializerSettings : JsonSerializerSettings
     {

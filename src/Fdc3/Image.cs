@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     public class Image : IImage
     {

@@ -12,8 +12,8 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3;
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3;
+using Finos.Fdc3.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;

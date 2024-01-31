@@ -15,7 +15,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MorganStanley.Fdc3.Context
+namespace Finos.Fdc3.Context
 {
     public class ContactList : Context, IRecipient
     {

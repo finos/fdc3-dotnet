@@ -13,9 +13,9 @@
  */
 
 using System.Threading.Tasks;
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     public delegate Task<IIntentResult> IntentHandler<T>(T context, IContextMetadata? metadata = null) where T : IContext;
 }

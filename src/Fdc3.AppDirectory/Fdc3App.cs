@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// Defines an application retrieved from an FDC3 App Directory, which can then be launched.

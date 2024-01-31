@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3.Context
+namespace Finos.Fdc3.Context
 {
     public class Instrument : Context<InstrumentID>, IContext
     {

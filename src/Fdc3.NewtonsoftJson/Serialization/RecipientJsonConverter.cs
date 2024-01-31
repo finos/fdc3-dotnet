@@ -12,12 +12,12 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace MorganStanley.Fdc3.NewtonsoftJson.Serialization
+namespace Finos.Fdc3.NewtonsoftJson.Serialization
 {
     public class RecipientJsonConverter : JsonConverter
     {

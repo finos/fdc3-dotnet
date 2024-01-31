@@ -14,7 +14,7 @@
 
 using System.Runtime.Serialization;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// The exception that is thrown by <see cref="IAppDirectory.GetApp"/> when the app is not found.

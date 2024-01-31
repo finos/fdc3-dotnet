@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// App definition as provided by the application directory.

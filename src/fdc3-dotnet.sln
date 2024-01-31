@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3", "Fdc3\MorganStanley.Fdc3.csproj", "{A5287688-A951-415B-A4B0-C7845C1CD6CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3", "Fdc3\Finos.Fdc3.csproj", "{A5287688-A951-415B-A4B0-C7845C1CD6CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A674A89-5D6A-4198-9D26-828FCC8F692D}"
 	ProjectSection(SolutionItems) = preProject
@@ -34,21 +34,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		..\.github\workflows\scorecards.yml = ..\.github\workflows\scorecards.yml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.Tests", "Tests\MorganStanley.Fdc3.Tests\MorganStanley.Fdc3.Tests.csproj", "{D932070B-937D-440F-9D79-B51C8F850E9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.Tests", "Tests\Finos.Fdc3.Tests\Finos.Fdc3.Tests.csproj", "{D932070B-937D-440F-9D79-B51C8F850E9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.NewtonsoftJson", "Fdc3.NewtonsoftJson\MorganStanley.Fdc3.NewtonsoftJson.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.NewtonsoftJson", "Fdc3.NewtonsoftJson\Finos.Fdc3.NewtonsoftJson.csproj", "{ED9F79A1-05F9-4324-8F5F-AE3C418C813E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.NewtonsoftJson.Tests", "Tests\MorganStanley.Fdc3.NewtonsoftJson.Tests\MorganStanley.Fdc3.NewtonsoftJson.Tests.csproj", "{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.NewtonsoftJson.Tests", "Tests\Finos.Fdc3.NewtonsoftJson.Tests\Finos.Fdc3.NewtonsoftJson.Tests.csproj", "{A4FC0A7A-AD7D-4FDD-8143-46A63A65C96E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfFdc3", "Examples\WpfFdc3\WpfFdc3.csproj", "{06AD2640-C708-4C01-BF02-82D824CB09C1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.AppDirectory", "Fdc3.AppDirectory\MorganStanley.Fdc3.AppDirectory.csproj", "{C741FC63-8954-473D-862A-F7F5AFE11E60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.AppDirectory", "Fdc3.AppDirectory\Finos.Fdc3.AppDirectory.csproj", "{C741FC63-8954-473D-862A-F7F5AFE11E60}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MorganStanley.Fdc3.AppDirectory.Tests", "Tests\MorganStanley.Fdc3.AppDirectory.Tests\MorganStanley.Fdc3.AppDirectory.Tests.csproj", "{88BF9BA6-2934-4904-8952-DB733E4CBD48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.AppDirectory.Tests", "Tests\Finos.Fdc3.AppDirectory.Tests\Finos.Fdc3.AppDirectory.Tests.csproj", "{88BF9BA6-2934-4904-8952-DB733E4CBD48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorganStanley.Fdc3.Json", "MorganStanley.Fdc3.Json\MorganStanley.Fdc3.Json.csproj", "{9B855057-CCD6-4A5D-BF47-0D843F5D18E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finos.Fdc3.Json", "Fdc3.Json\Finos.Fdc3.Json.csproj", "{9B855057-CCD6-4A5D-BF47-0D843F5D18E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorganStanley.Fdc3.SystemTextJson.Tests", "Tests\MorganStanley.Fdc3.SystemTextJson.Tests\MorganStanley.Fdc3.SystemTextJson.Tests.csproj", "{54E6B0C9-176A-43CC-9D1E-D37C22349F0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finos.Fdc3.SystemTextJson.Tests", "Tests\Finos.Fdc3.SystemTextJson.Tests\Finos.Fdc3.SystemTextJson.Tests.csproj", "{54E6B0C9-176A-43CC-9D1E-D37C22349F0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

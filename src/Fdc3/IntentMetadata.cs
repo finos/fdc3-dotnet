@@ -14,7 +14,7 @@
 
 using System;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Describes an Intent within the platform.

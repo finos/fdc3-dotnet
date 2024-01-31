@@ -14,7 +14,7 @@
 
 using System.Threading.Tasks;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// Standard format for data returned upon resolving an intent.

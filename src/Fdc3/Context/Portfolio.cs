@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3.Context
+namespace Finos.Fdc3.Context
 {
     public class Portfolio : Context
     {

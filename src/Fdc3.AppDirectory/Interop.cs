@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// Metadata that describes how the application uses FDC3 APIs. This metadata serves multiple purposes:

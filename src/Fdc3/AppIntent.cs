@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     public class AppIntent : IAppIntent
     {

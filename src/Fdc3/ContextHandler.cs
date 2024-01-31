@@ -12,9 +12,9 @@
  * and limitations under the License.
  */
 
-using MorganStanley.Fdc3.Context;
+using Finos.Fdc3.Context;
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     public delegate void ContextHandler<T>(T context, IContextMetadata? metadata = null) where T : IContext;
 }

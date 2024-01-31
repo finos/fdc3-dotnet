@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// Implementation of <see cref="IIntentMetadata"/>

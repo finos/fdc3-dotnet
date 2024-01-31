@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     /// <summary>
     /// A system channel will be global enough to have a presence across many apps.  This gives us some hints to render

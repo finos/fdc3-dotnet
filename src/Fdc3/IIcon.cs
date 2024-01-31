@@ -12,7 +12,7 @@
  * and limitations under the License.
  */
 
-namespace MorganStanley.Fdc3
+namespace Finos.Fdc3
 {
     public interface IIcon
     {

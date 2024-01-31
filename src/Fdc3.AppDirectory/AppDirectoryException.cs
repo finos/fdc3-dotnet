@@ -15,7 +15,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MorganStanley.Fdc3.AppDirectory
+namespace Finos.Fdc3.AppDirectory
 {
     /// <summary>
     /// Base class for exceptions thrown by <see cref="IAppDirectory"/> implementations
