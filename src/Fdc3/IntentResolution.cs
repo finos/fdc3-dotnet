@@ -44,6 +44,6 @@ namespace Finos.Fdc3
         /// </summary>
         public string? Version { get; }
 
-        public abstract Task<IIntentResult> GetResult();
+        public abstract Task<IIntentResult?> GetResult();
     }
 }
