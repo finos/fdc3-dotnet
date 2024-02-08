@@ -55,7 +55,7 @@ public class IntentResolutionTests
         {
         }
 
-        public override Task<IIntentResult> GetResult()
+        public override Task<IIntentResult?> GetResult()
         {
             throw new NotImplementedException();
         }
