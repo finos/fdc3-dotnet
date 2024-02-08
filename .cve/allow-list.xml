@@ -30,4 +30,11 @@
    ]]></notes>
    <cpe>cpe:/a:morgan_project:morgan</cpe>
 </suppress>
+<suppress>
+   <notes><![CDATA[
+   file name: Newtonsoft.Json.Schema.dll
+   ]]></notes>
+   <packageUrl regex="true">^pkg:generic/Newtonsoft\.Json\.Schema@.*$</packageUrl>
+   <cve>CVE-2024-21907</cve>
+</suppress>
 </suppressions>
