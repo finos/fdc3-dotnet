@@ -47,7 +47,7 @@ jobs:
         dotnet pack src/Fdc3.AppDirectory/Finos.Fdc3.AppDirectory.csproj --no-build --configuration Release --output packages
 
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: package
         path: packages/*.nupkg
