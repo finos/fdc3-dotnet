@@ -1,9 +1,13 @@
 ﻿<Project>
 	<PropertyGroup>
-		<Company>Morgan Stanley</Company>
+        <VersionPrefix>2.0.0</VersionPrefix>
+        <VersionSuffix></VersionSuffix>
+        <Company>Morgan Stanley</Company>
 		<Authors>Morgan Stanley</Authors>
 		<Copyright>Copyright 2023 Morgan Stanley</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<NeutralLanguage>en-US</NeutralLanguage>
+        <RepositoryUrl>https://github.com/finos/fdc3-dotnet</RepositoryUrl>
+        <PackageTags>FDC3</PackageTags>
 	</PropertyGroup>
 </Project>
