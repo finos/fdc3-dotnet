@@ -54,4 +54,4 @@ jobs:
         if-no-files-found: error
 
     - name: Codecov
-      uses: codecov/codecov-action@v3.1.4
+      uses: codecov/codecov-action@v4.1.1
