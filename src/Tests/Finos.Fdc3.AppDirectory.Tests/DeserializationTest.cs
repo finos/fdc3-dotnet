@@ -54,6 +54,8 @@ namespace Finos.Fdc3.AppDirectory.Tests
             Assert.Contains("fdc3.instrument", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Contexts!);
             Assert.Equal("Get Price", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].DisplayName);
             Assert.Equal("myApp.quote", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].ResultType);
+            Assert.Equal("ViewChart", app.Interop!.Intents!.ListensFor!["ViewChart"].Name);
+            Assert.Equal("myApp.GetPrice", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Name);
             Assert.Contains("ViewOrders", app.Interop.Intents.Raises!.Keys);
             Assert.Contains("fdc3.instrument", app.Interop.Intents.Raises!["ViewOrders"]);
             Assert.Contains("StartEmail", app.Interop.Intents.Raises.Keys);
