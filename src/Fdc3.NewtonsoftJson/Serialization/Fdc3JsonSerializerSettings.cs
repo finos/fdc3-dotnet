@@ -30,7 +30,13 @@ namespace Finos.Fdc3.NewtonsoftJson.Serialization
             {
                 NamingStrategy = new Fdc3CamelCaseNamingStrategy()
             };
-            this.Converters = new JsonConverter[] { new StringEnumConverter(new CamelCaseNamingStrategy()), new RecipientJsonConverter(), new Fdc3AppConverter() };
+            this.Converters = new JsonConverter[]
+            {
+                new StringEnumConverter(new CamelCaseNamingStrategy()), 
+                new RecipientJsonConverter(), 
+                new Fdc3AppConverter(), 
+                new IntentsConverter()
+            };
         }
     }
 }
