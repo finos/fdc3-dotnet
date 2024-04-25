@@ -21,16 +21,20 @@ namespace Finos.Fdc3.Json.Serialization
     {
         public static JsonSerializerOptions Create()
         {
+            var options = CreateWithoutConverters();
+            options.Converters.Add(new JsonStringEnumConverter(new Fdc3CamelCaseNamingPolicy()));
+            options.Converters.Add(new Fdc3AppConverter());
+            options.Converters.Add(new RecipientJsonConverter());
+            options.Converters.Add(new IntentsConverter());
+            return options;
+        }
+
+        internal static JsonSerializerOptions CreateWithoutConverters()
+        {
             return new JsonSerializerOptions
             {
                 ReferenceHandler = ReferenceHandler.IgnoreCycles,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                Converters =
-                {
-                   new JsonStringEnumConverter(new Fdc3CamelCaseNamingPolicy()),
-                   new Fdc3AppConverter(),
-                   new RecipientJsonConverter()
-                },
                 PropertyNamingPolicy = new Fdc3CamelCaseNamingPolicy()
             };
         }
