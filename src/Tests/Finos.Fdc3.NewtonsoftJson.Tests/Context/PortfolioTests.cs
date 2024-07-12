@@ -24,7 +24,7 @@ public class PortfolioTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Portfolio_SerializedJsonMatchesSchema()
+    public async Task Portfolio_SerializedJsonMatchesSchema()
     {
         Portfolio portfolio = new Portfolio(
             new Position[] { new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" })) },

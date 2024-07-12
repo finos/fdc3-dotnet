@@ -24,7 +24,7 @@ public class PositionTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Position_SerializedJsonMatchesSchema()
+    public async Task Position_SerializedJsonMatchesSchema()
     {
         Position position = new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" }), null, "position");
 

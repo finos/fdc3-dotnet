@@ -24,7 +24,7 @@ public class OrganizationTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Organization_SerializedJsonMatchesSchema()
+    public async Task Organization_SerializedJsonMatchesSchema()
     {
         Organization organization = new Organization(new OrganizationID() { FDS_ID = "fdc_id", LEI = "lei", PERMID = "permid" }, "organization");
 

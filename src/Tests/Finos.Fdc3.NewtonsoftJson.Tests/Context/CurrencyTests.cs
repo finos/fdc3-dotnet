@@ -24,7 +24,7 @@ public class CurrencyTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Currency_SerializedJsonMatchesSchema()
+    public async Task Currency_SerializedJsonMatchesSchema()
     {
         Currency currency = new Currency(new CurrencyID() { CURRENCY_ISOCODE = "AAA" }, "currency");
 

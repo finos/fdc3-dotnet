@@ -24,7 +24,7 @@ public class CountryTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Country_SerializedJsonMatchesSchema()
+    public async Task Country_SerializedJsonMatchesSchema()
     {
         Country country = new Country(new CountryID() { ISOALPHA2 = "isoalpha2", ISOALPHA3 = "isoalpha3" }, "country");
 

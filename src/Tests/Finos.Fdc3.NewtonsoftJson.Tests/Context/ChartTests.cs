@@ -24,7 +24,7 @@ public class ChartTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Chart_SerializedJsonMatchesSchema()
+    public async Task Chart_SerializedJsonMatchesSchema()
     {
         Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
         TimeRange timeRange = new TimeRange(DateTime.Now.ToString("o"), DateTime.Now.ToString("o"));
