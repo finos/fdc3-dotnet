@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ChartTests : ContextSchemaTest
 {
     public ChartTests()
-        : base("https://fdc3.finos.org/schemas/2.0/chart.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/chart.schema.json")
     {
     }
 
@@ -28,7 +28,7 @@ public class ChartTests : ContextSchemaTest
     {
         Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
         TimeRange timeRange = new TimeRange(DateTime.Now.ToString("o"), DateTime.Now.ToString("o"));
-        var otherConfig = new { A = "Foo", B = "Bar" };
+        IContext[] otherConfig = new[] { instrument };
         Chart chart = new Chart(new Instrument[] { instrument }, timeRange, otherConfig, ChartStyle.Line, null, "chart");
         await this.ValidateSchema(chart);
     }
