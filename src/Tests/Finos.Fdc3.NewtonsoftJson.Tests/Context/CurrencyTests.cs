@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class CurrencyTests : ContextSchemaTest
 {
     public CurrencyTests()
-        : base("https://fdc3.finos.org/schemas/2.0/currency.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/currency.schema.json")
     {
     }
 

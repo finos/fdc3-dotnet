@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class OrganizationTests : ContextSchemaTest
 {
     public OrganizationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/organization.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/organization.schema.json")
     {
     }
 

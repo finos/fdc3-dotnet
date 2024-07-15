@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class InstrumentTests : ContextSchemaTest
 {
     public InstrumentTests()
-        : base("https://fdc3.finos.org/schemas/2.0/instrument.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/instrument.schema.json")
     {
     }
 

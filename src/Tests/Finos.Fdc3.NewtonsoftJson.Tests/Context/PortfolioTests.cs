@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class PortfolioTests : ContextSchemaTest
 {
     public PortfolioTests()
-        : base("https://fdc3.finos.org/schemas/2.0/portfolio.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/portfolio.schema.json")
     {
     }
 
