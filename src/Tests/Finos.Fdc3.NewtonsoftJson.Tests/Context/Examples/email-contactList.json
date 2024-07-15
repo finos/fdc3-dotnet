@@ -3,8 +3,8 @@
         "contacts": [
             {
                 "id": {
-                    "email": "email",
-                    "fdsId": "fdsid"
+                    "email": "email@test.com",
+                    "FDS_ID": "fdsid"
                 },
                 "type": "fdc3.contact"
             }

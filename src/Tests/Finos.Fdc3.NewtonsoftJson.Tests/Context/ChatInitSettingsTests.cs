@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ChatInitSettingsTests : ContextSchemaTest
 {
     public ChatInitSettingsTests()
-        : base("https://fdc3.finos.org/schemas/2.0/chatInitSettings.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/chatInitSettings.schema.json")
     {
     }
 
@@ -27,10 +27,10 @@ public class ChatInitSettingsTests : ContextSchemaTest
     public async void ChatInitSettings_SerializedJsonMatchesSchema()
     {
         ChatInitSettings chatInitSettings = new ChatInitSettings(
-            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }) }),
+            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }),
             "initMessage",
             "chatName",
-            new { GroupRecipients = true, @Public = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true },
+            new { GroupRecipients = true, IsPublic = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true },
             null,
             "chatInitSettings"
            );

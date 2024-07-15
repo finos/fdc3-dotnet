@@ -23,7 +23,7 @@ public class ChatInitSettingsTests
     {
         var options = new { GroupRecipients = true, @Public = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true };
         ChatInitSettings chatInitSettings = new ChatInitSettings(
-            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email", FdsId = "fdsid" }) }),
+            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }),
             "initMessage",
             "chatName",
             options,
@@ -31,9 +31,9 @@ public class ChatInitSettingsTests
             "chatInitSettings"
            );
 
-        Assert.Same("email", chatInitSettings?.Members?.Contacts?.First<Contact>()?.ID?.Email);
+        Assert.Same("email@test.com", chatInitSettings?.Members?.Contacts?.First<Contact>()?.ID?.Email);
         Assert.Same(options, chatInitSettings?.Options);
-        Assert.Same("initMessage", chatInitSettings?.InitMessage);
+        Assert.Same("initMessage", chatInitSettings?.Message);
         Assert.Same("chatName", chatInitSettings?.ChatName);
         Assert.Same("chatInitSettings", chatInitSettings?.Name);
         Assert.Same(ContextTypes.ChatInitSettings, chatInitSettings?.Type);
