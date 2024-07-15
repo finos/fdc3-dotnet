@@ -32,7 +32,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Organization = "fdc3.organization";
         public static readonly string Portfolio = "fdc3.portfolio";
         public static readonly string Position = "fdc3.position";
-        public static readonly string TimeRange = "fdc3.timerange";
+        public static readonly string TimeRange = "fdc3.timeRange";
         public static readonly string Valuation = "fdc3.valuation";
 
         public static IDictionary<string, Type> Map = new Dictionary<string, Type>()
