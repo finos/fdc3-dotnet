@@ -19,6 +19,7 @@ namespace Finos.Fdc3.Context
 {
     public static class ContextTypes
     {
+        public static readonly string Action = "fdc3.action";
         public static readonly string Chart = "fdc3.chart";
         public static readonly string ChatInitSettings = "fdc3.chat.initSettings";
         public static readonly string Contact = "fdc3.contact";
@@ -38,6 +39,7 @@ namespace Finos.Fdc3.Context
 
         public static IDictionary<string, Type> Map = new Dictionary<string, Type>()
         {
+            {  ContextTypes.Action, typeof(Action) },
             {  ContextTypes.Chart, typeof(Chart) },
             {  ContextTypes.ChatInitSettings, typeof(ChatInitSettings) },
             {  ContextTypes.Contact, typeof(Contact) },
