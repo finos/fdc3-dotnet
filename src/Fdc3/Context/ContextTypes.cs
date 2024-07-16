@@ -33,6 +33,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Portfolio = "fdc3.portfolio";
         public static readonly string Position = "fdc3.position";
         public static readonly string TimeRange = "fdc3.timeRange";
+        public static readonly string TransactionResult = "fdc3.transactionResult";
         public static readonly string Valuation = "fdc3.valuation";
 
         public static IDictionary<string, Type> Map = new Dictionary<string, Type>()
@@ -51,6 +52,7 @@ namespace Finos.Fdc3.Context
             {  ContextTypes.Portfolio, typeof(Portfolio) },
             {  ContextTypes.Position, typeof(Position) },
             {  ContextTypes.TimeRange, typeof(TimeRange) },
+            { ContextTypes.TransactionResult, typeof(TransactionResult) },
             {  ContextTypes.Valuation, typeof(Valuation) },
         };
 
