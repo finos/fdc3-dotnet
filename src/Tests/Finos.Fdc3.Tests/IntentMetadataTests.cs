@@ -25,15 +25,16 @@ public class IntentMetadataTests
     }
 
     [Fact]
-    public void IntentMetadata_NullDisplayName_ArgumentNullException()
+    public void IntentMetadata_PropertiesMatchParamsFromCtor1()
     {
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-        Assert.Throws<ArgumentNullException>(() => new IntentMetadata("name", null));
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+        IIntentMetadata metadata = new IntentMetadata("name");
+        Assert.Same("name", metadata.Name);
+        Assert.Null(metadata.DisplayName);
     }
 
+
     [Fact]
-    public void IntentMetadata_PropertiesMatchParams()
+    public void IntentMetadata_PropertiesMatchParamsFromCtor2()
     {
         IIntentMetadata metadata = new IntentMetadata("name", "displayname");
         Assert.Same("name", metadata.Name);

@@ -12,6 +12,8 @@
  * and limitations under the License.
  */
 
+using System;
+
 namespace Finos.Fdc3
 {
     /// <summary>
@@ -27,6 +29,7 @@ namespace Finos.Fdc3
         /// <summary>
         /// A friendly display name for the intent that should be used to render UI elements.
         /// </summary>
-        string DisplayName { get; }
+        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
+        string? DisplayName { get; }
     }
 }

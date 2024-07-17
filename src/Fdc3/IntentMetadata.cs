@@ -21,10 +21,16 @@ namespace Finos.Fdc3
     /// </summary>
     public class IntentMetadata : IIntentMetadata
     {
-        public IntentMetadata(string name, string displayName)
+        public IntentMetadata(string name)
         {
             this.Name = name ?? throw new ArgumentNullException(nameof(name));
-            this.DisplayName = displayName ?? throw new ArgumentNullException(nameof(displayName));
+        }
+
+
+        [Obsolete]
+        public IntentMetadata(string name, string? displayName = null) : this(name)
+        {
+            this.DisplayName = displayName;
         }
 
         /// <summary>
@@ -35,6 +41,7 @@ namespace Finos.Fdc3
         /// <summary>
         /// A friendly display name for the intent that should be used to render UI elements.
         /// </summary>
-        public string DisplayName { get; }
+        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
+        public string? DisplayName { get; }
     }
 }
