@@ -27,7 +27,7 @@ public class ActionTests
         Assert.Same("title", action.Title);
         Assert.Equal(instrument, action.Context);
         Assert.Same("TICKER", (action.Context as Instrument)?.ID?.Ticker);
-        Assert.Same("appid", action.App.AppId);
-        Assert.Same("instanceid", action.App.InstanceId);
+        Assert.Same("appid", action.App?.AppId);
+        Assert.Same("instanceid", action.App?.InstanceId);
     }
 }
