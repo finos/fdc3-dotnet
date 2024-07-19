@@ -28,9 +28,9 @@ public class ChatInitSettingsTests : ContextSchemaTest
     {
         ChatInitSettings chatInitSettings = new ChatInitSettings(
             new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }),
-            "initMessage",
+            new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" }),
             "chatName",
-            new { GroupRecipients = true, IsPublic = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true },
+            new ChatInitSettingsOptions() { GroupRecipients = true, IsPublic = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true },
             null,
             "chatInitSettings"
            );
