@@ -31,6 +31,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Email = "fdc3.email";
         public static readonly string Instrument = "fdc3.instrument";
         public static readonly string InstrumentList = "fdc3.instrumentList";
+        public static readonly string Message = "fdc3.message";
         public static readonly string Nothing = "fdc3.nothing";
         public static readonly string Organization = "fdc3.organization";
         public static readonly string Portfolio = "fdc3.portfolio";

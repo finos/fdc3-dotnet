@@ -37,6 +37,11 @@ namespace Finos.Fdc3.Json.Serialization
                 case "SEDOL":
                 case "LEI":
                     return name;
+                case "TextPlain":
+                    return "text/plain";
+                case "TextMarkdown":
+                    return "text/markdown";
+
                 default:
                     return CamelCase.ConvertName(name);
             }
