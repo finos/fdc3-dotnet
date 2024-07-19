@@ -52,7 +52,9 @@ namespace Finos.Fdc3.AppDirectory.Tests
             Assert.Contains("ViewChart", app.Interop!.Intents!.ListensFor!.Keys);
             Assert.Contains("myApp.GetPrice", app.Interop.Intents.ListensFor.Keys);
             Assert.Contains("fdc3.instrument", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Contexts!);
+#pragma warning disable CS0618 // Type or member is obsolete
             Assert.Equal("Get Price", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].DisplayName);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("myApp.quote", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].ResultType);
             Assert.Equal("ViewChart", app.Interop!.Intents!.ListensFor!["ViewChart"].Name);
             Assert.Equal("myApp.GetPrice", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Name);

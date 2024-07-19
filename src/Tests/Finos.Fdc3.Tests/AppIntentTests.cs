@@ -29,7 +29,9 @@ public class AppIntentTests
     {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning disable CS0612 // Type or member is obsolete
+#pragma warning disable CS0618 // Type or member is obsolete
         Assert.Throws<ArgumentNullException>(() => new AppIntent(new IntentMetadata("name", "displayName"), null));
+#pragma warning restore CS0618 // Type or member is obsolete
 #pragma warning restore CS0612 // Type or member is obsolete
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
@@ -37,8 +39,10 @@ public class AppIntentTests
     [Fact]
     public void AppIntent_NonNullParams_PropertyMatchesParam()
     {
+#pragma warning disable CS0618 // Type or member is obsolete
 #pragma warning disable CS0612 // Type or member is obsolete
         IIntentMetadata metadata = new IntentMetadata("name", "displayName");
+#pragma warning restore CS0618 // Type or member is obsolete
 #pragma warning restore CS0612 // Type or member is obsolete
         IAppMetadata[] apps = { new AppMetadata("appid") };
 

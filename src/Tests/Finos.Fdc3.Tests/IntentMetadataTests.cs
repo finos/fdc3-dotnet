@@ -21,7 +21,9 @@ public class IntentMetadataTests
     {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
 #pragma warning disable CS0612 // Type or member is obsolete
+#pragma warning disable CS0618 // Type or member is obsolete
         Assert.Throws<ArgumentNullException>(() => new IntentMetadata(null, "displayname"));
+#pragma warning restore CS0618 // Type or member is obsolete
 #pragma warning restore CS0612 // Type or member is obsolete
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
@@ -40,8 +42,10 @@ public class IntentMetadataTests
     [Fact]
     public void IntentMetadata_PropertiesMatchParamsFromCtor2()
     {
+#pragma warning disable CS0618 // Type or member is obsolete
 #pragma warning disable CS0612 // Type or member is obsolete
         IIntentMetadata metadata = new IntentMetadata("name", "displayname");
+#pragma warning restore CS0618 // Type or member is obsolete
 #pragma warning restore CS0612 // Type or member is obsolete
         Assert.Same("name", metadata.Name);
 #pragma warning disable CS0618 // Type or member is obsolete

@@ -26,14 +26,25 @@ namespace Finos.Fdc3.AppDirectory
         /// Initializes a new instance of the <see cref="IntentMetadata"/> class.
         /// </summary>
         /// <param name="name">The name</param>
+        /// <param name="contexts">The contexts</param>
+        /// <exception cref="ArgumentNullException">Exception contexts is null</exception>
+        public IntentMetadata(string name, IEnumerable<string> contexts)
+        {
+            Name = name;
+            Contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntentMetadata"/> class.
+        /// </summary>
+        /// <param name="name">The name</param>
         /// <param name="displayName">The displayName</param>
         /// <param name="contexts">The contexts</param>
         /// <exception cref="ArgumentNullException">Exception contexts is null</exception>
-        public IntentMetadata(string name, string displayName, IEnumerable<string> contexts) 
+        [Obsolete("Use the intent name for display as display name may vary for each application as it is defined in the app's AppD record.")]
+        public IntentMetadata(string name, string displayName, IEnumerable<string> contexts) : this(name, contexts)
         {
-            Name = name;
             DisplayName = displayName;
-            Contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
         }
 
         /// <summary>
@@ -44,7 +55,8 @@ namespace Finos.Fdc3.AppDirectory
         /// <summary>
         /// An optional display name for the intent that may be used in UI instead of the name.
         /// </summary>
-        public string DisplayName { get; set; }
+        [Obsolete("Use the intent name for display as display name may vary for each application as it is defined in the app's AppD record.")]
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// A comma separated list of the types of contexts the intent offered by the application
