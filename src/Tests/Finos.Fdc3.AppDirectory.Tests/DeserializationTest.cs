@@ -68,7 +68,7 @@ namespace Finos.Fdc3.AppDirectory.Tests
             Assert.Contains("fdc3.instrument", app.Interop!.UserChannels!.Broadcasts!);
             Assert.Contains("fdc3.organization", app.Interop!.UserChannels!.ListensFor!);
             Assert.Single(app.Interop.AppChannels!);
-            Assert.Equal("myApp.quotes,", app.Interop!.AppChannels!.First().Name);
+            Assert.Equal("myApp.quotes,", app.Interop!.AppChannels!.First().ID);
             Assert.Contains("myApp.quote", app.Interop.AppChannels!.First().Broadcasts!);
             Assert.Contains("fdc3.instrument", app.Interop.AppChannels!.First().ListensFor!);
             Assert.Contains("fr-FR", app.LocalizedVersions!.Keys);
