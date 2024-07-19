@@ -24,7 +24,7 @@ public class TransactionResultTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void TransactionResult_SerializedJsonMatchesSchema()
+    public async Task TransactionResult_SerializedJsonMatchesSchema()
     {
         TransactionResult transactionResult = new TransactionResult("Created", new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fdsid" }, "contact"), "message");
         await this.ValidateSchema(transactionResult);

@@ -26,7 +26,7 @@ public class ChatSearchCriteriaTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void ChatSearchCriteria_SerializedJsonMatchesSchema()
+    public async Task ChatSearchCriteria_SerializedJsonMatchesSchema()
     {
         Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
         ChatSearchCriteria criteria = new ChatSearchCriteria(new object[] { instrument, "searchterm" });

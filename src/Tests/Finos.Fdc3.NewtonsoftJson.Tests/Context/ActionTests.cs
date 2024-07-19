@@ -24,7 +24,7 @@ public class ActionTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Action_SerializedJsonMatchesSchema()
+    public async Task Action_SerializedJsonMatchesSchema()
     {
         Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
         Fdc3.Context.Action action = new Fdc3.Context.Action("title", instrument, "ViewInstrument", new AppIdentifier("appid", "instanceid"));
