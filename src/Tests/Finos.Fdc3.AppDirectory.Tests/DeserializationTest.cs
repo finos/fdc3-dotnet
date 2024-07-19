@@ -20,7 +20,9 @@ namespace Finos.Fdc3.AppDirectory.Tests
         protected void ValidateApp(Fdc3App app)
         {
             Assert.Equal("my-application", app!.AppId);
+#pragma warning disable CS0618 // Type or member is obsolete
             Assert.Equal("my-application", app.Name);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("My Application", app.Title);
             Assert.Equal("An example application that uses FDC3 and fully describes itself in an AppD record.", app.Description);
             Assert.Equal("1.0.0", app.Version);
