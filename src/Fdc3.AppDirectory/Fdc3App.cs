@@ -155,6 +155,7 @@ namespace Finos.Fdc3.AppDirectory
         /// <summary>
         /// An optional set of name value pairs that can be used to deliver custom data from an App Directory to a launcher.
         /// </summary>
+        [Obsolete]
         public Dictionary<string, string>? CustomConfig { get; set; }
 
         /// <summary>
