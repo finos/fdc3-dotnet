@@ -13,6 +13,7 @@
  */
 
 using Finos.Fdc3.Context;
+using System;
 
 namespace Finos.Fdc3.Tests.Context;
 
@@ -27,5 +28,6 @@ public class ChatRoomTests
         Assert.Equal(chatRoomID, chatRoom.ID);
         Assert.Same("http://test.com", chatRoom.Url);
         Assert.Same("name", chatRoom.Name);
+        Assert.Same(ContextTypes.ChatRoom, chatRoom.Type);
     }
 }

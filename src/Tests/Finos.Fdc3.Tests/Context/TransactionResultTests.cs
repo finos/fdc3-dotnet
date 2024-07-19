@@ -13,6 +13,7 @@
  */
 
 using Finos.Fdc3.Context;
+using System;
 
 namespace Finos.Fdc3.Tests.Context;
 
@@ -27,5 +28,6 @@ public class TransactionResultTests
         Assert.Same("Created", result.Status);
         Assert.Equal(contact, result.Context);
         Assert.Same("message", result.Message);
+        Assert.Same(ContextTypes.TransactionResult, result.Type) ;
     }
 }

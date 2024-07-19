@@ -13,6 +13,7 @@
  */
 
 using Finos.Fdc3.Context;
+using System;
 
 namespace Finos.Fdc3.Tests.Context;
 
@@ -26,5 +27,6 @@ public class ChatSearchCriteriaTests
 
         Assert.Equal(instrument, criteria.Criteria.Cast<object>().First());
         Assert.Same("searchterm", criteria.Criteria.Cast<object>().Last());
+        Assert.Same(ContextTypes.ChatSearchCriteria, criteria.Type);
     }
 }
