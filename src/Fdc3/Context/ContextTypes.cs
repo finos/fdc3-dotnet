@@ -22,6 +22,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Action = "fdc3.action";
         public static readonly string Chart = "fdc3.chart";
         public static readonly string ChatInitSettings = "fdc3.chat.initSettings";
+        public static readonly string ChatMessage = "fdc3.chat.message";
         public static readonly string ChatRoom = "fdc3.chat.room";
         public static readonly string ChatSearchCriteria = "fdc3.chat.searchCriteria";
         public static readonly string Contact = "fdc3.contact";
