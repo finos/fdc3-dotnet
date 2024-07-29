@@ -24,7 +24,7 @@ public class TimeRangeTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void TimeRange_SerializedJsonMatchesSchema()
+    public async Task TimeRange_SerializedJsonMatchesSchema()
     {
         TimeRange timeRange = new TimeRange(
             DateTime.Now.ToString("o"),

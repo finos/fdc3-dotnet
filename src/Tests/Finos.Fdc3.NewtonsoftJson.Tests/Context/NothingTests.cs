@@ -24,7 +24,7 @@ public class NothingTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Nothing_SerializedJsonMatchesSchema()
+    public async Task Nothing_SerializedJsonMatchesSchema()
     {
         Nothing nothing = new Nothing();
 

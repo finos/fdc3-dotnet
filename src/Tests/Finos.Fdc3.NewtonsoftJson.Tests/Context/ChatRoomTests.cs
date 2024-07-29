@@ -24,7 +24,7 @@ public class ChatroomTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void ChatRoom_SerializedJsonMatchesSchema()
+    public async Task ChatRoom_SerializedJsonMatchesSchema()
     {
         dynamic chatRoomID = new { StreamId = "j75xqXy25NB0dacUI3FNBH", AnyOtherKey = "abcdef" };
         ChatRoom chatRoom = new ChatRoom(chatRoomID, "provider", "http://test.com", "name");

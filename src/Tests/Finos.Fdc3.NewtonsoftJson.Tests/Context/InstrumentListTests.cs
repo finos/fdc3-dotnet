@@ -24,7 +24,7 @@ public class InstrumentListTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void InstrumentList_SerializedJsonMatchesSchema()
+    public async Task InstrumentList_SerializedJsonMatchesSchema()
     {
         InstrumentList instrumentList = new InstrumentList(new Instrument[]
             {

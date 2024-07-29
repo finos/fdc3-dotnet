@@ -24,7 +24,7 @@ public class ValuationTests : ContextSchemaTest
     }
 
     [Fact]
-    public async void Valuation_SerializedJsonMatchesSchema()
+    public async Task Valuation_SerializedJsonMatchesSchema()
     {
         var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
 
