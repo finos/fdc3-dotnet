@@ -12,8 +12,6 @@
  * and limitations under the License.
  */
 
-using System.Runtime.InteropServices.ComTypes;
-
 namespace Finos.Fdc3.Context
 {
     public class Message : Context, IContext

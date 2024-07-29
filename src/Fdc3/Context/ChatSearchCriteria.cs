@@ -13,7 +13,6 @@
  */
 
 using System.Collections;
-using System.Dynamic;
 
 namespace Finos.Fdc3.Context
 {

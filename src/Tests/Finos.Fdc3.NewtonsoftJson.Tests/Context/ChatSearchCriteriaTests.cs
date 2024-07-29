@@ -13,8 +13,6 @@
  */
 
 using Finos.Fdc3.Context;
-using Newtonsoft.Json;
-using System.Reflection.PortableExecutable;
 
 namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 

@@ -12,8 +12,6 @@
  * and limitations under the License.
  */
 
-using System.ComponentModel;
-
 namespace Finos.Fdc3.Context
 {
     public class TransactionResult : Context, IContext
