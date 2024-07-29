@@ -26,25 +26,16 @@ namespace Finos.Fdc3.AppDirectory
         /// Initializes a new instance of the <see cref="IntentMetadata"/> class.
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="contexts">The contexts</param>
-        /// <exception cref="ArgumentNullException">Exception contexts is null</exception>
-        public IntentMetadata(string name, IEnumerable<string> contexts)
-        {
-            Name = name;
-            Contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IntentMetadata"/> class.
-        /// </summary>
-        /// <param name="name">The name</param>
         /// <param name="displayName">The displayName</param>
         /// <param name="contexts">The contexts</param>
         /// <exception cref="ArgumentNullException">Exception contexts is null</exception>
-        [Obsolete("Use the intent name for display as display name may vary for each application as it is defined in the app's AppD record.")]
-        public IntentMetadata(string name, string displayName, IEnumerable<string> contexts) : this(name, contexts)
+        public IntentMetadata(string name, string displayName, IEnumerable<string> contexts)
         {
+            Name = name;
+#pragma warning disable CS0618 // Type or member is obsolete
             DisplayName = displayName;
+#pragma warning restore CS0618 // Type or member is obsolete
+            Contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
         }
 
         /// <summary>

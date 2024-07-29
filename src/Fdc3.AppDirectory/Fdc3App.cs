@@ -25,18 +25,14 @@ namespace Finos.Fdc3.AppDirectory
     /// </summary>
     public class Fdc3App
     {
-        public Fdc3App(string appId, AppType type, object details)
+        public Fdc3App(string appId, string name, AppType type, object details)
         {
             AppId = appId ?? throw new ArgumentNullException(nameof(appId));
-            Type = type;
-            Details = details ?? throw new ArgumentNullException(nameof(details));
-        }
-
-        public Fdc3App(string appId, string name, AppType type, object details) : this(appId, type, details)
-        {
 #pragma warning disable CS0618 // Type or member is obsolete
             Name = name ?? throw new ArgumentNullException( nameof(name));
 #pragma warning restore CS0618 // Type or member is obsolete
+            Type = type;
+            Details = details ?? throw new ArgumentNullException(nameof(details));
         }
 
         /// <summary>

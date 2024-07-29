@@ -96,7 +96,7 @@
         },
         "appChannels": [
             {
-                "name": "myApp.quotes,",
+                "id": "myApp.quotes,",
                 "description": "Used to share a stream of quotes for currently displayed instrument and may be used to change the currently displayed symbol,",
                 "broadcasts": [ "myApp.quote" ],
                 "listensFor": [ "fdc3.instrument" ]
