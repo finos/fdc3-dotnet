@@ -19,12 +19,12 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ValuationTests : ContextSchemaTest
 {
     public ValuationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/valuation.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/valuation.schema.json")
     {
     }
 
     [Fact]
-    public async void Valuation_SerializedJsonMatchesSchema()
+    public async Task Valuation_SerializedJsonMatchesSchema()
     {
         var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
 

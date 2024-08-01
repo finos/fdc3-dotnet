@@ -20,9 +20,9 @@ public class ContactTests
     [Fact]
     public void Contact_PropertiesMatchParams()
     {
-        Contact contact = new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact");
+        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fdsid" }, "contact");
 
-        Assert.Same("email", contact?.ID?.Email);
+        Assert.Same("email@test.com", contact?.ID?.Email);
         Assert.Same("contact", contact?.Name);
         Assert.Same(ContextTypes.Contact, contact?.Type);
     }

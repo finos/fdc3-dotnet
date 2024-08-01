@@ -19,12 +19,12 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class CountryTests : ContextSchemaTest
 {
     public CountryTests()
-        : base("https://fdc3.finos.org/schemas/2.0/country.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/country.schema.json")
     {
     }
 
     [Fact]
-    public async void Country_SerializedJsonMatchesSchema()
+    public async Task Country_SerializedJsonMatchesSchema()
     {
         Country country = new Country(new CountryID() { ISOALPHA2 = "isoalpha2", ISOALPHA3 = "isoalpha3" }, "country");
 

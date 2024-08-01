@@ -33,7 +33,16 @@ public class InstrumentTests
                 RIC = "RIC",
                 SEDOL = "SEDOL",
                 Ticker = "TICKER"
-            }, "Instrument");
+            }, "Instrument")
+        {
+            Market = new MarketSource
+            {
+                BBG = "BBG",
+                COUNTRY_ISOALPHA2 = "COUNTRY_ISOALPHA2",
+                MIC = "MIC",
+                Name = "Name"
+            }
+        };
 
         Assert.Same("BBG", instrument?.ID?.BBG);
         Assert.Same("CUSIP", instrument?.ID?.CUSIP);
@@ -45,6 +54,10 @@ public class InstrumentTests
         Assert.Same("SEDOL", instrument?.ID?.SEDOL);
         Assert.Same("TICKER", instrument?.ID?.Ticker);
         Assert.Same("Instrument", instrument?.Name);
+        Assert.Same("BBG", instrument?.Market?.BBG);
+        Assert.Same("COUNTRY_ISOALPHA2", instrument?.Market?.COUNTRY_ISOALPHA2);
+        Assert.Same("MIC", instrument?.Market?.MIC);
+        Assert.Same("Name", instrument?.Market?.Name);
         Assert.Same(ContextTypes.Instrument, instrument?.Type);
     }
 }

@@ -28,16 +28,16 @@ namespace Finos.Fdc3.AppDirectory
         /// <summary>
         /// Initializes a new instance of the <see cref="AppChannel"/> class.
         /// </summary>
-        /// <param name="name">The name</param>
-        /// <exception cref="ArgumentNullException">Exception if name is null</exception>
-        public AppChannel(string name)
+        /// <param name="id">The ID of the App Channel</param>
+        /// <exception cref="ArgumentNullException">Exception if ID is null</exception>
+        public AppChannel(string id)
         {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            ID = id ?? throw new ArgumentNullException(nameof(id));
         }
         /// <summary>
-        /// The name of the App Channel.
+        /// The ID of the App Channel.
         /// </summary>
-        public string Name { get; set; }
+        public string ID { get; set; }
 
         /// <summary>
         /// A description of how the channel is used.
