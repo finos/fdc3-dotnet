@@ -23,7 +23,7 @@ public class ChartTests
     {
         Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
         TimeRange timeRange = new TimeRange(DateTime.Now.ToString("o"), DateTime.Now.ToString("o"));
-        var otherConfig = new { A = "Foo", B = "Bar" };
+        var otherConfig = new  [] { instrument };
         Chart chart = new Chart(new Instrument[] { instrument }, timeRange, otherConfig, ChartStyle.Line, null, "chart");
 
         Assert.Same("TICKER", chart?.Instruments?.First<Instrument>()?.ID?.Ticker);

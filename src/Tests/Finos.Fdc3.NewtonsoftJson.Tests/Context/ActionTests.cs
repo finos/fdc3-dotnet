@@ -12,24 +12,22 @@
  * and limitations under the License.
  */
 
-using System;
+using Finos.Fdc3.Context;
 
-namespace Finos.Fdc3
+namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
+
+public class ActionTests : ContextSchemaTest
 {
-    /// <summary>
-    /// Describes an Intent within the platform.
-    /// </summary>
-    public interface IIntentMetadata
+    public ActionTests()
+        : base("https://fdc3.finos.org/schemas/2.1/context/action.schema.json")
     {
-        /// <summary>
-        /// The unique name of the intent that can be invoked by the raiseIntent call.
-        /// </summary>
-        string Name { get; }
+    }
 
-        /// <summary>
-        /// A friendly display name for the intent that should be used to render UI elements.
-        /// </summary>
-        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
-        string? DisplayName { get; }
+    [Fact]
+    public async Task Action_SerializedJsonMatchesSchema()
+    {
+        Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
+        Fdc3.Context.Action action = new Fdc3.Context.Action("title", instrument, "ViewInstrument", new AppIdentifier("appid", "instanceid"));
+        await this.ValidateSchema(action);
     }
 }

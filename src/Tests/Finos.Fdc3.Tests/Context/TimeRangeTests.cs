@@ -33,5 +33,6 @@ public class TimeRangeTests
         Assert.Same(startTime, timeRange.StartTime);
         Assert.Same(endTime, timeRange.EndTime);
         Assert.Same("timerange", timeRange.Name);
+        Assert.Same(ContextTypes.TimeRange, timeRange.Type);
     }
 }

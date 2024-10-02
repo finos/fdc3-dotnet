@@ -12,24 +12,23 @@
  * and limitations under the License.
  */
 
-using System;
-
-namespace Finos.Fdc3
+namespace Finos.Fdc3.Context
 {
-    /// <summary>
-    /// Describes an Intent within the platform.
-    /// </summary>
-    public interface IIntentMetadata
+    public class Action : Context, IContext
     {
-        /// <summary>
-        /// The unique name of the intent that can be invoked by the raiseIntent call.
-        /// </summary>
-        string Name { get; }
+        public Action(string title, IContext context, string? intent, IAppIdentifier? app = null, object? id = null, string? name = null)
+            : base(ContextTypes.Action, id, name)
+        {
+            this.Title = title;
+            this.Context = context;
+            this.Intent = intent;
+            this.App = app;
+        }
 
-        /// <summary>
-        /// A friendly display name for the intent that should be used to render UI elements.
-        /// </summary>
-        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
-        string? DisplayName { get; }
+        public string Title { get; private set; }
+        public IContext Context { get; private set; }
+        public string? Intent { get; private set; }
+        public IAppIdentifier? App { get; private set; }
+
     }
 }
