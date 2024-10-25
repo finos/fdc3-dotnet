@@ -16,13 +16,13 @@ namespace Finos.Fdc3.Context
 {
     public class Message : Context, IContext
     {
-        public Message(MessageText text, object? id = null, string? name = null)
+        public Message(MessageText? text, object? id = null, string? name = null)
             : base(ContextTypes.Message, id, name)
         {
             this.Text = text;
         }
 
-        public MessageText Text { get; set; }
+        public MessageText? Text { get; set; }
     }
 
     public class MessageText

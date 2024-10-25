@@ -30,8 +30,8 @@ public class ChatMessageTests
         Assert.Same("http://test.com", message.ChatRoom.Url);
         Assert.Same("name", message.ChatRoom.Name);
         Assert.Same(ContextTypes.ChatRoom, message.ChatRoom.Type);
-        Assert.Same("textplain", message.Message.Text.TextPlain);
-        Assert.Same("textmarkdown", message.Message.Text.TextMarkdown);
+        Assert.Same("textplain", message.Message.Text?.TextPlain);
+        Assert.Same("textmarkdown", message.Message.Text?.TextMarkdown);
         Assert.Same(ContextTypes.Message, message.Message.Type);
         Assert.Same(ContextTypes.ChatMessage, message.Type);
     }
