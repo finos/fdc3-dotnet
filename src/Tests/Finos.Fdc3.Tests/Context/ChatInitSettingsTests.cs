@@ -24,7 +24,7 @@ public class ChatInitSettingsTests
         ChatInitSettingsOptions options = new ChatInitSettingsOptions() { GroupRecipients = true, IsPublic = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true };
         Message message = new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" });
         ChatInitSettings chatInitSettings = new ChatInitSettings(
-            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }),
+            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }) }),
             message,
             "chatName",
             options,

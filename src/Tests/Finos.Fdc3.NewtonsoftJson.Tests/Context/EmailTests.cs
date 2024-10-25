@@ -27,7 +27,7 @@ public class EmailTests : ContextSchemaTest
     [Fact]
     public async Task Email_Contact_SerializedJsonMatchesSchema()
     {
-        Email email = new Email(new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }), "subject", "body", null, "email");
+        Email email = new Email(new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }), "subject", "body", null, "email");
         string test = await this.ValidateSchema(email);
     }
 
@@ -38,7 +38,7 @@ public class EmailTests : ContextSchemaTest
         Assert.NotNull(email);
         Contact? contact = email?.Recipients as Contact;
         Assert.Equal("email@test.com", contact?.ID?.Email);
-        Assert.Equal("fdsid", contact?.ID?.FDS_ID);
+        Assert.Equal("fds_id", contact?.ID?.FDS_ID);
         Assert.Equal("subject", email?.Subject);
         Assert.Equal("body", email?.TextBody);
         Assert.Equal("email", email?.Name);
@@ -47,7 +47,7 @@ public class EmailTests : ContextSchemaTest
     [Fact]
     public async Task Email_ContactList_SerializedJsonMatchesSchema()
     {
-        Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }), "subject", "body", null, "email");
+        Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }) }), "subject", "body", null, "email");
         await this.ValidateSchema(email);
     }
 
@@ -59,7 +59,7 @@ public class EmailTests : ContextSchemaTest
         ContactList? contactList = email?.Recipients as ContactList;
         Contact? contact = contactList?.Contacts?.First<Contact>();
         Assert.Equal("email@test.com", contact?.ID?.Email);
-        Assert.Equal("fdsid", contact?.ID?.FDS_ID);
+        Assert.Equal("fds_id", contact?.ID?.FDS_ID);
         Assert.Equal("subject", email?.Subject);
         Assert.Equal("body", email?.TextBody);
         Assert.Equal("email", email?.Name);

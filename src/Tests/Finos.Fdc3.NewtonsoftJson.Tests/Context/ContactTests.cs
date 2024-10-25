@@ -25,7 +25,7 @@ public class ContactTests : ContextSchemaTest
     [Fact]
     public async Task Contact_SerializedJsonMatchesSchema()
     {
-        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fdsid" }, "contact");
+        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fds_id" }, "contact");
         await this.ValidateSchema(contact);
     }
 }

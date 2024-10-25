@@ -28,7 +28,7 @@ namespace Finos.Fdc3.SystemTextJson.Tests
             Assert.NotNull(email);
             Contact? contact = email?.Recipients as Contact;
             Assert.Equal("email@test.com", contact?.ID?.Email);
-            Assert.Equal("fdsid", contact?.ID?.FDS_ID);
+            Assert.Equal("fds_id", contact?.ID?.FDS_ID);
             Assert.Equal("subject", email?.Subject);
             Assert.Equal("body", email?.TextBody);
             Assert.Equal("email", email?.Name);
@@ -42,7 +42,7 @@ namespace Finos.Fdc3.SystemTextJson.Tests
             ContactList? contactList = email?.Recipients as ContactList;
             Contact? contact = contactList?.Contacts?.First<Contact>();
             Assert.Equal("email@test.com", contact?.ID?.Email);
-            Assert.Equal("fdsid", contact?.ID?.FDS_ID);
+            Assert.Equal("fds_id", contact?.ID?.FDS_ID);
             Assert.Equal("subject", email?.Subject);
             Assert.Equal("body", email?.TextBody);
             Assert.Equal("email", email?.Name);

@@ -21,7 +21,7 @@ public class EmailTests
     [Fact]
     public void Email_Contact_PropertiesMatchParams()
     {
-        Email email = new Email(new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }), "subject", "body", null, "email");
+        Email email = new Email(new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }), "subject", "body", null, "email");
 
         Assert.Same("email@test.com", (email?.Recipients as Contact)?.ID?.Email);
         Assert.Same("email", email?.Name);
@@ -31,7 +31,7 @@ public class EmailTests
     [Fact]
     public void Email_ContactList_PropertiesMatchParams()
     {
-        Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }), "subject", "body", null, "email");
+        Email email = new Email(new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }) }), "subject", "body", null, "email");
 
         Assert.Same("email@test.com", (email?.Recipients as ContactList)?.Contacts?.First<Contact>()?.ID?.Email);
         Assert.Same("email", email?.Name);

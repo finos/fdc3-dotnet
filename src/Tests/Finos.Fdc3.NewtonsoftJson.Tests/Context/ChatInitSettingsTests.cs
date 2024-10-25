@@ -27,7 +27,7 @@ public class ChatInitSettingsTests : ContextSchemaTest
     public async Task ChatInitSettings_SerializedJsonMatchesSchema()
     {
         ChatInitSettings chatInitSettings = new ChatInitSettings(
-            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fdsid" }) }),
+            new ContactList(new Contact[] { new Contact(new ContactID() { Email = "email@test.com", FDS_ID = "fds_id" }) }),
             new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" }),
             "chatName",
             new ChatInitSettingsOptions() { GroupRecipients = true, IsPublic = true, AllowHistoryBrowsing = true, AllowMessageCopy = true, AllowAddUser = true },

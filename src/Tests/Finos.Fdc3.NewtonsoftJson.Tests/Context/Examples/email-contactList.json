@@ -4,7 +4,7 @@
             {
                 "id": {
                     "email": "email@test.com",
-                    "FDS_ID": "fdsid"
+                    "FDS_ID": "fds_id"
                 },
                 "type": "fdc3.contact"
             }

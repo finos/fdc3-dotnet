@@ -22,7 +22,7 @@ public class TransactionResultTests
     [Fact]
     public void TransactionResult_PropertiesMatchParams()
     {
-        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fdsid" }, "contact");
+        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fds_id" }, "contact");
         TransactionResult result = new TransactionResult("Created", contact, "message");
 
         Assert.Same("Created", result.Status);
