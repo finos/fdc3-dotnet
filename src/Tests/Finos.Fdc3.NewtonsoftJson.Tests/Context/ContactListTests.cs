@@ -19,14 +19,14 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ContactListTests : ContextSchemaTest
 {
     public ContactListTests()
-        : base("https://fdc3.finos.org/schemas/2.0/contactList.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/contactList.schema.json")
     {
     }
 
     [Fact]
-    public async void ContactList_SerializedJsonMatchesSchema()
+    public async Task ContactList_SerializedJsonMatchesSchema()
     {
-        ContactList contactList = new ContactList(new Contact[] { new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact") }, "contactList");
+        ContactList contactList = new ContactList(new Contact[] { new Contact(new ContactID { Email = "email@email.com", FDS_ID = "fds_id" }, "contact") }, "contactList");
         await this.ValidateSchema(contactList);
     }
 }

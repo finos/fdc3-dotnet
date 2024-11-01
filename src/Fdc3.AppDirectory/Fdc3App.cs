@@ -28,10 +28,13 @@ namespace Finos.Fdc3.AppDirectory
         public Fdc3App(string appId, string name, AppType type, object details)
         {
             AppId = appId ?? throw new ArgumentNullException(nameof(appId));
+#pragma warning disable CS0618 // Type or member is obsolete
             Name = name ?? throw new ArgumentNullException( nameof(name));
+#pragma warning restore CS0618 // Type or member is obsolete
             Type = type;
             Details = details ?? throw new ArgumentNullException(nameof(details));
         }
+
         /// <summary>
         /// The unique application identifier located within a specific application directory instance.
         /// </summary>
@@ -43,7 +46,8 @@ namespace Finos.Fdc3.AppDirectory
         /// for multiple versions of the same app. The same appName could occur in other directories.
         /// We are not currently specifying app name conventions in the document.
         /// </summary>
-        public string Name { get; set; }
+        [Obsolete("Use `AppId` to identify apps and `Title` for their display names.")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// The technology type that is used to launch and run the application.
@@ -147,6 +151,7 @@ namespace Finos.Fdc3.AppDirectory
         /// <summary>
         /// An optional set of name value pairs that can be used to deliver custom data from an App Directory to a launcher.
         /// </summary>
+        [Obsolete]
         public Dictionary<string, string>? CustomConfig { get; set; }
 
         /// <summary>

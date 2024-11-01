@@ -19,12 +19,12 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class InstrumentTests : ContextSchemaTest
 {
     public InstrumentTests()
-        : base("https://fdc3.finos.org/schemas/2.0/instrument.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/instrument.schema.json")
     {
     }
 
     [Fact]
-    public async void Instrument_SerializedJsonMatchesSchema()
+    public async Task Instrument_SerializedJsonMatchesSchema()
     {
         Instrument instrument = new Instrument(
             new InstrumentID
@@ -38,7 +38,16 @@ public class InstrumentTests : ContextSchemaTest
                 RIC = "RIC",
                 SEDOL = "SEDOL",
                 Ticker = "TICKER"
-            }, "Instrument");
+            }, "Instrument")
+        {
+            Market = new MarketSource
+            {
+                BBG = "BBG",
+                COUNTRY_ISOALPHA2 = "COUNTRY_ISOALPHA2",
+                MIC = "MIC",
+                Name = "Name"
+            }
+        };
 
         await this.ValidateSchema(instrument);
     }

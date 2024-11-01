@@ -37,6 +37,10 @@ namespace Finos.Fdc3.NewtonsoftJson.Serialization
                 case "SEDOL":
                 case "LEI":
                     return name;
+                case "TextPlain":
+                    return "text/plain";
+                case "TextMarkdown":
+                    return "text/markdown";
 
                 default:
                     return base.GetPropertyName(name, hasSpecifiedName);

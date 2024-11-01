@@ -12,24 +12,22 @@
  * and limitations under the License.
  */
 
+using Finos.Fdc3.Context;
 using System;
 
-namespace Finos.Fdc3
-{
-    /// <summary>
-    /// Describes an Intent within the platform.
-    /// </summary>
-    public interface IIntentMetadata
-    {
-        /// <summary>
-        /// The unique name of the intent that can be invoked by the raiseIntent call.
-        /// </summary>
-        string Name { get; }
+namespace Finos.Fdc3.Tests.Context;
 
-        /// <summary>
-        /// A friendly display name for the intent that should be used to render UI elements.
-        /// </summary>
-        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
-        string? DisplayName { get; }
+public class TransactionResultTests
+{
+    [Fact]
+    public void TransactionResult_PropertiesMatchParams()
+    {
+        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fds_id" }, "contact");
+        TransactionResult result = new TransactionResult("Created", contact, "message");
+
+        Assert.Same("Created", result.Status);
+        Assert.Equal(contact, result.Context);
+        Assert.Same("message", result.Message);
+        Assert.Same(ContextTypes.TransactionResult, result.Type) ;
     }
 }

@@ -15,15 +15,20 @@
 using Finos.Fdc3.Context;
 
 namespace Finos.Fdc3.Tests.Context;
-public class ContactTests
+
+public class ActionTests
 {
     [Fact]
-    public void Contact_PropertiesMatchParams()
+    public void Action_PropertiesMatchParams()
     {
-        Contact contact = new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fds_id" }, "contact");
+        Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
+        Fdc3.Context.Action action = new Fdc3.Context.Action("title", instrument, "ViewInstrument", new AppIdentifier("appid", "instanceid"));
 
-        Assert.Same("email@test.com", contact?.ID?.Email);
-        Assert.Same("contact", contact?.Name);
-        Assert.Same(ContextTypes.Contact, contact?.Type);
+        Assert.Same("title", action.Title);
+        Assert.Equal(instrument, action.Context);
+        Assert.Same("TICKER", (action.Context as Instrument)?.ID?.Ticker);
+        Assert.Same("appid", action.App?.AppId);
+        Assert.Same("instanceid", action.App?.InstanceId);
+        
     }
 }

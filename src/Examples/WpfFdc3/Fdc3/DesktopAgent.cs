@@ -33,7 +33,7 @@ namespace WpfFdc3.Fdc3
 
         public Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext
         {
-            return _currentChannel?.AddContextListener<T>(contextType, handler);
+            return _currentChannel?.AddContextListener<T>(contextType, handler) ?? throw new Exception("Unable to create listener");
         }
 
         public Task<IListener> AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext

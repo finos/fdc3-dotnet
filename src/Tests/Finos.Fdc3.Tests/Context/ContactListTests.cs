@@ -21,9 +21,9 @@ public class ContactListTests
     [Fact]
     public void ContactList_PropertiesMatchParams()
     {
-        ContactList contactList = new ContactList(new Contact[] { new Contact(new ContactID { Email = "email", FdsId = "fdsid" }, "contact") }, "contactList");
+        ContactList contactList = new ContactList(new Contact[] { new Contact(new ContactID { Email = "email@test.com", FDS_ID = "fds_id" }, "contact") }, "contactList");
 
-        Assert.Same("email", contactList?.Contacts?.First<Contact>()?.ID?.Email);
+        Assert.Same("email@test.com", contactList?.Contacts?.First<Contact>()?.ID?.Email);
         Assert.Same("contactList", contactList?.Name);
         Assert.Same(ContextTypes.ContactList, contactList?.Type);
     }

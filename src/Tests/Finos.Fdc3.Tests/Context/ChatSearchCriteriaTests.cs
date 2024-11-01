@@ -12,24 +12,21 @@
  * and limitations under the License.
  */
 
+using Finos.Fdc3.Context;
 using System;
 
-namespace Finos.Fdc3
-{
-    /// <summary>
-    /// Describes an Intent within the platform.
-    /// </summary>
-    public interface IIntentMetadata
-    {
-        /// <summary>
-        /// The unique name of the intent that can be invoked by the raiseIntent call.
-        /// </summary>
-        string Name { get; }
+namespace Finos.Fdc3.Tests.Context;
 
-        /// <summary>
-        /// A friendly display name for the intent that should be used to render UI elements.
-        /// </summary>
-        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
-        string? DisplayName { get; }
+public class ChatSearchCriteriaTests
+{
+    [Fact]
+    public void ChatSearchCriteria_PropertiesMatchParams()
+    {
+        Instrument instrument = new Instrument(new InstrumentID { Ticker = "TICKER" });
+        ChatSearchCriteria criteria = new ChatSearchCriteria(new object[] { instrument, "searchterm" });
+
+        Assert.Equal(instrument, criteria.Criteria.Cast<object>().First());
+        Assert.Same("searchterm", criteria.Criteria.Cast<object>().Last());
+        Assert.Same(ContextTypes.ChatSearchCriteria, criteria.Type);
     }
 }

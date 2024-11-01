@@ -19,14 +19,14 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class OrganizationTests : ContextSchemaTest
 {
     public OrganizationTests()
-        : base("https://fdc3.finos.org/schemas/2.0/organization.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/organization.schema.json")
     {
     }
 
     [Fact]
-    public async void Organization_SerializedJsonMatchesSchema()
+    public async Task Organization_SerializedJsonMatchesSchema()
     {
-        Organization organization = new Organization(new OrganizationID() { FDS_ID = "fdc_id", LEI = "lei", PERMID = "permid" }, "organization");
+        Organization organization = new Organization(new OrganizationID() { FDS_ID = "fds_id", LEI = "lei", PERMID = "permid" }, "organization");
 
         await this.ValidateSchema(organization);
     }
