@@ -16,18 +16,20 @@ using Finos.Fdc3.Context;
 
 namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class NothingTests : ContextSchemaTest
+public class ChatMessageTests : ContextSchemaTest
 {
-    public NothingTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/nothing.schema.json")
+    public ChatMessageTests()
+        : base("https://fdc3.finos.org/schemas/2.1/context/chatMessage.schema.json")
     {
     }
 
     [Fact]
-    public async Task Nothing_SerializedJsonMatchesSchema()
+    public async Task ChatMessage_SerializedJsonMatchesSchema()
     {
-        Nothing nothing = new Nothing();
+        dynamic chatRoomID = new { StreamId = "j75xqXy25NB0dacUI3FNBH", AnyOtherKey = "abcdef" };
+        ChatRoom chatRoom = new ChatRoom(chatRoomID, "provider", "http://test.com", "name");
+        ChatMessage message = new ChatMessage(chatRoom, new Message(new MessageText() { TextPlain = "plaintext", TextMarkdown = "textmarkdown" }, null, "message"), null, "chatmessage");
 
-        await this.ValidateSchema(nothing);
+        await this.ValidateSchema(message);
     }
 }

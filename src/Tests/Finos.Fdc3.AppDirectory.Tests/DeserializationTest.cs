@@ -20,7 +20,9 @@ namespace Finos.Fdc3.AppDirectory.Tests
         protected void ValidateApp(Fdc3App app)
         {
             Assert.Equal("my-application", app!.AppId);
+#pragma warning disable CS0618 // Type or member is obsolete
             Assert.Equal("my-application", app.Name);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("My Application", app.Title);
             Assert.Equal("An example application that uses FDC3 and fully describes itself in an AppD record.", app.Description);
             Assert.Equal("1.0.0", app.Version);
@@ -52,7 +54,9 @@ namespace Finos.Fdc3.AppDirectory.Tests
             Assert.Contains("ViewChart", app.Interop!.Intents!.ListensFor!.Keys);
             Assert.Contains("myApp.GetPrice", app.Interop.Intents.ListensFor.Keys);
             Assert.Contains("fdc3.instrument", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Contexts!);
+#pragma warning disable CS0618 // Type or member is obsolete
             Assert.Equal("Get Price", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].DisplayName);
+#pragma warning restore CS0618 // Type or member is obsolete
             Assert.Equal("myApp.quote", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].ResultType);
             Assert.Equal("ViewChart", app.Interop!.Intents!.ListensFor!["ViewChart"].Name);
             Assert.Equal("myApp.GetPrice", app.Interop!.Intents!.ListensFor!["myApp.GetPrice"].Name);
@@ -64,7 +68,7 @@ namespace Finos.Fdc3.AppDirectory.Tests
             Assert.Contains("fdc3.instrument", app.Interop!.UserChannels!.Broadcasts!);
             Assert.Contains("fdc3.organization", app.Interop!.UserChannels!.ListensFor!);
             Assert.Single(app.Interop.AppChannels!);
-            Assert.Equal("myApp.quotes,", app.Interop!.AppChannels!.First().Name);
+            Assert.Equal("myApp.quotes,", app.Interop!.AppChannels!.First().ID);
             Assert.Contains("myApp.quote", app.Interop.AppChannels!.First().Broadcasts!);
             Assert.Contains("fdc3.instrument", app.Interop.AppChannels!.First().ListensFor!);
             Assert.Contains("fr-FR", app.LocalizedVersions!.Keys);

@@ -19,12 +19,12 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class TimeRangeTests : ContextSchemaTest
 {
     public TimeRangeTests()
-        : base("https://fdc3.finos.org/schemas/2.0/timerange.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/timerange.schema.json")
     {
     }
 
     [Fact]
-    public async void TimeRange_SerializedJsonMatchesSchema()
+    public async Task TimeRange_SerializedJsonMatchesSchema()
     {
         TimeRange timeRange = new TimeRange(
             DateTime.Now.ToString("o"),

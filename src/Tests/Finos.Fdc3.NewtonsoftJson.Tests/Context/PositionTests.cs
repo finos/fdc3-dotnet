@@ -19,12 +19,12 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class PositionTests : ContextSchemaTest
 {
     public PositionTests()
-        : base("https://fdc3.finos.org/schemas/2.0/position.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.1/context/position.schema.json")
     {
     }
 
     [Fact]
-    public async void Position_SerializedJsonMatchesSchema()
+    public async Task Position_SerializedJsonMatchesSchema()
     {
         Position position = new Position(0, new Instrument(new InstrumentID() { Ticker = "ticker" }), null, "position");
 

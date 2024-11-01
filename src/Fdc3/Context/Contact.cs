@@ -28,6 +28,6 @@ namespace Finos.Fdc3.Context
     {
         public string? Email { get; set; }
 
-        public string? FdsId { get; set; }
+        public string? FDS_ID { get; set; }
     }
 }

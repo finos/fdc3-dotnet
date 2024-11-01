@@ -12,24 +12,19 @@
  * and limitations under the License.
  */
 
-using System;
+using Finos.Fdc3.Context;
 
-namespace Finos.Fdc3
+namespace Finos.Fdc3.Tests.Context;
+
+public class MessageTests
 {
-    /// <summary>
-    /// Describes an Intent within the platform.
-    /// </summary>
-    public interface IIntentMetadata
+    [Fact]
+    public void Message_PropertiesMatchParams()
     {
-        /// <summary>
-        /// The unique name of the intent that can be invoked by the raiseIntent call.
-        /// </summary>
-        string Name { get; }
+        Message message = new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" });
 
-        /// <summary>
-        /// A friendly display name for the intent that should be used to render UI elements.
-        /// </summary>
-        [Obsolete("Use the intent name for display as display name may vary for each application  as it is defined in the app's AppD record.")]
-        string? DisplayName { get; }
+        Assert.Same("textplain", message.Text?.TextPlain);
+        Assert.Same("textmarkdown", message.Text?.TextMarkdown);
+        Assert.Same(ContextTypes.Message, message?.Type);
     }
 }
