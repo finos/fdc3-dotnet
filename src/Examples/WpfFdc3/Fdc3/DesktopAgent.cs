@@ -25,6 +25,7 @@ namespace WpfFdc3.Fdc3
     {
         private readonly List<IChannel> _channels = new List<IChannel>();
         private IChannel? _currentChannel;
+        private List<EventListener> _listeners = new List<EventListener>();
 
         public DesktopAgent()
         {
@@ -39,6 +40,16 @@ namespace WpfFdc3.Fdc3
         public Task<IListener> AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext
         {
             throw new NotImplementedException();
+        }
+
+        public Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler)
+        {
+            return Task.Run<IListener>(() =>
+            {
+                EventListener listener = new EventListener(eventType, handler);
+                _listeners.Add(listener);
+                return listener;
+            });
         }
 
         public Task Broadcast(IContext context)
@@ -125,12 +136,30 @@ namespace WpfFdc3.Fdc3
                 {
                     throw new Exception(ChannelError.NoChannelFound);
                 }
+
+                // Notify listeners of AddEventListener of channel changed
+                _listeners.ForEach(listener => {
+                    if (listener.EventType == Fdc3EventType.UserChannelChanged)
+                    {
+                        listener.Handler(new Fdc3ChannelChangedEvent(channelId));
+                    }
+                });
             });
         }
 
         public Task LeaveCurrentChannel()
         {
-            return Task.Run(() => _currentChannel = null);
+            return Task.Run(() => {
+                _currentChannel = null;
+
+                // Notify listeners of AddEventListener of leaving channel
+                _listeners.ForEach(listener => {
+                    if (listener.EventType == Fdc3EventType.UserChannelChanged)
+                    {
+                        listener.Handler(new Fdc3ChannelChangedEvent(null));
+                    }
+                });
+            });
         }
 
         public Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null)

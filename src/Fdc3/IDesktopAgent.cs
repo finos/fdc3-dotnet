@@ -91,6 +91,12 @@ namespace Finos.Fdc3
         Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
 
         /// <summary>
+        /// Register a handler for events from the DesktopAgent.  Whenever the handler function is
+        /// called it will be passed an event object with details related to the event.
+        /// </summary>
+        Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler);
+
+        /// <summary>
         /// Retreives a list of the User channels available for the app to join.
         /// </summary>
         Task<IEnumerable<IChannel>> GetUserChannels();
