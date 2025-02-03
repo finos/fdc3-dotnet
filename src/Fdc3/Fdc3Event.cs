@@ -17,7 +17,7 @@ using System;
 namespace Finos.Fdc3
 {
     /// <summary>
-    /// Interrface representing the format of event objects that may be received via the FDC3 API's AddEventListener function.
+    /// Interface representing the format of event objects that may be received via the FDC3 API's AddEventListener function.
     /// </summary>
     public interface IFdc3Event
     {
