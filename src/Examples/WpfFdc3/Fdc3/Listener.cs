@@ -18,6 +18,23 @@ using Prism.Events;
 
 namespace WpfFdc3.Fdc3
 {
+    internal class EventListener : IListener
+    {
+        internal EventListener(string? eventType, Fdc3EventHandler handler)
+        {
+            this.EventType = eventType;
+            this.Handler = handler;
+        }
+
+        public string? EventType { get; }
+        public Fdc3EventHandler Handler { get; }
+
+        public void Unsubscribe()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
     internal class Listener<T> : IListener where T : IContext
     {
         private IEventAggregator _eventAggregator;

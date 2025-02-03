@@ -13,6 +13,7 @@
  */
 
 using System;
+using System.Threading.Tasks;
 
 namespace Finos.Fdc3
 {
@@ -39,6 +40,7 @@ namespace Finos.Fdc3
         /// channel, including those that occurred before this handler was registered
         /// (to prevent race conditions).
         /// </summary>
+        [Obsolete("Use AddEventListener")]
         IListener OnAddContextListener(Action<string?> handler);
 
         /// <summary>
@@ -48,6 +50,7 @@ namespace Finos.Fdc3
         /// Desktop Agents MUST call this when Disconnect() is called by the other party, for
         /// each listener that they had added.
         /// </summary>
+        [Obsolete("Use AddEventListener")]
         IListener OnUnsubscribe(Action<string?> handler);
 
         /// <summary>
@@ -55,6 +58,7 @@ namespace Finos.Fdc3
         /// when its window is closed or because disconnect was called.This is in addition
         /// to calls that will be made to OnUnsubscribe listeners.
         /// </summary>
+        [Obsolete("Use AddEventListener")]
         IListener OnDisconnect(Action handler);
 
         /// <summary>
@@ -66,5 +70,12 @@ namespace Finos.Fdc3
         /// before triggering any OnDisconnect handler added by the other party.
         /// </summary>
         void Disconnect();
+
+
+        /// <summary>
+        /// Register a handler for events from the PrivateChannel.  Whenever the handler function is
+        /// called it will be passed an event object with details related to the event.
+        /// </summary>
+        Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler);
     }
 }
