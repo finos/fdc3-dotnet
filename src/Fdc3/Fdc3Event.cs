@@ -47,7 +47,7 @@ namespace Finos.Fdc3
     /// </summary>
     public static class Fdc3EventType
     {
-        public const string UserChannelChanged = "UserChannelChanged";
+        public const string UserChannelChanged = "userChannelChanged";
     }
 
     /// <summary>
@@ -55,9 +55,9 @@ namespace Finos.Fdc3
     /// </summary>
     public static class Fdc3PrivateChannelEventType
     {
-        public const string AddContextListener = "AddContextListener";
-        public const string Unsubscribe = "Unsubscribe";
-        public const string Disconnect = "Disconnect";
+        public const string AddContextListener = "addContextListener";
+        public const string Unsubscribe = "unsubscribe";
+        public const string Disconnect = "disconnect";
     }
 
     public interface IFdc3ChannelChangedEventDetails
