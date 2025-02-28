@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
 		..\.github\workflows\codeql.yml = ..\.github\workflows\codeql.yml
 		..\.github\workflows\continuous-integration.yml = ..\.github\workflows\continuous-integration.yml
+		..\.github\workflows\cve-scanning.yml = ..\.github\workflows\cve-scanning.yml
+		..\.github\workflows\license-scanning.yml = ..\.github\workflows\license-scanning.yml
 		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
 		..\.github\workflows\scorecards.yml = ..\.github\workflows\scorecards.yml
 	EndProjectSection
@@ -46,9 +48,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.AppDirectory", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.AppDirectory.Tests", "Tests\Finos.Fdc3.AppDirectory.Tests\Finos.Fdc3.AppDirectory.Tests.csproj", "{88BF9BA6-2934-4904-8952-DB733E4CBD48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finos.Fdc3.Json", "Fdc3.Json\Finos.Fdc3.Json.csproj", "{9B855057-CCD6-4A5D-BF47-0D843F5D18E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.Json", "Fdc3.Json\Finos.Fdc3.Json.csproj", "{9B855057-CCD6-4A5D-BF47-0D843F5D18E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finos.Fdc3.SystemTextJson.Tests", "Tests\Finos.Fdc3.SystemTextJson.Tests\Finos.Fdc3.SystemTextJson.Tests.csproj", "{54E6B0C9-176A-43CC-9D1E-D37C22349F0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finos.Fdc3.SystemTextJson.Tests", "Tests\Finos.Fdc3.SystemTextJson.Tests\Finos.Fdc3.SystemTextJson.Tests.csproj", "{54E6B0C9-176A-43CC-9D1E-D37C22349F0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
