@@ -10,7 +10,11 @@ updates:
     directory: "/src"
     schedule:
       interval: "monthly"
-
+    ignore:
+      # Ignore all Prism.Core major updates
+      - dependency-name: "Prism.Core"
+        update-types: ["version-update:semver-major"]
+  
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
