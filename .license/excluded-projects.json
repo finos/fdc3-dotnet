@@ -1,0 +1,4 @@
+[
+    "*.Tests.csproj",
+    "*WpfFdc3.csproj"
+]

@@ -23,9 +23,9 @@ jobs:
       - name: Build project with dotnet
         run: dotnet build --configuration Release
         working-directory: 'src'
-      - name: Install dotnet-project-license
-        run: dotnet tool install --global dotnet-project-licenses --version 2.7.1
+      - name: Install nuget-license
+        run: dotnet tool install --global nuget-license --version 3.1.3
         working-directory: 'src'
-      - name: run dotnet-project-licenses
-        run: dotnet-project-licenses -i . --allowed-license-types ../.license/allowed-licenses.json
+      - name: run nuget license
+        run: nuget-license -i fdc3-dotnet.sln --allowed-license-types ../.license/allowed-licenses.json --output JsonPretty --error-only -exclude-projects ../.license/excluded-projects.json -mapping ../.license/license-mapping.json
         working-directory: 'src'
