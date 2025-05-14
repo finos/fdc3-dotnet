@@ -12,6 +12,7 @@
  * and limitations under the License.
  */
 
+using System.Threading.Tasks;
 using Finos.Fdc3;
 using Finos.Fdc3.Context;
 using Prism.Events;
@@ -29,9 +30,12 @@ namespace WpfFdc3.Fdc3
         public string? EventType { get; }
         public Fdc3EventHandler Handler { get; }
 
-        public void Unsubscribe()
+        public Task Unsubscribe()
         {
-            throw new System.NotImplementedException();
+            return Task.Run(() =>
+            {
+                throw new System.NotImplementedException();
+            });
         }
     }
 
@@ -54,9 +58,12 @@ namespace WpfFdc3.Fdc3
             _eventAggregator.GetEvent<ContextEvent>().Subscribe(_callback);
         }
 
-        public void Unsubscribe()
+        public Task Unsubscribe()
         {
-            _eventAggregator.GetEvent<ContextEvent>().Unsubscribe(_callback);
+            return Task.Run(() =>
+            {
+                _eventAggregator.GetEvent<ContextEvent>().Unsubscribe(_callback);
+            });
         }
     }
 }
