@@ -16,17 +16,17 @@ using Finos.Fdc3.Context;
 
 namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 
-public class MessageTests : ContextSchemaTest
+public class FileAttachmentTests : ContextSchemaTest
 {
-    public MessageTests()
-        : base("https://fdc3.finos.org/schemas/2.2/context/message.schema.json")
+    public FileAttachmentTests()
+        : base("https://fdc3.finos.org/schemas/2.2/context/fileAttachment.schema.json")
     {
     }
 
     [Fact]
-    public async Task Message_SerializedJsonMatchesSchema()
+    public async Task FileAttachment_SerializedJsonMatchesSchema()
     {
-        Message message = new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" });
-        string json = await this.ValidateSchema(message);
+        FileAttachment attachment = new FileAttachment(new FileAttachmentData("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII", "name"));
+        string json = await this.ValidateSchema(attachment);
     }
 }

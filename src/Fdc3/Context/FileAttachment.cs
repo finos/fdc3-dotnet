@@ -12,21 +12,28 @@
  * and limitations under the License.
  */
 
-using Finos.Fdc3.Context;
-
-namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
-
-public class MessageTests : ContextSchemaTest
+namespace Finos.Fdc3.Context
 {
-    public MessageTests()
-        : base("https://fdc3.finos.org/schemas/2.2/context/message.schema.json")
+    public class FileAttachment : Context, IContext
     {
+        public FileAttachment(FileAttachmentData data, object? id = null, string? name = null)
+            : base(ContextTypes.FileAttachment, id, name)
+        {
+            this.Data = data;
+        }
+
+        public FileAttachmentData Data { get; set; }
     }
 
-    [Fact]
-    public async Task Message_SerializedJsonMatchesSchema()
+    public class FileAttachmentData
     {
-        Message message = new Message(new MessageText() { TextPlain = "textplain", TextMarkdown = "textmarkdown" });
-        string json = await this.ValidateSchema(message);
-    }
+        public FileAttachmentData(string dataUri, string name)
+        {
+            this.DataUri = dataUri;
+            this.Name = name;
+        }
+
+        public string DataUri { get; set; }
+        public string Name { get; set; }
+    }    
 }

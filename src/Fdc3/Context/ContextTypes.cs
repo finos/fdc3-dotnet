@@ -30,6 +30,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Country = "fdc3.country";
         public static readonly string Currency = "fdc3.currency";
         public static readonly string Email = "fdc3.email";
+        public static readonly string FileAttachment = "fdc3.fileAttachment";
         public static readonly string Instrument = "fdc3.instrument";
         public static readonly string InstrumentList = "fdc3.instrumentList";
         public static readonly string Message = "fdc3.message";
@@ -54,6 +55,7 @@ namespace Finos.Fdc3.Context
             {  ContextTypes.Country, typeof(Country) },
             {  ContextTypes.Currency, typeof(Currency) },
             {  ContextTypes.Email, typeof(Email) },
+            {  ContextTypes.FileAttachment, typeof(FileAttachment) },
             {  ContextTypes.Instrument, typeof(Instrument) },
             {  ContextTypes.InstrumentList, typeof(InstrumentList) },
             {  ContextTypes.Message, typeof(Message) },
