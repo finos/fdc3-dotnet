@@ -18,7 +18,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ContactTests : ContextSchemaTest
 {
     public ContactTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/contact.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/contact.schema.json")
     {
     }
 

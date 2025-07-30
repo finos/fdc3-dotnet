@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class PositionTests : ContextSchemaTest
 {
     public PositionTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/position.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/position.schema.json")
     {
     }
 

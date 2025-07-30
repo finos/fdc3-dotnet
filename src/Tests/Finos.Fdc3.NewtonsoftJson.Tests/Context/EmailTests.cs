@@ -20,7 +20,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class EmailTests : ContextSchemaTest
 {
     public EmailTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/email.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/email.schema.json")
     {
     }
 
