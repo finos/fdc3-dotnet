@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class NothingTests : ContextSchemaTest
 {
     public NothingTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/nothing.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/nothing.schema.json")
     {
     }
 

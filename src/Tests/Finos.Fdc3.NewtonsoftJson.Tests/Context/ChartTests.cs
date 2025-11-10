@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ChartTests : ContextSchemaTest
 {
     public ChartTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/chart.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/chart.schema.json")
     {
     }
 

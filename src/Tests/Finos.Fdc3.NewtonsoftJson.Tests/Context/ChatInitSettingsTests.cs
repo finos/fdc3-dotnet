@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ChatInitSettingsTests : ContextSchemaTest
 {
     public ChatInitSettingsTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/chatInitSettings.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/chatInitSettings.schema.json")
     {
     }
 

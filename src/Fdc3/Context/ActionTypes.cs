@@ -12,22 +12,14 @@
  * and limitations under the License.
  */
 
-using Finos.Fdc3.Context;
-
-namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
-
-public class ValuationTests : ContextSchemaTest
+namespace Finos.Fdc3.Context
 {
-    public ValuationTests()
-        : base("https://fdc3.finos.org/schemas/2.2/context/valuation.schema.json")
+    /// <summary>
+    /// Constants for action types supported by the Action context
+    /// </summary>
+    public static class ActionTypes
     {
-    }
-
-    [Fact]
-    public async Task Valuation_SerializedJsonMatchesSchema()
-    {
-        var valuation = new Valuation("AAA", 1, 1, DateTime.Now.ToString("o"), DateTime.Now.ToString("o"), null, "valuation");
-
-        await ValidateSchema(valuation);
+        public const string RaiseIntent = "raiseIntent";
+        public const string Broadcast = "broadcast";
     }
 }
