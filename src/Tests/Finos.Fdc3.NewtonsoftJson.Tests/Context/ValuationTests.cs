@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class ValuationTests : ContextSchemaTest
 {
     public ValuationTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/valuation.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/valuation.schema.json")
     {
     }
 

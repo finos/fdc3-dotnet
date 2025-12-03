@@ -12,6 +12,8 @@
  * and limitations under the License.
  */
 
+using System.Threading.Tasks;
+
 namespace Finos.Fdc3
 {
     public interface IListener
@@ -19,6 +21,6 @@ namespace Finos.Fdc3
         /// <summary>
         /// Unsubscribe the listener object.
         /// </summary>
-        void Unsubscribe();
+        Task Unsubscribe();
     }
 }

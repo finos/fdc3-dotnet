@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class TimeRangeTests : ContextSchemaTest
 {
     public TimeRangeTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/timerange.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/timerange.schema.json")
     {
     }
 

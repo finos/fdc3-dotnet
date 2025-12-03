@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  * Morgan Stanley makes this available to you under the Apache License,
  * Version 2.0 (the "License"). You may obtain a copy of the License at
  *
@@ -89,7 +88,10 @@ namespace WpfFdc3.ViewModels
                 {
                     if (this.SelectedContextListener != null)
                     {
-                        _listener?.Unsubscribe();
+                        if (_listener != null)
+                        {
+                            await _listener.Unsubscribe();
+                        }
 
                         _listener = await _desktopAgent.AddContextListener<IContext>(this.SelectedContextListener.Type, (context, contextMetadata) =>
                         {
