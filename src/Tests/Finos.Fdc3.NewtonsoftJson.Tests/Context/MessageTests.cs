@@ -19,7 +19,7 @@ namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 public class MessageTests : ContextSchemaTest
 {
     public MessageTests()
-        : base("https://fdc3.finos.org/schemas/2.1/context/message.schema.json")
+        : base("https://fdc3.finos.org/schemas/2.2/context/message.schema.json")
     {
     }
 
