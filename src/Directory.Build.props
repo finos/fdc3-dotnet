@@ -1,14 +1,14 @@
 ﻿<Project>
-	<PropertyGroup>
+    <PropertyGroup>
         <VersionPrefix>2.2.0</VersionPrefix>
         <VersionSuffix>beta.1</VersionSuffix>
-        <Company>Morgan Stanley</Company>
-		<Authors>Morgan Stanley</Authors>
-		<Copyright>Copyright 2023 Morgan Stanley</Copyright>
-		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<NeutralLanguage>en-US</NeutralLanguage>
+        <Company>FINOS</Company>
+        <Authors>Contributors to the FDC3 standards project</Authors>
+        <Copyright>Copyright FINOS (info@finos.org)</Copyright>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <NeutralLanguage>en-US</NeutralLanguage>
         <RepositoryUrl>https://github.com/finos/fdc3-dotnet</RepositoryUrl>
         <PackageTags>FDC3</PackageTags>
         <WarningsNotAsErrors>NU1901;NU1902;NU1903</WarningsNotAsErrors>
-	</PropertyGroup>
+    </PropertyGroup>
 </Project>
