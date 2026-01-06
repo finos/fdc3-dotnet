@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -34,7 +34,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Fdc3.NewtonsoftJson\Finos.Fdc3.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Fdc3.AppDirectory\Finos.Fdc3.AppDirectory.csproj" />
-    <ProjectReference Include="..\..\Fdc3.NewtonsoftJson\Finos.Fdc3.NewtonsoftJson.csproj" />
     <ProjectReference Include="..\..\Fdc3.Json\Finos.Fdc3.Json.csproj" />
   </ItemGroup>
 

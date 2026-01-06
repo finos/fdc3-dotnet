@@ -6,6 +6,19 @@ fdc3-dotnet
 
 .NET Standard 2.0 declarations to implement concrete [FDC3](https://fdc3.finos.org/) compatible .NET desktop agents and usage of intents/context.
 
+## Prerequisites
+
+### Using the NuGet Packages
+
+The published NuGet packages target .NET Standard 2.0, making them compatible with:
+- .NET Framework 4.6.1+
+- .NET Core 2.0+
+- .NET 5+
+
+### Building Locally / Contributing
+
+- [.NET 10 SDK](https://dotnet.microsoft.com/download) is required to build the solution and run tests
+
 ## Getting Involved
 
 ### Using the standard? Let us know
