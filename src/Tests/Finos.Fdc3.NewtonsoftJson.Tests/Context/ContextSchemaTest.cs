@@ -5,16 +5,16 @@
 
 using Finos.Fdc3.Context;
 using Finos.Fdc3.NewtonsoftJson.Serialization;
+using Json.Schema;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 using System.Reflection;
+using System.Text.Json.Nodes;
 
 namespace Finos.Fdc3.NewtonsoftJson.Tests.Context;
 
 public abstract class ContextSchemaTest
 {
-    protected JSchema? Schema { get; private set; }
+    protected JsonSchema? Schema { get; private set; }
     protected string SchemaUrl { get; private set; }
     protected JsonSerializerSettings SerializerSettings { get; }
 
@@ -26,13 +26,31 @@ public abstract class ContextSchemaTest
 
     protected async Task<string> ValidateSchema(IContext context)
     {
-        this.Schema = JSchema.Parse(await (await new HttpClient().GetAsync(this.SchemaUrl)).Content.ReadAsStringAsync(), new JSchemaUrlResolver());
+        SchemaRegistry.Global.Fetch = uri =>
+        {
+            using var client = new HttpClient();
+            var text = client.GetStringAsync(uri).GetAwaiter().GetResult();
+            return JsonSchema.FromText(text);
+        };
+
+        string schemaText = await (await new HttpClient().GetAsync(this.SchemaUrl)).Content.ReadAsStringAsync();
+        this.Schema = JsonSchema.FromText(schemaText);
 
         string serializedContext = JsonConvert.SerializeObject(context, this.SerializerSettings);
-        JToken json = JToken.Parse(serializedContext);
-        IList<string> errorMessages;
-        bool isValid = json.IsValid(this.Schema, out errorMessages);
-        Assert.True(isValid, String.Join(",", errorMessages.ToArray<string>()));
+        var instanceJson = JsonNode.Parse(serializedContext);
+
+        var options = new EvaluationOptions { OutputFormat = OutputFormat.List };
+        var results = this.Schema.Evaluate(instanceJson, options);
+
+        if (!results.IsValid)
+        {
+            var errorMessages = results.Details?
+                .Where(d => d.Errors != null)
+                .SelectMany(d => d.Errors!.Values)
+                .ToArray() ?? Array.Empty<string>();
+            Assert.True(results.IsValid, String.Join(",", errorMessages));
+        }
+
         return serializedContext;
     }
 
