@@ -5,6 +5,9 @@
 
 namespace Finos.Fdc3
 {
+    /// <summary>
+    /// Error constants for the open function.
+    /// </summary>
     public static class OpenError
     {
         public static readonly string AppNotFound = nameof(AppNotFound);
@@ -15,6 +18,9 @@ namespace Finos.Fdc3
         public static readonly string TargetAppUnavailable = nameof(TargetAppUnavailable);
     }
 
+    /// <summary>
+    /// Error constants for the raiseIntent and raiseIntentForContext functions.
+    /// </summary>
     public static class ResolveError
     {
         public static readonly string NoAppsFound = nameof(NoAppsFound);
@@ -28,12 +34,18 @@ namespace Finos.Fdc3
         public static readonly string IntentHandlerRejected = nameof(IntentHandlerRejected);
     }
 
+    /// <summary>
+    /// Error constants for intent result handling.
+    /// </summary>
     public static class ResultError
     {
         public static readonly string NoResultReturned = nameof(NoResultReturned);
         public static readonly string IntentHandlerRejected = nameof(IntentHandlerRejected);
     }
 
+    /// <summary>
+    /// Error constants for channel operations.
+    /// </summary>
     public static class ChannelError
     {
         public static readonly string NoChannelFound = nameof(NoChannelFound);
@@ -43,6 +55,9 @@ namespace Finos.Fdc3
         public static readonly string ClearContextNotSupported = nameof(ClearContextNotSupported);
     }
 
+    /// <summary>
+    /// Error constants for the Close function.
+    /// </summary>
     public static class CloseError
     {
         public static readonly string ErrorOnClose = nameof(ErrorOnClose);

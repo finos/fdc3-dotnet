@@ -52,11 +52,17 @@ namespace Finos.Fdc3
         public const string Disconnect = "disconnect";
     }
 
+    /// <summary>
+    /// Details for user channel changed events.
+    /// </summary>
     public interface IFdc3ChannelChangedEventDetails
     {
         string? CurrentChannelId { get; }
     }
 
+    /// <summary>
+    /// Details for user channel changed events.
+    /// </summary>
     public class Fdc3ChannelChangedEventDetails : IFdc3ChannelChangedEventDetails
     {
         public string? CurrentChannelId { get; }
@@ -67,6 +73,9 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Event fired when the current user channel changes.
+    /// </summary>
     public class Fdc3ChannelChangedEvent : Fdc3Event
     {
         public Fdc3ChannelChangedEvent(string? channelId)
@@ -75,6 +84,9 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Event fired when a channel context is cleared.
+    /// </summary>
     public class Fdc3ContextClearedEvent : Fdc3Event
     {
         public Fdc3ContextClearedEvent()
@@ -83,11 +95,17 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Details for private channel events.
+    /// </summary>
     public interface IFdc3PrivateChannelEventDetails
     {
         string? ContextType { get; }
     }
 
+    /// <summary>
+    /// Details for private channel events.
+    /// </summary>
     public class Fdc3PrivateChannelEventDetails : IFdc3PrivateChannelEventDetails
     {
         public string? ContextType { get; }
@@ -98,6 +116,9 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Event fired when a context listener is added to a private channel.
+    /// </summary>
     public class Fdc3PrivateChannelAddContextListenerEvent : Fdc3Event
     {
         public Fdc3PrivateChannelAddContextListenerEvent(string? contextType)
@@ -106,6 +127,9 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Event fired when a listener is unsubscribed from a private channel.
+    /// </summary>
     public class Fdc3PrivateChannelUnsubscribeListenerEvent : Fdc3Event
     {
         public Fdc3PrivateChannelUnsubscribeListenerEvent(string? contextType)
@@ -114,6 +138,9 @@ namespace Finos.Fdc3
         }
     }
 
+    /// <summary>
+    /// Event fired when a private channel is disconnected.
+    /// </summary>
     public class Fdc3PrivateChanneDisconnectEvent : Fdc3Event
     {
         public Fdc3PrivateChanneDisconnectEvent()
