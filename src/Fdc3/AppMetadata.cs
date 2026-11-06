@@ -3,6 +3,7 @@
  * Copyright FINOS FDC3 contributors - see NOTICE file
  */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,6 +20,15 @@ namespace Finos.Fdc3
             string? resultType = null, IInstanceMetadata? instanceMetadata = null)
             : base(appId, instanceId)
         {
+            // FDC3 contract requires InstanceMetadata to be set only when InstanceId is set
+            if (instanceMetadata != null && instanceId == null)
+            {
+                throw new ArgumentException(
+                    "InstanceMetadata cannot be set when InstanceId is null. Per FDC3 specification, " +
+                    "InstanceMetadata is only valid for identified app instances.",
+                    nameof(instanceMetadata));
+            }
+
             this.Name = name;
             this.Version = version;
             this.Title = title;

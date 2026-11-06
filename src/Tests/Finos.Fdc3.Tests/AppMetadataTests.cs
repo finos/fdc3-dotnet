@@ -53,10 +53,22 @@ public class AppMetadataTests
     public void AppMetaData_WithInstanceMetadata()
     {
         var instanceMeta = new InstanceMetadata(new Dictionary<string, object> { { "windowId", "123" } });
-        IAppMetadata metadata = new AppMetadata("appid", instanceMetadata: instanceMeta);
+        IAppMetadata metadata = new AppMetadata("appid", "instance-id", instanceMetadata: instanceMeta);
         
         Assert.NotNull(metadata.InstanceMetadata);
         Assert.Same(instanceMeta, metadata.InstanceMetadata);
+    }
+
+    [Fact]
+    public void AppMetaData_WithInstanceMetadata_NoInstanceId_ThrowsArgumentException()
+    {
+        var instanceMeta = new InstanceMetadata(new Dictionary<string, object> { { "windowId", "123" } });
+        
+        ArgumentException ex = Assert.Throws<ArgumentException>(() => 
+            new AppMetadata("appid", instanceMetadata: instanceMeta));
+        
+        Assert.Contains("InstanceMetadata cannot be set when InstanceId is null", ex.Message);
+        Assert.Equal("instanceMetadata", ex.ParamName);
     }
 
     [Fact]
