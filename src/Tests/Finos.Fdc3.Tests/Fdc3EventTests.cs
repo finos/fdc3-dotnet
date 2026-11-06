@@ -84,9 +84,25 @@ public class Fdc3EventTests
     [Fact]
     public void Fdc3ContextClearedEvent_PropertiesMatchParams()
     {
+        IFdc3Event fdc3Event = new Fdc3ContextClearedEvent("channelId", "contextType");
+        Assert.Equal(Fdc3EventType.ContextCleared, fdc3Event.Type);
+        
+        IFdc3ContextClearedEventDetails? details = fdc3Event.Details as IFdc3ContextClearedEventDetails;
+        Assert.NotNull(details);
+        Assert.Equal("channelId", details?.ChannelId);
+        Assert.Equal("contextType", details?.ContextType);
+    }
+
+    [Fact]
+    public void Fdc3ContextClearedEvent_WithNullDetails()
+    {
         IFdc3Event fdc3Event = new Fdc3ContextClearedEvent();
         Assert.Equal(Fdc3EventType.ContextCleared, fdc3Event.Type);
-        Assert.Null(fdc3Event.Details);
+        
+        IFdc3ContextClearedEventDetails? details = fdc3Event.Details as IFdc3ContextClearedEventDetails;
+        Assert.NotNull(details);
+        Assert.Null(details?.ChannelId);
+        Assert.Null(details?.ContextType);
     }
 
     [Fact]

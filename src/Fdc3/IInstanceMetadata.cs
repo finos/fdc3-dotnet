@@ -10,25 +10,30 @@ namespace Finos.Fdc3
     /// <summary>
     /// Runtime instance metadata for an application, such as window/tab information,
     /// or other application-specific runtime state.
+    /// Serialized as a flat key-value record (not a nested object).
     /// </summary>
-    public interface IInstanceMetadata
+    public interface IInstanceMetadata : IDictionary<string, object>
     {
-        /// <summary>
-        /// Application-specific metadata that can be used to identify runtime instances or state.
-        /// </summary>
-        IDictionary<string, object>? Metadata { get; }
     }
 
     /// <summary>
-    /// Concrete implementation of IInstanceMetadata.
+    /// Concrete implementation of IInstanceMetadata as a dictionary of instance properties.
     /// </summary>
-    public class InstanceMetadata : IInstanceMetadata
+    public class InstanceMetadata : Dictionary<string, object>, IInstanceMetadata
     {
-        public InstanceMetadata(IDictionary<string, object>? metadata = null)
+        public InstanceMetadata()
         {
-            this.Metadata = metadata;
         }
 
-        public IDictionary<string, object>? Metadata { get; }
+        public InstanceMetadata(IDictionary<string, object>? metadata)
+        {
+            if (metadata != null)
+            {
+                foreach (var kvp in metadata)
+                {
+                    this[kvp.Key] = kvp.Value;
+                }
+            }
+        }
     }
 }

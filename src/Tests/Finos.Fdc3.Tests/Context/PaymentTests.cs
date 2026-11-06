@@ -3,6 +3,7 @@
  * Copyright FINOS FDC3 contributors - see NOTICE file
  */
 
+using System;
 using System.Collections.Generic;
 using Finos.Fdc3.Context;
 using Xunit;
@@ -16,18 +17,18 @@ public class PaymentTests
     {
         // Arrange
         var paymentId = new PaymentID() { UETR = "123e4567-e89b-12d3-a456-426614174000" };
-        var debtor = new PaymentParty() { Name = "Acme Corp", Account = "GB33BUKB20201555555555", Agent = "AGENT001" };
-        var creditor = new PaymentParty() { Name = "Global Treasury Ltd", Account = "US33CHAS021000021", Agent = "AGENT002" };
+        var debtor = new PaymentParty("GB33BUKB20201555555555", "Acme Corp", "AGENT001");
+        var creditor = new PaymentParty("US33CHAS021000021", "Global Treasury Ltd", "AGENT002");
         var networkRouting = new Dictionary<string, string>() { { "rail", "RTGS" }, { "clearingSystem", "SWIFT" } };
 
         // Act
         var payment = new Payment(
             id: paymentId,
-            name: "ISO 20022 pacs.008 Settlement",
             amount: 150000.00m,
             currency: "USD",
             debtor: debtor,
             creditor: creditor,
+            name: "ISO 20022 pacs.008 Settlement",
             networkRouting: networkRouting);
 
         // Assert
@@ -52,8 +53,8 @@ public class PaymentTests
     {
         // Arrange
         var paymentId = new PaymentID() { UETR = "123e4567-e89b-12d3-a456-426614174000" };
-        var debtor = new PaymentParty() { Account = "GB33BUKB20201555555555" };
-        var creditor = new PaymentParty() { Account = "US33CHAS021000021" };
+        var debtor = new PaymentParty("GB33BUKB20201555555555");
+        var creditor = new PaymentParty("US33CHAS021000021");
 
         // Act
         var payment = new Payment(
@@ -76,14 +77,27 @@ public class PaymentTests
     }
 
     [Fact]
-    public void Payment_TypeIsCorrect()
+    public void Payment_ThrowsOnNullRequiredFields()
     {
-        // Act
-        var payment = new Payment();
+        // Arrange
+        var debtor = new PaymentParty("GB33BUKB20201555555555");
+        var creditor = new PaymentParty("US33CHAS021000021");
 
-        // Assert
-        Assert.Equal(ContextTypes.Payment, payment?.Type);
-        Assert.Equal("fdc3.payment", payment?.Type);
+        // Act & Assert - null id throws
+        Assert.Throws<ArgumentNullException>(() => 
+            new Payment(null, 1000m, "USD", debtor, creditor));
+
+        // Act & Assert - null currency throws
+        Assert.Throws<ArgumentNullException>(() => 
+            new Payment(new PaymentID(), 1000m, null, debtor, creditor));
+
+        // Act & Assert - null debtor throws
+        Assert.Throws<ArgumentNullException>(() => 
+            new Payment(new PaymentID(), 1000m, "USD", null, creditor));
+
+        // Act & Assert - null creditor throws
+        Assert.Throws<ArgumentNullException>(() => 
+            new Payment(new PaymentID(), 1000m, "USD", debtor, null));
     }
 
     [Fact]
@@ -102,35 +116,19 @@ public class PaymentTests
     }
 
     [Fact]
-    public void PaymentParty_CanBeCreatedWithJustAccount()
+    public void PaymentParty_RequiresAccount()
     {
-        // Act
-        var party = new PaymentParty() { Account = "GB33BUKB20201555555555" };
-
-        // Assert
-        Assert.Equal("GB33BUKB20201555555555", party.Account);
-        Assert.Null(party.Name);
-        Assert.Null(party.Agent);
-    }
-
-    [Fact]
-    public void Payment_CanBeCreatedWithoutId()
-    {
-        // Act
-        var payment = new Payment(amount: 500.00m, currency: "GBP");
-
-        // Assert
-        Assert.Null(payment?.ID);
-        Assert.Equal(500.00m, payment?.Amount);
-        Assert.Equal("GBP", payment?.Currency);
-        Assert.Equal(ContextTypes.Payment, payment?.Type);
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new PaymentParty(null));
     }
 
     [Fact]
     public void Payment_NetworkRouting_CanBeSetAndRetrieved()
     {
         // Arrange
-        var payment = new Payment(amount: 1000.00m, currency: "USD");
+        var debtor = new PaymentParty("GB33BUKB20201555555555");
+        var creditor = new PaymentParty("US33CHAS021000021");
+        var payment = new Payment(new PaymentID(), 1000.00m, "USD", debtor, creditor);
         var networkRouting = new Dictionary<string, string> { { "rail", "RTGS" } };
 
         // Act
@@ -139,20 +137,6 @@ public class PaymentTests
         // Assert
         Assert.NotNull(payment.NetworkRouting);
         Assert.Equal("RTGS", payment.NetworkRouting["rail"]);
-    }
-
-    [Fact]
-    public void Payment_NetworkRouting_CanBeNull()
-    {
-        // Arrange
-        var payment = new Payment(amount: 1000.00m, currency: "USD");
-        payment.NetworkRouting = new Dictionary<string, string> { { "rail", "RTGS" } };
-
-        // Act
-        payment.NetworkRouting = null;
-
-        // Assert
-        Assert.Null(payment.NetworkRouting);
     }
 
     [Fact]
@@ -170,7 +154,9 @@ public class PaymentTests
     {
         // Arrange
         var paymentId = new PaymentID { UETR = "123e4567-e89b-12d3-a456-426614174000" };
-        var payment = new Payment(id: paymentId, amount: 1000.00m, currency: "USD");
+        var debtor = new PaymentParty("GB33BUKB20201555555555");
+        var creditor = new PaymentParty("US33CHAS021000021");
+        var payment = new Payment(id: paymentId, amount: 1000.00m, currency: "USD", debtor: debtor, creditor: creditor);
 
         // Act
         IContext<object> contextOfObject = payment;
@@ -180,19 +166,5 @@ public class PaymentTests
         Assert.NotNull(id);
         Assert.IsType<PaymentID>(id);
         Assert.Equal(paymentId, id);
-    }
-
-    [Fact]
-    public void Payment_AsIContextOfObject_ID_WithNullID()
-    {
-        // Arrange
-        var payment = new Payment(amount: 1000.00m, currency: "USD");
-
-        // Act
-        IContext<object> contextOfObject = payment;
-        var id = contextOfObject.ID;
-
-        // Assert
-        Assert.Null(id);
     }
 }

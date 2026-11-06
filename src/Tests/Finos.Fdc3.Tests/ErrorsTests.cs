@@ -55,6 +55,6 @@ public class ErrorsTests
     public void CloseError_Constants_HaveCorrectValues()
     {
         Assert.Equal("ErrorOnClose", CloseError.ErrorOnClose);
-        Assert.Equal("AppTimeout", CloseError.AppTimeout);
+        Assert.Equal("ApiTimeout", CloseError.ApiTimeout);
     }
 }

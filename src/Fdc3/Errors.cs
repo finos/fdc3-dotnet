@@ -61,6 +61,6 @@ namespace Finos.Fdc3
     public static class CloseError
     {
         public static readonly string ErrorOnClose = nameof(ErrorOnClose);
-        public static readonly string AppTimeout = nameof(AppTimeout);
+        public static readonly string ApiTimeout = nameof(ApiTimeout);
     }
 }

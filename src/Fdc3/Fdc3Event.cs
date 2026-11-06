@@ -85,12 +85,36 @@ namespace Finos.Fdc3
     }
 
     /// <summary>
+    /// Details for context cleared events.
+    /// </summary>
+    public interface IFdc3ContextClearedEventDetails
+    {
+        string? ChannelId { get; }
+        string? ContextType { get; }
+    }
+
+    /// <summary>
+    /// Details for context cleared events.
+    /// </summary>
+    public class Fdc3ContextClearedEventDetails : IFdc3ContextClearedEventDetails
+    {
+        public string? ChannelId { get; }
+        public string? ContextType { get; }
+
+        public Fdc3ContextClearedEventDetails(string? channelId = null, string? contextType = null)
+        {
+            this.ChannelId = channelId;
+            this.ContextType = contextType;
+        }
+    }
+
+    /// <summary>
     /// Event fired when a channel context is cleared.
     /// </summary>
     public class Fdc3ContextClearedEvent : Fdc3Event
     {
-        public Fdc3ContextClearedEvent()
-            : base(Fdc3EventType.ContextCleared)
+        public Fdc3ContextClearedEvent(string? channelId = null, string? contextType = null)
+            : base(Fdc3EventType.ContextCleared, new Fdc3ContextClearedEventDetails(channelId, contextType))
         {
         }
     }

@@ -4,57 +4,94 @@
  */
 
 using System.Collections.Generic;
+using Xunit;
 
 namespace Finos.Fdc3.Tests;
 
 public class InstanceMetadataTests
 {
     [Fact]
-    public void InstanceMetadata_Constructor_WithMetadata_PropertiesMatch()
+    public void InstanceMetadata_Constructor_Empty()
     {
+        // Act
+        IInstanceMetadata instance = new InstanceMetadata();
+
+        // Assert
+        Assert.NotNull(instance);
+        Assert.Empty(instance);
+    }
+
+    [Fact]
+    public void InstanceMetadata_Constructor_WithDictionary()
+    {
+        // Arrange
         var metadata = new Dictionary<string, object>
         {
             { "windowId", "window123" },
             { "processId", 12345 }
         };
 
+        // Act
         IInstanceMetadata instance = new InstanceMetadata(metadata);
 
-        Assert.NotNull(instance.Metadata);
-        Assert.Same(metadata, instance.Metadata);
-        Assert.Equal(2, instance.Metadata.Count);
+        // Assert
+        Assert.NotNull(instance);
+        Assert.Equal(2, instance.Count);
+        Assert.Equal("window123", instance["windowId"]);
+        Assert.Equal(12345, instance["processId"]);
     }
 
     [Fact]
-    public void InstanceMetadata_Constructor_WithNullMetadata_IsValid()
+    public void InstanceMetadata_Constructor_WithNull()
     {
+        // Act
         IInstanceMetadata instance = new InstanceMetadata(null);
 
-        Assert.Null(instance.Metadata);
+        // Assert
+        Assert.NotNull(instance);
+        Assert.Empty(instance);
     }
 
     [Fact]
-    public void InstanceMetadata_Constructor_WithoutMetadataParam_MetadataIsNull()
+    public void InstanceMetadata_DictionaryInterface_Add()
     {
+        // Arrange
         IInstanceMetadata instance = new InstanceMetadata();
 
-        Assert.Null(instance.Metadata);
+        // Act
+        instance["windowId"] = "window123";
+        instance["processId"] = 12345;
+
+        // Assert
+        Assert.Equal(2, instance.Count);
+        Assert.Equal("window123", instance["windowId"]);
+        Assert.Equal(12345, instance["processId"]);
     }
 
     [Fact]
-    public void InstanceMetadata_Constructor_WithEmptyDictionary_IsValid()
+    public void InstanceMetadata_DictionaryInterface_Remove()
     {
-        var emptyMetadata = new Dictionary<string, object>();
+        // Arrange
+        var metadata = new Dictionary<string, object>
+        {
+            { "windowId", "window123" },
+            { "processId", 12345 }
+        };
+        IInstanceMetadata instance = new InstanceMetadata(metadata);
 
-        IInstanceMetadata instance = new InstanceMetadata(emptyMetadata);
+        // Act
+        instance.Remove("processId");
 
-        Assert.NotNull(instance.Metadata);
-        Assert.Empty(instance.Metadata);
+        // Assert
+        Assert.Single(instance);
+        Assert.True(instance.ContainsKey("windowId"));
+        Assert.False(instance.ContainsKey("processId"));
     }
 
     [Fact]
-    public void InstanceMetadata_Constructor_WithMixedTypes_PreservesTypes()
+    public void InstanceMetadata_PreservesTypes()
     {
+        // Arrange
         var metadata = new Dictionary<string, object>
         {
             { "stringValue", "test" },
@@ -63,30 +100,23 @@ public class InstanceMetadataTests
             { "boolValue", true }
         };
 
+        // Act
         IInstanceMetadata instance = new InstanceMetadata(metadata);
 
-        Assert.NotNull(instance.Metadata);
-        Assert.Equal("test", instance.Metadata["stringValue"]);
-        Assert.Equal(42, instance.Metadata["intValue"]);
-        Assert.Equal(3.14, instance.Metadata["doubleValue"]);
-        Assert.Equal(true, instance.Metadata["boolValue"]);
+        // Assert
+        Assert.Equal("test", instance["stringValue"]);
+        Assert.Equal(42, instance["intValue"]);
+        Assert.Equal(3.14, instance["doubleValue"]);
+        Assert.Equal(true, instance["boolValue"]);
     }
 
     [Fact]
-    public void InstanceMetadata_ImplementsInterface()
+    public void InstanceMetadata_ImplementsIDictionary()
     {
-        var metadata = new Dictionary<string, object> { { "key", "value" } };
-        var instance = new InstanceMetadata(metadata);
+        // Arrange
+        var instance = new InstanceMetadata();
 
-        Assert.IsAssignableFrom<IInstanceMetadata>(instance);
-    }
-
-    [Fact]
-    public void InstanceMetadata_PropertyIsReadOnly()
-    {
-        var metadata = new Dictionary<string, object> { { "key", "value" } };
-        var instance = new InstanceMetadata(metadata);
-
-        Assert.NotNull(typeof(InstanceMetadata).GetProperty("Metadata"));
+        // Assert
+        Assert.IsAssignableFrom<IDictionary<string, object>>(instance);
     }
 }

@@ -9,9 +9,10 @@ namespace Finos.Fdc3
 {
     /// <summary>
     /// Wrapper interface combining a context with its metadata.
-    /// Used to return context and metadata together from channel operations.
+    /// Used to return context and metadata together from channel operations and intent handlers.
+    /// Implements IIntentResult to allow intent handlers to return this type.
     /// </summary>
-    public interface IContextWithMetadata
+    public interface IContextWithMetadata : IIntentResult
     {
         /// <summary>
         /// The context object.

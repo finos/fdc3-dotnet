@@ -157,7 +157,7 @@ namespace WpfFdc3.Fdc3
         {
             if (_currentChannel != null)
             {
-                return Task.Run(() => _currentChannel.Broadcast(context));
+                return _currentChannel.Broadcast(context, metadata);
             }
 
             throw new Exception("Not joined to a channel");

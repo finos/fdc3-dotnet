@@ -3,6 +3,7 @@
  * Copyright FINOS FDC3 contributors - see NOTICE file
  */
 
+using System;
 using Finos.Fdc3.Context;
 using Xunit;
 
@@ -11,67 +12,73 @@ namespace Finos.Fdc3.Tests.Context;
 public class PaymentPartyTests
 {
     [Fact]
-    public void PaymentParty_Name_SetAndGet()
+    public void PaymentParty_Account_Required()
     {
-        var party = new PaymentParty { Name = "Acme Corp" };
-        Assert.Equal("Acme Corp", party.Name);
-    }
-
-    [Fact]
-    public void PaymentParty_Account_SetAndGet()
-    {
-        var party = new PaymentParty { Account = "GB33BUKB20201555555555" };
+        // Act & Assert
+        var party = new PaymentParty("GB33BUKB20201555555555");
         Assert.Equal("GB33BUKB20201555555555", party.Account);
     }
 
     [Fact]
-    public void PaymentParty_Agent_SetAndGet()
+    public void PaymentParty_AllProperties_SetViaConstructor()
     {
-        var party = new PaymentParty { Agent = "AGENT001" };
-        Assert.Equal("AGENT001", party.Agent);
-    }
+        // Act
+        var party = new PaymentParty("GB33BUKB20201555555555", "Acme Corp", "AGENT001");
 
-    [Fact]
-    public void PaymentParty_AllProperties_SetAndGet()
-    {
-        var party = new PaymentParty
-        {
-            Name = "Acme Corp",
-            Account = "GB33BUKB20201555555555",
-            Agent = "AGENT001"
-        };
-
+        // Assert
         Assert.Equal("Acme Corp", party.Name);
         Assert.Equal("GB33BUKB20201555555555", party.Account);
         Assert.Equal("AGENT001", party.Agent);
     }
 
     [Fact]
-    public void PaymentParty_Null_Properties()
+    public void PaymentParty_OptionalProperties_CanBeNull()
     {
-        var party = new PaymentParty();
-        
+        // Act
+        var party = new PaymentParty("GB33BUKB20201555555555", null, null);
+
+        // Assert
         Assert.Null(party.Name);
-        Assert.Null(party.Account);
+        Assert.Equal("GB33BUKB20201555555555", party.Account);
         Assert.Null(party.Agent);
     }
 
     [Fact]
-    public void PaymentParty_SetToNull()
+    public void PaymentParty_Properties_CanBeModifiedAfterConstruction()
     {
-        var party = new PaymentParty
-        {
-            Name = "Acme Corp",
-            Account = "GB33BUKB20201555555555",
-            Agent = "AGENT001"
-        };
+        // Arrange
+        var party = new PaymentParty("GB33BUKB20201555555555");
 
+        // Act
+        party.Name = "Acme Corp";
+        party.Agent = "AGENT001";
+
+        // Assert
+        Assert.Equal("Acme Corp", party.Name);
+        Assert.Equal("GB33BUKB20201555555555", party.Account);
+        Assert.Equal("AGENT001", party.Agent);
+    }
+
+    [Fact]
+    public void PaymentParty_Properties_CanBeSetToNull()
+    {
+        // Arrange
+        var party = new PaymentParty("GB33BUKB20201555555555", "Acme Corp", "AGENT001");
+
+        // Act
         party.Name = null;
-        party.Account = null;
         party.Agent = null;
 
+        // Assert
         Assert.Null(party.Name);
-        Assert.Null(party.Account);
+        Assert.Equal("GB33BUKB20201555555555", party.Account);
         Assert.Null(party.Agent);
+    }
+
+    [Fact]
+    public void PaymentParty_ThrowsOnNullAccount()
+    {
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => new PaymentParty(null));
     }
 }

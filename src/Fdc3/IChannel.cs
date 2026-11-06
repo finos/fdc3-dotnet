@@ -74,8 +74,10 @@ namespace Finos.Fdc3
 
         /// <summary>
         /// Clears the current context(s) on this channel.
+        /// If contextType is specified, only contexts of that type are cleared.
+        /// If contextType is null, all contexts are cleared.
         /// </summary>
-        Task ClearContext();
+        Task ClearContext(string? contextType = null);
 
         /// <summary>
         /// Adds a listener for FDC3 events on this channel, including context changes and channel status.

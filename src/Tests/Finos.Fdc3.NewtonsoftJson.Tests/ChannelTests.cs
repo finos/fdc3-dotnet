@@ -86,7 +86,7 @@ public class ChannelTests
             throw new NotImplementedException();
         }
 
-        public Task ClearContext()
+        public Task ClearContext(string? contextType = null)
         {
             throw new NotImplementedException();
         }
