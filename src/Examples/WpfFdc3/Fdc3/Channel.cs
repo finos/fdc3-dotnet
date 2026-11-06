@@ -54,36 +54,23 @@ namespace WpfFdc3.Fdc3
                 {
                     _lastContexts[context.Type] = _lastContext = context;
                     
-                    // Create fresh delivery metadata with caller identity and time
-                    // Each broadcast receives new metadata with current timestamp and caller info
-                    IContextMetadata contextMetadata;
+                    // Create fresh delivery metadata with current caller identity and time
+                    // The Desktop Agent MUST override source and timestamp with its own values,
+                    // forwarding only app-providable fields (traceId, signature, antiReplay, custom)
+                    // per IAppProvidableContextMetadata contract.
                     
-                    if (metadata is ContextMetadata cm)
-                    {
-                        // Preserve caller-provided trace IDs for ContextMetadata
-                        contextMetadata = cm;
-                    }
-                    else if (metadata != null)
-                    {
-                        // Preserve caller-provided trace IDs for non-ContextMetadata by extracting traceId
-                        // Create fresh metadata with new timestamp and agent caller, but preserve traceId if provided
-                        string? traceId = metadata is IContextMetadata icm ? icm.TraceId : null;
-                        contextMetadata = new ContextMetadata(
-                            new AppIdentifier("channel"),
-                            DateTime.UtcNow,
-                            traceId ?? Guid.NewGuid().ToString(),
-                            metadata.Signature,
-                            metadata.AntiReplay,
-                            metadata.Custom);
-                    }
-                    else
-                    {
-                        // No metadata provided: create fresh metadata with new timestamp and trace ID
-                        contextMetadata = new ContextMetadata(
-                            new AppIdentifier("channel"),
-                            DateTime.UtcNow,
-                            Guid.NewGuid().ToString());
-                    }
+                    // Preserve caller-provided trace ID (generate one if not provided)
+                    string traceId = metadata?.TraceId ?? Guid.NewGuid().ToString();
+                    
+                    // Create fresh metadata with new timestamp and agent caller identity
+                    // Forward only app-providable fields from caller metadata
+                    IContextMetadata contextMetadata = new ContextMetadata(
+                        new AppIdentifier("channel"),  // In real implementations, use actual app identifier
+                        DateTime.UtcNow,               // Current delivery time, not caller's
+                        traceId,
+                        metadata?.Signature,
+                        metadata?.AntiReplay,
+                        metadata?.Custom);
                     
                     _lastContextMetadata[context.Type] = _lastContextMetadataValue = contextMetadata;
                 }
