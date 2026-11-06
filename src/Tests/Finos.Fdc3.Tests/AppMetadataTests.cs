@@ -48,4 +48,57 @@ public class AppMetadataTests
         Assert.Same(images, metadata.Screenshots);
         Assert.Same("resulttype", metadata.ResultType);
     }
+
+    [Fact]
+    public void AppMetaData_WithInstanceMetadata()
+    {
+        var instanceMeta = new InstanceMetadata(new Dictionary<string, object> { { "windowId", "123" } });
+        IAppMetadata metadata = new AppMetadata("appid", "instance-id", instanceMetadata: instanceMeta);
+        
+        Assert.NotNull(metadata.InstanceMetadata);
+        Assert.Same(instanceMeta, metadata.InstanceMetadata);
+    }
+
+    [Fact]
+    public void AppMetaData_WithInstanceMetadata_NoInstanceId_ThrowsArgumentException()
+    {
+        var instanceMeta = new InstanceMetadata(new Dictionary<string, object> { { "windowId", "123" } });
+        
+        ArgumentException ex = Assert.Throws<ArgumentException>(() => 
+            new AppMetadata("appid", instanceMetadata: instanceMeta));
+        
+        Assert.Contains("InstanceMetadata cannot be set when InstanceId is null", ex.Message);
+        Assert.Equal("instanceMetadata", ex.ParamName);
+    }
+
+    [Fact]
+    public void AppMetaData_WithNullInstanceMetadata()
+    {
+        IAppMetadata metadata = new AppMetadata("appid", instanceMetadata: null);
+        
+        Assert.Null(metadata.InstanceMetadata);
+    }
+
+    [Fact]
+    public void AppMetaData_AllParametersIncludingInstanceMetadata()
+    {
+        IIcon[] icons = { new Icon("src") };
+        IImage[] images = { new Image("src") };
+        var instanceMeta = new InstanceMetadata(new Dictionary<string, object> { { "key", "value" } });
+        
+        IAppMetadata metadata = new AppMetadata("appid", "instance", "name", "version", "title", "tooltip", 
+            "description", icons, images, "resulttype", instanceMeta);
+        
+        Assert.Same("appid", metadata.AppId);
+        Assert.Same("instance", metadata.InstanceId);
+        Assert.Same("name", metadata.Name);
+        Assert.Same("version", metadata.Version);
+        Assert.Same("title", metadata.Title);
+        Assert.Same("tooltip", metadata.Tooltip);
+        Assert.Same("description", metadata.Description);
+        Assert.Same(icons, metadata.Icons);
+        Assert.Same(images, metadata.Screenshots);
+        Assert.Same("resulttype", metadata.ResultType);
+        Assert.Same(instanceMeta, metadata.InstanceMetadata);
+    }
 }

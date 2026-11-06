@@ -10,7 +10,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>8.0</LangVersion>
-        <Description>.NET Standard 2.0 FDC3 JSON helpers based on Newtonsoft.Json for use with Finos.Fdc3.</Description>
+        <Description>.NET Standard 2.0 FDC3 3.0 JSON helpers based on Newtonsoft.Json for use with Finos.Fdc3.</Description>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

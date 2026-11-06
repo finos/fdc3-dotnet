@@ -27,6 +27,7 @@ namespace Finos.Fdc3.Context
         public static readonly string Message = "fdc3.message";
         public static readonly string Nothing = "fdc3.nothing";
         public static readonly string Organization = "fdc3.organization";
+        public static readonly string Payment = "fdc3.payment";
         public static readonly string Portfolio = "fdc3.portfolio";
         public static readonly string Position = "fdc3.position";
         public static readonly string TimeRange = "fdc3.timeRange";
@@ -52,6 +53,7 @@ namespace Finos.Fdc3.Context
             {  ContextTypes.Message, typeof(Message) },
             {  ContextTypes.Nothing, typeof(Nothing) },
             {  ContextTypes.Organization, typeof(Organization) },
+            {  ContextTypes.Payment, typeof(Payment) },
             {  ContextTypes.Portfolio, typeof(Portfolio) },
             {  ContextTypes.Position, typeof(Position) },
             {  ContextTypes.TimeRange, typeof(TimeRange) },
