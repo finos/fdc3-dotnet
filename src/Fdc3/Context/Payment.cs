@@ -63,17 +63,37 @@ namespace Finos.Fdc3.Context
     /// <summary>
     /// Represents payment identifiers that refer to the payment in an OMS, EMS, or Settlement network (e.g., UETR, TransactionHash).
     /// </summary>
-    public class PaymentID
+    public class PaymentID : Dictionary<string, string>
     {
         /// <summary>
         /// Universal Execution Transaction Reference (ISO 20022 standard identifier for payments).
         /// </summary>
-        public string? UETR { get; set; }
+        public string? UETR
+        {
+            get => TryGetValue(nameof(UETR), out var value) ? value : null;
+            set
+            {
+                if (value == null)
+                    Remove(nameof(UETR));
+                else
+                    this[nameof(UETR)] = value;
+            }
+        }
 
         /// <summary>
         /// Transaction hash or any other transaction identifier in settlement networks.
         /// </summary>
-        public string? TransactionHash { get; set; }
+        public string? TransactionHash
+        {
+            get => TryGetValue(nameof(TransactionHash), out var value) ? value : null;
+            set
+            {
+                if (value == null)
+                    Remove(nameof(TransactionHash));
+                else
+                    this[nameof(TransactionHash)] = value;
+            }
+        }
     }
 
     /// <summary>
