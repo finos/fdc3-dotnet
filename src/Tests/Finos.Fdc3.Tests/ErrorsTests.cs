@@ -17,6 +17,7 @@ public class ErrorsTests
         Assert.Equal("AppTimeout", OpenError.AppTimeout);
         Assert.Equal("ResolverUnavailable", OpenError.ResolverUnavailable);
         Assert.Equal("MalformedContext", OpenError.MalformedContext);
+        Assert.Equal("TargetAppUnavailable", OpenError.TargetAppUnavailable);
     }
 
     [Fact]
@@ -30,6 +31,7 @@ public class ErrorsTests
         Assert.Equal("TargetInstanceUnavailable", ResolveError.TargetInstanceUnavailable);
         Assert.Equal("IntentDeliveryFailed", ResolveError.IntentDeliveryFailed);
         Assert.Equal("MalformedContext", ResolveError.MalformedContext);
+        Assert.Equal("IntentHandlerRejected", ResolveError.IntentHandlerRejected);
     }
 
     [Fact]
@@ -46,5 +48,13 @@ public class ErrorsTests
         Assert.Equal("AccessDenied", ChannelError.AccessDenied);
         Assert.Equal("CreationFailed", ChannelError.CreationFailed);
         Assert.Equal("MalformedContext", ChannelError.MalformedContext);
+        Assert.Equal("ClearContextNotSupported", ChannelError.ClearContextNotSupported);
+    }
+
+    [Fact]
+    public void CloseError_Constants_HaveCorrectValues()
+    {
+        Assert.Equal("ErrorOnClose", CloseError.ErrorOnClose);
+        Assert.Equal("AppTimeout", CloseError.AppTimeout);
     }
 }

@@ -27,8 +27,20 @@ namespace Finos.Fdc3
         ///
         /// If a Context object is passed in, this object will be provided to the opened application via a contextListener.
         /// The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
+        ///
+        /// An optional metadata parameter may be provided to include additional metadata such as traceId or signature.
         /// </summary>
-        Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null);
+        Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null, IAppProvidableContextMetadata? metadata = null);
+
+        /// <summary>
+        /// Requests that the Desktop Agent close the calling application's own window or frame.
+        ///
+        /// This API is limited to self-close only — it cannot be used to close another application.
+        ///
+        /// On a successful close, the app is destroyed. The promise MUST reject with a string from
+        /// CloseError if the Desktop Agent cannot close the app.
+        /// </summary>
+        Task Close();
 
         /// <summary>
         /// Find out more information about a particular intent by passing its name, and optionally its context.
@@ -58,23 +70,36 @@ namespace Finos.Fdc3
         ///
         /// DesktopAgent implementations should ensure that context messages broadcast to a channel
         /// by an application joined to it should not be delivered back to that same application.
+        ///
+        /// An optional metadata parameter may be provided to include additional metadata such as traceId or signature.
         /// </summary>
-        Task Broadcast(IContext context);
+        Task Broadcast(IContext context, IAppProvidableContextMetadata? metadata = null);
 
         /// <summary>
         /// Raises an intent to the desktop agent to resolve.
+        ///
+        /// An optional newInstance parameter allows the caller to express how an instance of the target application 
+        /// should be selected. An optional metadata parameter may be provided to include additional metadata.
         /// </summary>
-        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null);
+        Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null, bool? newInstance = null, IAppProvidableContextMetadata? metadata = null);
 
         /// <summary>
         /// Raises a context to the desktop agent to resolve with one of the possible Intents for that context.
+        ///
+        /// An optional newInstance parameter allows the caller to express how an instance of the target application 
+        /// should be selected. An optional metadata parameter may be provided to include additional metadata.
         /// </summary>
-        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null);
+        Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null, bool? newInstance = null, IAppProvidableContextMetadata? metadata = null);
 
         /// <summary>
         /// Adds a listener for incoming Intents from the Agent.
         /// </summary>
         Task<IListener> AddIntentListener<T>(string intent, IntentHandler<T> handler) where T : IContext;
+
+        /// <summary>
+        /// Adds a listener for incoming Intents from the Agent, filtered by context type.
+        /// </summary>
+        Task<IListener> AddIntentListenerWithContext<T>(string intent, string? contextType, IntentHandler<T> handler) where T : IContext;
 
         /// <summary>
         /// Adds a listener for the broadcast of a specific type of context object.

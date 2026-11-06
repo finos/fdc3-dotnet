@@ -52,5 +52,10 @@ namespace Finos.Fdc3
         /// channel, or channel with specified type
         /// </summary>
         string? ResultType { get; }
+
+        /// <summary>
+        /// Optional runtime instance metadata for the application.
+        /// </summary>
+        IInstanceMetadata? InstanceMetadata { get; }
     }
 }

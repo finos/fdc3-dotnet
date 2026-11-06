@@ -37,7 +37,7 @@ namespace WpfFdc3.Fdc3
             });
         }
 
-        public Task Broadcast(IContext context)
+        public Task Broadcast(IContext context, IAppProvidableContextMetadata? metadata = null)
         {
             return Task.Run(() =>
             {
@@ -49,6 +49,25 @@ namespace WpfFdc3.Fdc3
         public Task<IContext?> GetCurrentContext(string? contextType)
         {
             return Task.Run<IContext?>(() => (contextType != null) ? _lastContexts[contextType] : _lastContext);
+        }
+
+        public Task<IContextWithMetadata?> GetCurrentContextWithMetadata(string? contextType)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task ClearContext()
+        {
+            return Task.Run(() =>
+            {
+                _lastContexts.Clear();
+                _lastContext = null;
+            });
+        }
+
+        public Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -28,5 +28,10 @@ namespace Finos.Fdc3
         string? Version { get; }
 
         Task<IIntentResult?> GetResult();
+
+        /// <summary>
+        /// Gets the metadata associated with the result returned by the intent handler.
+        /// </summary>
+        Task<IContextMetadata?> GetResultMetadata();
     }
 }

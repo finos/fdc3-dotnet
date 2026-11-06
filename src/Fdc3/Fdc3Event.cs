@@ -39,6 +39,7 @@ namespace Finos.Fdc3
     public static class Fdc3EventType
     {
         public const string UserChannelChanged = "userChannelChanged";
+        public const string ContextCleared = "contextCleared";
     }
 
     /// <summary>
@@ -70,6 +71,14 @@ namespace Finos.Fdc3
     {
         public Fdc3ChannelChangedEvent(string? channelId)
             : base(Fdc3EventType.UserChannelChanged, new Fdc3ChannelChangedEventDetails(channelId))
+        {
+        }
+    }
+
+    public class Fdc3ContextClearedEvent : Fdc3Event
+    {
+        public Fdc3ContextClearedEvent()
+            : base(Fdc3EventType.ContextCleared)
         {
         }
     }

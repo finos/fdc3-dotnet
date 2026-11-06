@@ -43,16 +43,6 @@ namespace WpfFdc3.Fdc3
             });
         }
 
-        public Task Broadcast(IContext context)
-        {
-            if (_currentChannel != null)
-            {
-                return Task.Run(() => _currentChannel.Broadcast(context));
-            }
-
-            throw new Exception("Not joined to a channel");
-        }
-
         public Task<IPrivateChannel> CreatePrivateChannel()
         {
             throw new NotImplementedException();
@@ -153,17 +143,37 @@ namespace WpfFdc3.Fdc3
             });
         }
 
-        public Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null)
+        public Task<IAppIdentifier> Open(IAppIdentifier app, IContext? context = null, IAppProvidableContextMetadata? metadata = null)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null)
+        public Task Close()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null)
+        public Task Broadcast(IContext context, IAppProvidableContextMetadata? metadata = null)
+        {
+            if (_currentChannel != null)
+            {
+                return Task.Run(() => _currentChannel.Broadcast(context));
+            }
+
+            throw new Exception("Not joined to a channel");
+        }
+
+        public Task<IIntentResolution> RaiseIntent(string intent, IContext context, IAppIdentifier? app = null, bool? newInstance = null, IAppProvidableContextMetadata? metadata = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IIntentResolution> RaiseIntentForContext(IContext context, IAppIdentifier? app = null, bool? newInstance = null, IAppProvidableContextMetadata? metadata = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IListener> AddIntentListenerWithContext<T>(string intent, string? contextType, IntentHandler<T> handler) where T : IContext
         {
             throw new NotImplementedException();
         }

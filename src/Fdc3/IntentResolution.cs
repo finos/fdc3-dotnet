@@ -36,5 +36,7 @@ namespace Finos.Fdc3
         public string? Version { get; }
 
         public abstract Task<IIntentResult?> GetResult();
+
+        public abstract Task<IContextMetadata?> GetResultMetadata();
     }
 }

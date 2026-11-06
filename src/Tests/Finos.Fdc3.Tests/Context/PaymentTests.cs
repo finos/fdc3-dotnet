@@ -127,6 +127,35 @@ public class PaymentTests
     }
 
     [Fact]
+    public void Payment_NetworkRouting_CanBeSetAndRetrieved()
+    {
+        // Arrange
+        var payment = new Payment(amount: 1000.00m, currency: "USD");
+        var networkRouting = new Dictionary<string, string> { { "rail", "RTGS" } };
+
+        // Act
+        payment.NetworkRouting = networkRouting;
+
+        // Assert
+        Assert.NotNull(payment.NetworkRouting);
+        Assert.Equal("RTGS", payment.NetworkRouting["rail"]);
+    }
+
+    [Fact]
+    public void Payment_NetworkRouting_CanBeNull()
+    {
+        // Arrange
+        var payment = new Payment(amount: 1000.00m, currency: "USD");
+        payment.NetworkRouting = new Dictionary<string, string> { { "rail", "RTGS" } };
+
+        // Act
+        payment.NetworkRouting = null;
+
+        // Assert
+        Assert.Null(payment.NetworkRouting);
+    }
+
+    [Fact]
     public void ContextTypes_PaymentMapsCorrectly()
     {
         // Act
@@ -134,5 +163,36 @@ public class PaymentTests
 
         // Assert
         Assert.Equal(typeof(Payment), type);
+    }
+
+    [Fact]
+    public void Payment_AsIContextOfObject_ID_ReturnsPaymentID()
+    {
+        // Arrange
+        var paymentId = new PaymentID { UETR = "123e4567-e89b-12d3-a456-426614174000" };
+        var payment = new Payment(id: paymentId, amount: 1000.00m, currency: "USD");
+
+        // Act
+        IContext<object> contextOfObject = payment;
+        var id = contextOfObject.ID;
+
+        // Assert
+        Assert.NotNull(id);
+        Assert.IsType<PaymentID>(id);
+        Assert.Equal(paymentId, id);
+    }
+
+    [Fact]
+    public void Payment_AsIContextOfObject_ID_WithNullID()
+    {
+        // Arrange
+        var payment = new Payment(amount: 1000.00m, currency: "USD");
+
+        // Act
+        IContext<object> contextOfObject = payment;
+        var id = contextOfObject.ID;
+
+        // Assert
+        Assert.Null(id);
     }
 }

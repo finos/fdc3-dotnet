@@ -50,5 +50,10 @@ public class IntentResolutionTests
         {
             throw new NotImplementedException();
         }
+
+        public override Task<IContextMetadata?> GetResultMetadata()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

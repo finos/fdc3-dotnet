@@ -80,4 +80,21 @@ public class Fdc3EventTests
         Assert.Same(Fdc3PrivateChannelEventType.Disconnect, fdc3Event.Type);
         Assert.Null(fdc3Event.Details);
     }
+
+    [Fact]
+    public void Fdc3ContextClearedEvent_PropertiesMatchParams()
+    {
+        IFdc3Event fdc3Event = new Fdc3ContextClearedEvent();
+        Assert.Equal(Fdc3EventType.ContextCleared, fdc3Event.Type);
+        Assert.Null(fdc3Event.Details);
+    }
+
+    [Fact]
+    public void Fdc3EventType_HasAllConstants()
+    {
+        Assert.NotNull(Fdc3EventType.UserChannelChanged);
+        Assert.NotNull(Fdc3EventType.ContextCleared);
+        Assert.Equal("userChannelChanged", Fdc3EventType.UserChannelChanged);
+        Assert.Equal("contextCleared", Fdc3EventType.ContextCleared);
+    }
 }

@@ -16,7 +16,7 @@ namespace Finos.Fdc3
     {
         public AppMetadata(string appId, string? instanceId = null, string? name = null, string? version = null, string? title = null,
             string? tooltip = null, string? description = null, IEnumerable<IIcon>? icons = null, IEnumerable<IImage>? screenshots = null,
-            string? resultType = null)
+            string? resultType = null, IInstanceMetadata? instanceMetadata = null)
             : base(appId, instanceId)
         {
             this.Name = name;
@@ -27,6 +27,7 @@ namespace Finos.Fdc3
             this.Icons = icons ?? Enumerable.Empty<IIcon>();
             this.Screenshots = screenshots ?? Enumerable.Empty<IImage>();
             this.ResultType = resultType;
+            this.InstanceMetadata = instanceMetadata;
         }
 
         /// <summary>
@@ -69,5 +70,10 @@ namespace Finos.Fdc3
         /// channel, or channel with specified type
         /// </summary>
         public string? ResultType { get; }
+
+        /// <summary>
+        /// Optional runtime instance metadata for the application.
+        /// </summary>
+        public IInstanceMetadata? InstanceMetadata { get; }
     }
 }

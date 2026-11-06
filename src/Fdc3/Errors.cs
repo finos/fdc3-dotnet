@@ -12,6 +12,7 @@ namespace Finos.Fdc3
         public static readonly string AppTimeout = nameof(AppTimeout);
         public static readonly string ResolverUnavailable = nameof(ResolverUnavailable);
         public static readonly string MalformedContext = nameof(MalformedContext);
+        public static readonly string TargetAppUnavailable = nameof(TargetAppUnavailable);
     }
 
     public static class ResolveError
@@ -24,6 +25,7 @@ namespace Finos.Fdc3
         public static readonly string TargetInstanceUnavailable = nameof(TargetInstanceUnavailable);
         public static readonly string IntentDeliveryFailed = nameof(IntentDeliveryFailed);
         public static readonly string MalformedContext = nameof(MalformedContext);
+        public static readonly string IntentHandlerRejected = nameof(IntentHandlerRejected);
     }
 
     public static class ResultError
@@ -38,5 +40,12 @@ namespace Finos.Fdc3
         public static readonly string AccessDenied = nameof(AccessDenied);
         public static readonly string CreationFailed = nameof(CreationFailed);
         public static readonly string MalformedContext = nameof(MalformedContext);
+        public static readonly string ClearContextNotSupported = nameof(ClearContextNotSupported);
+    }
+
+    public static class CloseError
+    {
+        public static readonly string ErrorOnClose = nameof(ErrorOnClose);
+        public static readonly string AppTimeout = nameof(AppTimeout);
     }
 }
