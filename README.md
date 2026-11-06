@@ -6,6 +6,8 @@ fdc3-dotnet
 
 .NET Standard 2.0 declarations to implement concrete [FDC3](https://fdc3.finos.org/) compatible .NET desktop agents and usage of intents/context.
 
+This library supports [FDC3 3.0](https://fdc3.finos.org/docs/overview), the latest version of the FDC3 standard, including new features such as the Payment context type for ISO 20022 payments and the StartPayment intent.
+
 ## Prerequisites
 
 ### Using the NuGet Packages
