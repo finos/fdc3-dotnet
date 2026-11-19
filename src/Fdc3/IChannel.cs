@@ -41,7 +41,7 @@ namespace Finos.Fdc3
         /// Channel implementations should ensure that context messages broadcast by an application on a channel should
         /// not be delivered back to that same application if they are joined to the channel.
         /// </summary>
-        Task Broadcast(IContext context);
+        Task Broadcast(IContext context, IAppProvidableContextMetadata? metadata = null);
 
         /// <summary>
         /// Returns the last context that was broadcast on this channel. All channels initially have no context, until a
@@ -62,6 +62,27 @@ namespace Finos.Fdc3
         /// Adds a listener for incoming contexts of the specified context type whenever a broadcast happens on this channel.
         /// </summary>
         Task<IListener> AddContextListener<T>(string? contextType, ContextHandler<T> handler) where T : IContext;
+
+        /// <summary>
+        /// Returns the last context that was broadcast on this channel along with its metadata.
+        /// If there is not yet any context on the channel, this method will return `null`.
+        /// 
+        /// Optionally a contextType can be provided, in which case the current context of the matching type will
+        /// be returned (if any).
+        /// </summary>
+        Task<IContextWithMetadata?> GetCurrentContextWithMetadata(string? contextType);
+
+        /// <summary>
+        /// Clears the current context(s) on this channel.
+        /// If contextType is specified, only contexts of that type are cleared.
+        /// If contextType is null, all contexts are cleared.
+        /// </summary>
+        Task ClearContext(string? contextType = null);
+
+        /// <summary>
+        /// Adds a listener for FDC3 events on this channel, including context changes and channel status.
+        /// </summary>
+        Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler);
     }
 
     public static class ChannelExtensions

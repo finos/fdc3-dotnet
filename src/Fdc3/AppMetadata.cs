@@ -3,6 +3,7 @@
  * Copyright FINOS FDC3 contributors - see NOTICE file
  */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,9 +17,18 @@ namespace Finos.Fdc3
     {
         public AppMetadata(string appId, string? instanceId = null, string? name = null, string? version = null, string? title = null,
             string? tooltip = null, string? description = null, IEnumerable<IIcon>? icons = null, IEnumerable<IImage>? screenshots = null,
-            string? resultType = null)
+            string? resultType = null, IInstanceMetadata? instanceMetadata = null)
             : base(appId, instanceId)
         {
+            // FDC3 contract requires InstanceMetadata to be set only when InstanceId is set
+            if (instanceMetadata != null && instanceId == null)
+            {
+                throw new ArgumentException(
+                    "InstanceMetadata cannot be set when InstanceId is null. Per FDC3 specification, " +
+                    "InstanceMetadata is only valid for identified app instances.",
+                    nameof(instanceMetadata));
+            }
+
             this.Name = name;
             this.Version = version;
             this.Title = title;
@@ -27,6 +37,7 @@ namespace Finos.Fdc3
             this.Icons = icons ?? Enumerable.Empty<IIcon>();
             this.Screenshots = screenshots ?? Enumerable.Empty<IImage>();
             this.ResultType = resultType;
+            this.InstanceMetadata = instanceMetadata;
         }
 
         /// <summary>
@@ -69,5 +80,10 @@ namespace Finos.Fdc3
         /// channel, or channel with specified type
         /// </summary>
         public string? ResultType { get; }
+
+        /// <summary>
+        /// Optional runtime instance metadata for the application.
+        /// </summary>
+        public IInstanceMetadata? InstanceMetadata { get; }
     }
 }

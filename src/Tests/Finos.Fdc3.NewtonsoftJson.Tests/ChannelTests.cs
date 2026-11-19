@@ -71,12 +71,27 @@ public class ChannelTests
             throw new NotImplementedException();
         }
 
-        public Task Broadcast(IContext context)
+        public Task Broadcast(IContext context, IAppProvidableContextMetadata? metadata = null)
         {
             throw new NotImplementedException();
         }
 
         public Task<IContext?> GetCurrentContext(string? contextType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IContextWithMetadata?> GetCurrentContextWithMetadata(string? contextType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ClearContext(string? contextType = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler)
         {
             throw new NotImplementedException();
         }

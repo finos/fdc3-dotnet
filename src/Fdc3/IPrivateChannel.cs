@@ -60,13 +60,6 @@ namespace Finos.Fdc3
         /// they've added (causing any OnUnsubscribe handler added by the other party to be called)
         /// before triggering any OnDisconnect handler added by the other party.
         /// </summary>
-        void Disconnect();
-
-
-        /// <summary>
-        /// Register a handler for events from the PrivateChannel.  Whenever the handler function is
-        /// called it will be passed an event object with details related to the event.
-        /// </summary>
-        Task<IListener> AddEventListener(string? eventType, Fdc3EventHandler handler);
+        Task Disconnect();
     }
 }
