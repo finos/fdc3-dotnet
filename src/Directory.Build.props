@@ -1,7 +1,7 @@
 ﻿<Project>
     <PropertyGroup>
         <VersionPrefix>3.0.0</VersionPrefix>
-        <VersionSuffix></VersionSuffix>
+        <VersionSuffix>beta.1</VersionSuffix>
         <Company>FINOS</Company>
         <Authors>Contributors to the FDC3 standards project</Authors>
         <Copyright>Copyright FINOS (info@finos.org)</Copyright>
