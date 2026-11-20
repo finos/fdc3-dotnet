@@ -32,7 +32,7 @@ jobs:
         id: login
         uses: Nuget/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
         with:
-          user: finos
+          user: ${{ secrets.NUGET_USER }}
 
       - name: Publish
         run: dotnet nuget push "./packages/*.nupkg" --no-symbols --source "https://api.nuget.org/v3/index.json" --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
